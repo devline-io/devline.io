@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    padding: 1rem 3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navLinks {
+    padding: 0;
+    margin: 0;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    list-style: none;
+}
+
+.signUp {
+    padding: 0.5rem 1rem;
+    border-style: solid;
+    font-weight: 900;
+    transition: all 0.1s;
+}
+
+.signUp:hover {
+    border-color: #443C68;
+    background-color: #635985;
+    color: #F7EFE5;
+}
