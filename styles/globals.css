@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2rem;
+  background-color: #F7EFE5;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border-style: solid;
+  font-weight: 900;
+  transition: all 0.1s;
+}
+
+button:hover {
+  border-color: #443C68;
+  background-color: #635985;
+  color: #F7EFE5;
+}

@@ -1,0 +1,66 @@
+.tagline {
+    text-align: center;
+    align-self: center;
+    font-size: 4rem; 
+    font-weight: 900;
+}
+
+.tagline span {
+    font-size: 4rem;
+    background-image: linear-gradient(#443C68, #18122B);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtagline {
+    text-align: center;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.subtagline span {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #393053;
+}
+
+.hero {
+    padding: 3rem;
+    max-width: 100rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.hero div, .heroForm button {
+    max-width: 622.5px;
+    width: 100%;
+}
+
+.heroForm label {
+    display: block;
+    font-weight: 900;
+}
+
+.heroForm{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center; 
+    gap: 1rem;
+    width: 100%;
+}
+
+.heroForm input {
+    border-style: solid;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    width: 100%;
+}
+
+
