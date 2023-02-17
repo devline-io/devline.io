@@ -14,7 +14,7 @@ export default function Navbar() {
                         <li key={item}>{item}</li>
                     ))}
                 </ul>
-                <button className={styles.signUp}>Sign Up</button>
+                <button>Sign Up</button>
             </div>
         </div>
     );
