@@ -2,6 +2,15 @@ import Navbar from '../components/navbar'
 import Head from 'next/head'
 import styles from '../styles/homepage.module.css'
 import Darkdivider from '../components/darkdivider';
+import Image from 'next/image'
+
+let thumbnails = [
+  '/thumbnails/placeholderThumbnail1.png',
+  '/thumbnails/placeholderThumbnail2.png',
+  '/thumbnails/placeholderThumbnail3.png',
+  '/thumbnails/placeholderThumbnail4.png',
+  '/thumbnails/placeholderThumbnail5.png'
+]
 
 export default function HomePage() {
   return (
@@ -31,9 +40,16 @@ export default function HomePage() {
           <button>Sign Up</button>
         </form>
       </div>
-      <Darkdivider/>
+      <Darkdivider dividerPosition='top'/>
       <div className={styles.catalog}>
         <h2>./Catalog</h2>
+        <div className={styles.carousel}>
+          {thumbnails.map(thumbnail => (
+            <div key={thumbnail} className={styles.images}>
+              <Image src={thumbnail} fill/>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
