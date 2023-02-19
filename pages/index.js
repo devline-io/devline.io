@@ -9,7 +9,11 @@ let thumbnails = [
   '/thumbnails/placeholderThumbnail2.png',
   '/thumbnails/placeholderThumbnail3.png',
   '/thumbnails/placeholderThumbnail4.png',
-  '/thumbnails/placeholderThumbnail5.png'
+  '/thumbnails/placeholderThumbnail5.png',
+  '/thumbnails/placeholderThumbnail4.png',
+  '/thumbnails/placeholderThumbnail3.png',
+  '/thumbnails/placeholderThumbnail2.png',
+  '/thumbnails/placeholderThumbnail1.png'
 ]
 
 export default function HomePage() {
@@ -45,11 +49,13 @@ export default function HomePage() {
         <h2>./Catalog</h2>
         <div className={styles.carousel}>
           {thumbnails.map(thumbnail => (
-            <div key={thumbnail} className={styles.images}>
-              <Image src={thumbnail} fill/>
-            </div>
+            <Image key={thumbnail} src={thumbnail} width='420' height='240'/>
+          ))}
+          {thumbnails.map(thumbnail => (
+            <Image key={thumbnail} src={thumbnail} width='420' height='240'/>
           ))}
         </div>
+        <button>See Full Catalog</button>
       </div>
     </div>
   );
