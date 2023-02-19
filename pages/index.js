@@ -49,13 +49,17 @@ export default function HomePage() {
         <h2>./Catalog</h2>
         <div className={styles.carousel}>
           {thumbnails.map(thumbnail => (
-            <Image key={thumbnail} src={thumbnail} width='420' height='240'/>
+            <div key={thumbnail}>
+              <Image src={thumbnail} fill sizes='25vw'/>
+            </div>
           ))}
           {thumbnails.map(thumbnail => (
-            <Image key={thumbnail} src={thumbnail} width='420' height='240'/>
+            <div key={thumbnail}>
+              <Image src={thumbnail} fill sizes='25vw' />
+            </div>
           ))}
         </div>
-        <button>See Full Catalog</button>
+        <button className={styles.lightButton}>See Full Catalog</button>
       </div>
     </div>
   );

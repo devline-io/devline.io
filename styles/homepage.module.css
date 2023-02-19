@@ -1,8 +1,19 @@
+.lightButton {
+    border-color: #F7EFE5;
+    color: #F7EFE5;
+    background-color: #18122B;
+}
+  
+.lightButton:hover {
+background-color: #F7EFE5;
+color: #000000;
+border-color: #000000;
+}
+
 /* landing section */
 .tagline {
     text-align: center;
     align-self: center;
-    font-size: 4rem; 
     font-weight: 900;
 }
 
@@ -74,23 +85,34 @@
 
 .catalog h2 {
     margin: 0;
-    padding-bottom:3rem;
-    font-size: 2rem;
+    padding-bottom: 3rem;
 }
 
 .carousel {
     background-color: #18122B;
     display: flex;
     position: absolute;
-    gap: 2rem;
+    gap: 3rem;
     overflow: hidden;
     animation-name: scrollGallery;
-    animation-duration: 60s;
+    animation-duration: 120s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
+.carousel div {
+    position: relative;
+    aspect-ratio: 16/9;
+    width: 100%;
+    height: 12rem;
+    overflow: hidden;
+}
+
 @keyframes scrollGallery {
     0%   {transform: translateX(0);}
-    100% {transform: translateX(-50%);}
+    100% {transform: translateX(-50.35%);}
+}
+
+.catalog button {
+    margin-top: 15rem;
 }
