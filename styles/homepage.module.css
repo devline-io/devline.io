@@ -1,3 +1,4 @@
+/* landing section */
 .tagline {
     text-align: center;
     align-self: center;
@@ -16,7 +17,7 @@
 .subtagline {
     text-align: center;
     align-self: center;
-    font-size: 2rem;
+    /* font-size: 2rem; */
     font-weight: 500;
 }
 
@@ -35,6 +36,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-items: center;
+    height: 95vh;
 }
 
 .hero div, .heroForm button {
@@ -63,4 +65,14 @@
     width: 100%;
 }
 
+/* catalog */
+.catalog {
+    background-color: #18122B;
+    color: #F7EFE5;
+}
 
+.catalog h2 {
+    margin: 0;
+    padding: 0 0 3rem 3rem;
+    font-size: 2rem;
+}

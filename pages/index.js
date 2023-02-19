@@ -1,6 +1,7 @@
-import Navbar from '../components/Navbar'
+import Navbar from '../components/navbar'
 import Head from 'next/head'
 import styles from '../styles/homepage.module.css'
+import Darkdivider from '../components/darkdivider';
 
 export default function HomePage() {
   return (
@@ -29,6 +30,10 @@ export default function HomePage() {
           </div>
           <button>Sign Up</button>
         </form>
+      </div>
+      <Darkdivider/>
+      <div className={styles.catalog}>
+        <h2>./Catalog</h2>
       </div>
     </div>
   );
