@@ -25,8 +25,8 @@ export default function HomePage() {
       <Navbar/>
       <div className={styles.hero}>
         <div>
-          <h1 className={styles.tagline}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></h1>
-          <p className={styles.subtagline}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</p>
+          <h1 className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></h1>
+          <p className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</p>
         </div>
         <form className={styles.heroForm}>
           <div>
@@ -44,7 +44,9 @@ export default function HomePage() {
           <button>Sign Up</button>
         </form>
       </div>
+
       <Darkdivider dividerPosition='top'/>
+
       <div className={styles.catalog}>
         <h2>./Catalog</h2>
         <div className={styles.carousel}>
@@ -60,6 +62,18 @@ export default function HomePage() {
           ))}
         </div>
         <button className={styles.lightButton}>See Full Catalog</button>
+      </div>
+
+      <Darkdivider dividerPosition='bottom'/>
+
+      <div className={styles.about}>
+        <h2>./About</h2>
+      </div>
+
+      <Darkdivider dividerPosition='top'/>
+
+      <div className={styles.pricing}>
+        <h2>./Pricing</h2>
       </div>
     </div>
   );

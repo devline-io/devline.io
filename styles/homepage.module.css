@@ -6,18 +6,18 @@
   
 .lightButton:hover {
 background-color: #F7EFE5;
-color: #000000;
-border-color: #000000;
+color: #393053;
+border-color: #393053;
 }
 
 /* landing section */
-.tagline {
+.title {
     text-align: center;
     align-self: center;
     font-weight: 900;
 }
 
-.tagline span {
+.title span {
     font-size: 4rem;
     background-image: linear-gradient(#443C68, #18122B);
     background-clip: text;
@@ -25,13 +25,13 @@ border-color: #000000;
     -webkit-text-fill-color: transparent;
 }
 
-.subtagline {
+.subtitle {
     text-align: center;
     align-self: center;
     font-weight: 500;
 }
 
-.subtagline span {
+.subtitle span {
     font-size: 2rem;
     font-weight: 900;
     color: #393053;
@@ -76,16 +76,11 @@ border-color: #000000;
 }
 
 /* catalog */
-.catalog {
+.catalog, .pricing {
     padding: 3rem;
     padding-top: 0;
     background-color: #18122B;
     color: #F7EFE5;
-}
-
-.catalog h2 {
-    margin: 0;
-    padding-bottom: 3rem;
 }
 
 .carousel {
@@ -115,4 +110,14 @@ border-color: #000000;
 
 .catalog button {
     margin-top: 15rem;
+}
+
+/* about */
+.about {
+    padding: 3rem;
+    padding-top: 0;
+}
+.about h2 {
+    position: relative;
+    float: right;
 }
