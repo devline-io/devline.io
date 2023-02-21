@@ -9,11 +9,7 @@ let thumbnails = [
   '/thumbnails/placeholderThumbnail2.png',
   '/thumbnails/placeholderThumbnail3.png',
   '/thumbnails/placeholderThumbnail4.png',
-  '/thumbnails/placeholderThumbnail5.png',
-  '/thumbnails/placeholderThumbnail4.png',
-  '/thumbnails/placeholderThumbnail3.png',
-  '/thumbnails/placeholderThumbnail2.png',
-  '/thumbnails/placeholderThumbnail1.png'
+  '/thumbnails/placeholderThumbnail5.png'
 ]
 
 export default function HomePage() {
@@ -68,6 +64,16 @@ export default function HomePage() {
 
       <div className={styles.about}>
         <h2>./About</h2>
+        <div className={styles.aboutContent}>
+          <div className={styles.mission}>
+            <h3>Our Mission</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</p>
+          </div>
+          <div className={styles.structure}>
+            <h3>Course Structure</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</p>
+          </div>
+        </div>
       </div>
 
       <Darkdivider dividerPosition='top'/>

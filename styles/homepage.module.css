@@ -14,15 +14,21 @@ border-color: #393053;
 .title {
     text-align: center;
     align-self: center;
-    font-weight: 900;
 }
 
 .title span {
     font-size: 4rem;
-    background-image: linear-gradient(#443C68, #18122B);
+    background: linear-gradient(to right, #635985, #443C68, #393053, #18122B, #635985);
+    background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: title-gradient 10s linear infinite;
+}
+
+@keyframes title-gradient {
+    0% {background-position: 0% center;}
+    100% {background-position: -200% center;}
 }
 
 .subtitle {
@@ -89,23 +95,21 @@ border-color: #393053;
     position: absolute;
     gap: 3rem;
     overflow: hidden;
-    animation-name: scrollGallery;
-    animation-duration: 120s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation: scroll-gallery 120s linear infinite;
 }
 
 .carousel div {
     position: relative;
     aspect-ratio: 16/9;
     width: 100%;
-    height: 12rem;
+    height: 15rem;
     overflow: hidden;
+    border-radius: 5px;
 }
 
-@keyframes scrollGallery {
+@keyframes scroll-gallery {
     0%   {transform: translateX(0);}
-    100% {transform: translateX(-50.35%);}
+    100% {transform: translateX(-50.62%);}
 }
 
 .catalog button {
@@ -114,10 +118,29 @@ border-color: #393053;
 
 /* about */
 .about {
-    padding: 3rem;
-    padding-top: 0;
+    padding: 0 3rem;
 }
 .about h2 {
     position: relative;
     float: right;
+    padding-bottom: 0;
+}
+
+.aboutContent {
+    color: #F7EFE5;
+    margin: 6rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.aboutContent div {
+    border-radius: 10px;
+    background-color: #393053;
+    padding: 3rem;
+}
+
+.aboutContent h3, .aboutContent p {
+    background-color: #393053;
 }

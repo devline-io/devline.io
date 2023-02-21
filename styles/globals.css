@@ -25,6 +25,11 @@ h2 {
   padding-bottom: 3rem;
 }
 
+h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
 body {
   margin: 0;
 }
