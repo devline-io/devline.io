@@ -62,7 +62,7 @@ border-color: #393053;
 
 .heroForm label {
     display: block;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .heroForm{
@@ -113,7 +113,7 @@ border-color: #393053;
 }
 
 .catalog button {
-    margin-top: 15rem;
+    margin-top: 18rem;
 }
 
 /* about */
@@ -127,20 +127,21 @@ border-color: #393053;
 }
 
 .aboutContent {
-    color: #F7EFE5;
     margin: 6rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     gap: 3rem;
 }
 
-.aboutContent div {
-    border-radius: 10px;
-    background-color: #393053;
+.aboutContent div:not(.verticalRule) {
     padding: 3rem;
 }
 
-.aboutContent h3, .aboutContent p {
-    background-color: #393053;
+.verticalRule {
+    position: absolute;
+    height: 65%;
+    width: 1px;
+    background-color: #635985;
 }
