@@ -17,6 +17,7 @@ p {
 
 h1 {
   font-size: 4rem;
+  margin-bottom: 0;
 }
 
 h2 {
@@ -50,5 +51,9 @@ button:hover {
 @media screen and (max-width: 1350px) {
   html {
     zoom: 80%;
+  }
+
+  .hero {
+    height: 106.25vw;
   }
 }

@@ -11,9 +11,16 @@ border-color: #393053;
 }
 
 /* landing section */
+.titleContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     text-align: center;
-    align-self: center;
 }
 
 .title span {
@@ -67,12 +74,13 @@ border-color: #393053;
 }
 
 .heroForm{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-items: center; 
+    justify-content: center; 
     gap: 1rem;
     width: 100%;
+    height: 100%;
 }
 
 .heroForm input {
@@ -142,3 +150,9 @@ border-color: #393053;
     width: 1px;
     background-color: #635985;
 }
+
+@media screen and (max-width: 1350px) {
+    .hero {
+      height: 106.25vh;
+    }
+  }

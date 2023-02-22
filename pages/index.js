@@ -14,11 +14,18 @@ const thumbnails = [
 ];
 
 const container = {
-  hidden: { opacity: 0, x: -15 },
-  show: { opacity: 1, x: 0, 
+  hidden: { opacity: 0, y: 15},
+  show: { opacity: 1, y: 0, 
           transition: {
-            delay: 0.5,
-            staggerChildren: 0.5
+            staggerChildren: .1
+          }}
+};
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 15 },
+  show: { opacity: 1, y: 0, 
+          transition: {
+            duration: .5,
           }}
 };
 
@@ -31,33 +38,30 @@ export default function HomePage() {
       <Navbar/>
       <main>
         <div className={styles.hero}>
-          <motion.div initial="hidden"
-          whileInView="show"
-          viewport={{once: false}}>
-            <h1 className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></h1>
-            <p className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</p>
+          <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
+            <motion.h1 variants={fadeIn} className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></motion.h1>
+            <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
           </motion.div>
-          <motion.form
-          initial="hidden"
-          whileInView="show"
-          viewport={{once: false}}
+          <motion.form initial="hidden" whileInView="show" delay={0.5} variants={container}
           className={styles.heroForm}>
-            <div>
+            <motion.div variants={fadeIn}>
               <label htmlFor='email'>Email</label>
               <input type='email' id='email'/>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={fadeIn}>
               <label htmlFor='password'>Password</label>
               <input type='password' id='password'/>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={fadeIn}>
               <label htmlFor='confirm-password'>Confirm Your Password</label>
               <input type='password' id='confirm-password'/>
-            </div>
-            <button>Sign Up</button>
+            </motion.div>
+            <motion.button variants={fadeIn}>Sign Up</motion.button>
           </motion.form>
         </div>
+
         <Darkdivider dividerPosition='top'/>
+        
         <div className={styles.catalog}>
           <h2>./Catalog</h2>
           <div className={styles.carousel}>
@@ -74,21 +78,23 @@ export default function HomePage() {
           </div>
           <button className={styles.lightButton}>See Full Catalog</button>
         </div>
+
         <Darkdivider dividerPosition='bottom'/>
-        <div className={styles.about}>
-          <h2>./About</h2>
+
+        <motion.div className={styles.about} initial="hidden" whileInView="show" variants={container}>
+          <motion.h2 variants={fadeIn}>./About</motion.h2>
           <div className={styles.aboutContent}>
             <div className={styles.mission}>
-              <h3>Our Mission</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</p>
+              <motion.h3 variants={fadeIn}>Our Mission</motion.h3>
+              <motion.p variants={fadeIn}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</motion.p>
             </div>
-            <div className={styles.verticalRule}/>
+            <motion.div className={styles.about} initial="hidden" whileInView="show" variants={container} className={styles.verticalRule}/>
             <div className={styles.structure}>
-              <h3>Course Structure</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</p>
+              <motion.h3 variants={fadeIn}>Course Structure</motion.h3>
+              <motion.p variants={fadeIn}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</motion.p>
             </div>
           </div>
-        </div>
+        </motion.div>
         <Darkdivider dividerPosition='top'/>
         <div className={styles.pricing}>
           <h2>./Pricing</h2>
