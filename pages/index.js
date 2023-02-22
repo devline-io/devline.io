@@ -14,9 +14,8 @@ const thumbnails = [
 ];
 
 const container = {
-  hidden: { opacity: 0, y: 15},
-  show: { opacity: 1, y: 0, 
-          transition: {
+  hidden: { opacity: 1},
+  show: {transition: {
             staggerChildren: .1
           }}
 };
@@ -62,22 +61,22 @@ export default function HomePage() {
 
         <Darkdivider dividerPosition='top'/>
         
-        <div className={styles.catalog}>
-          <h2>./Catalog</h2>
+        <motion.div className={styles.catalog} initial="hidden" whileInView="show" variants={container}>
+          <motion.h2 variants={fadeIn}>./Catalog</motion.h2>
           <div className={styles.carousel}>
             {thumbnails.map(thumbnail => (
-              <div key={thumbnail}>
+              <motion.div variants={fadeIn} key={thumbnail}>
                 <Image src={thumbnail} fill sizes='25vw'/>
-              </div>
+              </motion.div>
             ))}
             {thumbnails.map(thumbnail => (
-              <div key={thumbnail}>
+              <motion.div variants={fadeIn} key={thumbnail}>
                 <Image src={thumbnail} fill sizes='25vw' />
-              </div>
+              </motion.div>
             ))}
           </div>
           <button className={styles.lightButton}>See Full Catalog</button>
-        </div>
+        </motion.div>
 
         <Darkdivider dividerPosition='bottom'/>
 
