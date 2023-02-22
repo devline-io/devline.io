@@ -88,7 +88,7 @@ export default function HomePage() {
               <motion.h3 variants={fadeIn}>Our Mission</motion.h3>
               <motion.p variants={fadeIn}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</motion.p>
             </div>
-            <motion.div className={styles.about} initial="hidden" whileInView="show" variants={container} className={styles.verticalRule}/>
+            <div className={styles.verticalRule}/>
             <div className={styles.structure}>
               <motion.h3 variants={fadeIn}>Course Structure</motion.h3>
               <motion.p variants={fadeIn}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Blandit volutpat maecenas volutpat blandit. Ut eu sem integer vitae. At tempor commodo ullamcorper a lacus vestibulum. Tincidunt praesent semper feugiat nibh sed.</motion.p>
