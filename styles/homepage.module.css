@@ -4,6 +4,14 @@
     background-color: #18122B;
 }
 
+.buttonContainer {
+    width: 100%;
+    max-width: 1968px;
+    margin: auto;
+    background-color: transparent;
+    overflow: visible;
+}
+
 /* landing section */
 .titleContainer {
     height: 100%;
@@ -55,6 +63,7 @@
     justify-items: center;
     gap: 3rem;
     height: 85vh;
+    max-height: 983px;
 }
 
 .hero div, .heroForm button {
@@ -122,6 +131,8 @@
 /* about */
 .about {
     padding: 0 3rem;
+    max-width: 1968px;
+    margin: auto;
 }
 .about h2 {
     float: right;
@@ -158,8 +169,14 @@
     height: 100%;
     text-align: center;
     color: #000000;
+}
+
+.pricing div:not(.featured) {
     border-radius: 20px;
-    filter: drop-shadow(0 0 0.75rem #F7EFE5)
+}
+
+.featured {
+    border-radius: 15px;
 }
 
 .pricing div li {
@@ -178,10 +195,10 @@
 }
 
 .featuredContainer {
-    transform: scale(1.1);
     padding: 5px;
     background-image: linear-gradient(to right, #635985, #443C68, #393053, #18122B, #635985);
     background-size: 200%;
+    filter: drop-shadow(0 0 0.75rem #F7EFE5);
     animation: title-gradient 10s linear infinite;
 }
 

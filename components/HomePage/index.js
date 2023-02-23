@@ -20,6 +20,14 @@ const fadeIn = {
             }}
 };
 
+const fadeInFeatured = {
+    hidden: { opacity: 0, y: 15 },
+    show: { opacity: 1, y: 0, scale: 1.1,
+            transition: {
+            duration: .5,
+            }}
+}
+
 function CatalogImages () {
     const thumbnails = [
         '/thumbnails/placeholderThumbnail1.png',
@@ -32,7 +40,7 @@ function CatalogImages () {
     return (
         thumbnails.map(thumbnail => (
         <motion.div variants={fadeIn} key={thumbnail}>
-            <Image src={thumbnail} fill sizes='25vw' />
+            <Image alt={thumbnail} src={thumbnail} fill sizes='25vw' />
         </motion.div>
     ))
     );
@@ -77,7 +85,9 @@ export default function HomePage() {
                         <CatalogImages/>
                         <CatalogImages/>       
                     </motion.div>
-                    <motion.button whileHover={{scale: 1.1,}} transition={{duration: 0.1}} variants={fadeIn} className={styles.lightButton}>See Full Catalog</motion.button>
+                    <div className={styles.buttonContainer}>
+                        <motion.button className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1,}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
+                    </div>
                 </motion.div>
 
                 <Darkdivider dividerPosition='bottom'/>
@@ -98,10 +108,10 @@ export default function HomePage() {
                 </motion.div>
 
                 <Darkdivider dividerPosition='top'/>
-                <div className={styles.pricing}>
+                <motion.div className={styles.pricing} initial="hidden" whileInView="show" variants={container}>
                     <h2>./Pricing</h2>
                     <section className={styles.pricingContainer}>
-                        <div>
+                        <motion.div variants={fadeIn}>
                             <h3>Free</h3>
                             <hr/>
                             <p>Free</p>
@@ -112,8 +122,9 @@ export default function HomePage() {
                                 <li className={styles.strikethrough}>Written and Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
                             </ul>
-                        </div>
-                        <div className={styles.featuredContainer}>
+                            <button>Select</button>
+                        </motion.div>
+                        <motion.div className={styles.featuredContainer} variants={fadeInFeatured}>
                             <div className={styles.featured}>
                                 <h3>Yearly</h3>
                                 <hr/>
@@ -125,9 +136,10 @@ export default function HomePage() {
                                     <li>Written and Video Tutorials</li>
                                     <li>Project Based Learning</li>
                                 </ul>
+                                <button>Select</button>
                             </div>
-                        </div>
-                        <div>
+                        </motion.div>
+                        <motion.div variants={fadeIn}>
                             <h3>Monthly</h3>
                             <hr/>
                             <p>$9.99/month</p>
@@ -138,9 +150,10 @@ export default function HomePage() {
                                 <li>Written and Video Tutorials</li>
                                 <li>Project Based Learning</li>
                             </ul>
-                        </div>
+                            <button>Select</button>
+                        </motion.div>
                     </section>
-                </div>
+                </motion.div>
             </main>
         </div>
     );

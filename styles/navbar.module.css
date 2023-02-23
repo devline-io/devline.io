@@ -3,8 +3,15 @@
     padding: 1rem 3rem;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
+    width: 100%;
+    max-width: 1968px;
+}
+
+.wrapper {
+    display: flex;
     z-index: 1;
+    justify-content: center;
+    position: fixed;
     width: 100%;
 }
 
