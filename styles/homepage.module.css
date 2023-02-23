@@ -1,13 +1,7 @@
-.lightButton {
+.lightButton, .lightButton:hover{
     border-color: #F7EFE5;
     color: #F7EFE5;
     background-color: #18122B;
-}
-  
-.lightButton:hover {
-background-color: #F7EFE5;
-color: #393053;
-border-color: #393053;
 }
 
 /* landing section */

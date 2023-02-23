@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/navbar.module.css'
+import { motion } from 'framer-motion';
 
 const navItems = ['Catalog', 'About', 'Pricing'];
 
@@ -14,7 +15,7 @@ export default function Navbar() {
                         <li key={item}>{item}</li>
                     ))}
                 </ul>
-                <button>Sign Up</button>
+                <motion.button>Sign Up</motion.button>
             </div>
         </div>
     );

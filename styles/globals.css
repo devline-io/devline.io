@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-*:not(.catalog, h2) {
+*:not(.catalog, h2, button) {
   background-color: #F7EFE5;
 }
 
@@ -39,13 +39,17 @@ button {
   padding: 0.5rem 1rem;
   border-style: solid;
   font-weight: 900;
-  transition: all 0.1s;
-}
-
-button:hover {
+  border-width: 3px;
+  transition: all 0.2s;
   border-color: #393053;
   background-color: #443C68;
   color: #F7EFE5;
+}
+
+button:hover {
+  border-color: #000000;
+  background-color: #F7EFE5;
+  color: #000000;
 }
 
 @media screen and (max-width: 1350px) {
