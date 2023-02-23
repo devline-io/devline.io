@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-*:not(.catalog, h2, button) {
+*:not(.catalog, h2, button, h1, h3) {
   background-color: #F7EFE5;
 }
 
@@ -28,6 +28,7 @@ h2 {
 
 h3 {
   font-size: 2rem;
+  font-weight: 800;
   margin: 0;
 }
 

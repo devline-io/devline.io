@@ -144,6 +144,47 @@
     background-color: #393053;
 }
 
+.pricingContainer {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background-color: #18122B;
+}
+
+.pricing div:not(.featuredContainer) {
+    padding: 3rem;
+    height: 100%;
+    text-align: center;
+    color: #000000;
+    border-radius: 20px;
+    filter: drop-shadow(0 0 0.75rem #F7EFE5)
+}
+
+.pricing div li {
+    list-style: none;
+    margin-bottom: 1em;
+}
+
+.pricing div ul {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.strikethrough {
+    color: #424141;
+    text-decoration: line-through;
+}
+
+.featuredContainer {
+    transform: scale(1.1);
+    padding: 5px;
+    background-image: linear-gradient(to right, #635985, #443C68, #393053, #18122B, #635985);
+    background-size: 200%;
+    animation: title-gradient 10s linear infinite;
+}
+
 @media screen and (max-width: 1350px) {
     .hero {
       height: 106.25vh;
