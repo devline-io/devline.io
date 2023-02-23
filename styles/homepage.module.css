@@ -130,7 +130,6 @@ border-color: #393053;
     padding: 0 3rem;
 }
 .about h2 {
-    position: relative;
     float: right;
     padding-bottom: 0;
 }
@@ -148,7 +147,7 @@ border-color: #393053;
     position: absolute;
     height: 65%;
     width: 1px;
-    background-color: #635985;
+    background-color: #393053;
 }
 
 @media screen and (max-width: 1350px) {
