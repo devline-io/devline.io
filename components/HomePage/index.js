@@ -177,9 +177,6 @@ export default function HomePage() {
                     </section>
                 </motion.div>
             </main>
-            <foot>
-                
-            </foot>
         </div>
     );
 }
