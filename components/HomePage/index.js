@@ -1,9 +1,10 @@
 import Navbar from '../navbar'
 import Head from 'next/head'
 import styles from '../../styles/homepage.module.css'
-import Darkdivider from '../darkdivider';
+import Darkdivider from '../darkdivider'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useRef, useEffect } from 'react'
 
 const container = {
     hidden: { opacity: 1},
@@ -47,12 +48,33 @@ function CatalogImages () {
 }
 
 export default function HomePage() {
+    const catalog = useRef(null);
+    const about = useRef(null);
+    const pricing = useRef(null);
+    const nav = useRef(null);
+
+    const scrollCatalog = () => {
+        let position = catalog.current.offsetTop;
+        let navHeight = nav.current.offsetHeight;
+        window.scrollTo({behavior: 'smooth', top: position - navHeight});
+    }
+    const scrollAbout = () => {
+        let position = about.current.offsetTop;
+        let navHeight = nav.current.offsetHeight;
+        window.scrollTo({behavior: 'smooth', top: position - navHeight});;
+    }
+    const scrollPricing = () => {
+        let position = pricing.current.offsetTop;
+        let navHeight = nav.current.offsetHeight;
+        window.scrollTo({behavior: 'smooth', top: position - navHeight});
+    }
+
     return (
         <div>
             <Head>
                 <title>Devline.io</title>
             </Head>
-            <Navbar/>
+            <Navbar navbarRef={nav} catalog={scrollCatalog} about={scrollAbout} pricing={scrollPricing}/>
             <main>
                 <div className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
@@ -80,7 +102,7 @@ export default function HomePage() {
                 <Darkdivider dividerPosition='top'/>
 
                 <motion.div className={styles.catalog} initial="hidden" whileInView="show" variants={container}>
-                    <motion.h2 variants={fadeIn}>./Catalog</motion.h2>
+                    <motion.h2 ref={catalog} variants={fadeIn}>./Catalog</motion.h2>
                     <motion.div className={styles.carousel} initial="hidden" whileInView="show" variants={container}>
                         <CatalogImages/>
                         <CatalogImages/>       
@@ -93,7 +115,7 @@ export default function HomePage() {
                 <Darkdivider dividerPosition='bottom'/>
 
                 <motion.div className={styles.about} initial="hidden" whileInView="show" variants={container}>
-                    <motion.h2 variants={fadeIn}>./About</motion.h2>
+                    <motion.h2 ref={about} variants={fadeIn}>./About</motion.h2>
                     <div className={styles.aboutContent}>
                         <div className={styles.mission}>
                         <motion.h3 variants={fadeIn}>Our Mission</motion.h3>
@@ -109,7 +131,7 @@ export default function HomePage() {
 
                 <Darkdivider dividerPosition='top'/>
                 <motion.div className={styles.pricing} initial="hidden" whileInView="show" variants={container}>
-                    <h2>./Pricing</h2>
+                    <motion.h2 ref={pricing} variants={fadeIn}>./Pricing</motion.h2>
                     <section className={styles.pricingContainer}>
                         <motion.div variants={fadeIn}>
                             <h3>Free</h3>
@@ -155,6 +177,9 @@ export default function HomePage() {
                     </section>
                 </motion.div>
             </main>
+            <foot>
+                
+            </foot>
         </div>
     );
 }
