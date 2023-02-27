@@ -61,7 +61,7 @@ export default function HomePage() {
     const scrollAbout = () => {
         let position = about.current.offsetTop;
         let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: position - navHeight});;
+        window.scrollTo({behavior: 'smooth', top: position - navHeight});
     }
     const scrollPricing = () => {
         let position = pricing.current.offsetTop;
