@@ -7,7 +7,7 @@
 }
 
 .container div > * {
-    background-color: #393053;
+    background-color: #18122B;
 }
 
 .container {
@@ -15,7 +15,7 @@
     padding: 1.5rem;
     color: #F7EFE5;
     border-radius: 15px;
-    background-color: #393053;
+    background-color: #18122B;
 }
 
 .container h2, .container p {
