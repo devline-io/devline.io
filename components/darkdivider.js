@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from '../styles/divider.module.css'
+import styles from '../styles/divider.module.css';
 
 export default function Darkdivider({ dividerPosition }) {
     return (

@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import styles from '../styles/navbar.module.css'
+import styles from '../styles/navbar.module.css';
 
 export default function Navbar(props) {
     const navItems = [
-        <a onClick={props.catalog}>Catalog</a>, 
-        <a onClick={props.about}>About</a>,
-        <a onClick={props.pricing}>Pricing</a>
+        <a ref={props.homeLink} onClick={props.home}>Home</a>,
+        <a ref={props.catalogLink} onClick={props.catalog}>Catalog</a>, 
+        <a ref={props.aboutLink} onClick={props.about}>About</a>,
+        <a ref={props.pricingLink} onClick={props.pricing}>Pricing</a>
         ];
 
     return (

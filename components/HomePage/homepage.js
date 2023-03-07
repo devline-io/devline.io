@@ -1,10 +1,11 @@
-import Navbar from '../navbar'
-import Head from 'next/head'
-import styles from '../../styles/homepage.module.css'
-import Darkdivider from '../darkdivider'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { useRef, useEffect } from 'react'
+import Navbar from '../navbar';
+import Head from 'next/head';
+import styles from '../../styles/homepage.module.css';
+import Darkdivider from '../darkdivider';
+import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import CatalogImages from '../catalogimages';
 
 const container = {
     hidden: { opacity: 1},
@@ -21,62 +22,48 @@ const fadeIn = {
             }}
 };
 
-const fadeInFeatured = {
-    hidden: { opacity: 0, y: 15 },
-    show: { opacity: 1, y: 0, scale: 1.1,
-            transition: {
-            duration: .5,
-            }}
-}
-
-function CatalogImages () {
-    const thumbnails = [
-        '/thumbnails/placeholderThumbnail1.png',
-        '/thumbnails/placeholderThumbnail2.png',
-        '/thumbnails/placeholderThumbnail3.png',
-        '/thumbnails/placeholderThumbnail4.png',
-        '/thumbnails/placeholderThumbnail5.png'
-    ];
-
-    return (
-        thumbnails.map(thumbnail => (
-        <motion.div variants={fadeIn} key={thumbnail}>
-            <Image alt={thumbnail} src={thumbnail} fill sizes='25vw' />
-        </motion.div>
-    ))
-    );
-}
-
 export default function HomePage() {
+    const router = useRouter();
+
     const catalog = useRef(null);
     const about = useRef(null);
     const pricing = useRef(null);
+
     const nav = useRef(null);
+    const navHome = useRef(null);
+    const navCatalog = useRef(null);
+    const navAbout = useRef(null);
+    const navPricing = useRef(null);
+
+    const scrollHome = () => {
+        window.scrollTo({behavior: 'smooth', top: 0});
+    }
 
     const scrollCatalog = () => {
         let position = catalog.current.offsetTop;
         let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: position - navHeight});
+        window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
     }
     const scrollAbout = () => {
         let position = about.current.offsetTop;
         let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: position - navHeight});
+        window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
     }
     const scrollPricing = () => {
         let position = pricing.current.offsetTop;
         let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: position - navHeight});
+        window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
     }
 
     return (
         <div>
             <Head>
                 <title>Devline.io</title>
+                <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
             </Head>
-            <Navbar navbarRef={nav} catalog={scrollCatalog} about={scrollAbout} pricing={scrollPricing}/>
+            <Navbar homeLink={navHome} catalogLink={navCatalog} aboutLink={navAbout} pricingLink={navPricing} navbarRef={nav} home={scrollHome} catalog={scrollCatalog} about={scrollAbout} pricing={scrollPricing}/>
             <main>
-                <div className={styles.hero}>
+                <motion.div id='home'className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
                     <motion.h1 variants={fadeIn} className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></motion.h1>
                     <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
@@ -97,24 +84,26 @@ export default function HomePage() {
                     </motion.div>
                     <motion.button variants={fadeIn}>Sign Up</motion.button>
                     </motion.form>
-                </div>
+                </motion.div>
 
                 <Darkdivider dividerPosition='top'/>
 
-                <motion.div className={styles.catalog} initial="hidden" whileInView="show" variants={container}>
+                <motion.div id='catalog' className={styles.catalog} initial="hidden" whileInView="show" variants={container}>
                     <motion.h2 ref={catalog} variants={fadeIn}>./Catalog</motion.h2>
-                    <motion.div className={styles.carousel} initial="hidden" whileInView="show" variants={container}>
-                        <CatalogImages/>
-                        <CatalogImages/>       
+                    <motion.div>
+                        <motion.div className={styles.carousel} initial="hidden" whileInView="show" variants={container}>
+                            <CatalogImages fadeIn={fadeIn} hasDescription={false} />
+                            <CatalogImages fadeIn={fadeIn} hasDescription={false} />
+                        </motion.div>
                     </motion.div>
                     <div className={styles.buttonContainer}>
-                        <motion.button className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1,}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
+                        <motion.button onClick={() => router.push('/catalog/')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1, cursor: 'pointer'}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
                     </div>
                 </motion.div>
 
                 <Darkdivider dividerPosition='bottom'/>
 
-                <motion.div className={styles.about} initial="hidden" whileInView="show" variants={container}>
+                <motion.div id='about'className={styles.about} initial="hidden" whileInView="show" variants={container}>
                     <motion.h2 ref={about} variants={fadeIn}>./About</motion.h2>
                     <div className={styles.aboutContent}>
                         <div className={styles.mission}>
@@ -130,10 +119,10 @@ export default function HomePage() {
                 </motion.div>
 
                 <Darkdivider dividerPosition='top'/>
-                <motion.div className={styles.pricing} initial="hidden" whileInView="show" variants={container}>
+                <motion.div id='pricing' className={styles.pricing} initial="hidden" whileInView="show" variants={container}>
                     <motion.h2 ref={pricing} variants={fadeIn}>./Pricing</motion.h2>
                     <section className={styles.pricingContainer}>
-                        <motion.div variants={fadeIn}>
+                        <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
                             <h3>Free</h3>
                             <hr/>
                             <p>Free</p>
@@ -146,7 +135,7 @@ export default function HomePage() {
                             </ul>
                             <button>Select</button>
                         </motion.div>
-                        <motion.div className={styles.featuredContainer} variants={fadeInFeatured}>
+                        <motion.div className={styles.featuredContainer} animate={{scale: 1.1}}variants={fadeIn} whileHover={{scale: 1.2}} transition={{duration: 0.3}}>
                             <div className={styles.featured}>
                                 <h3>Yearly</h3>
                                 <hr/>
@@ -161,7 +150,7 @@ export default function HomePage() {
                                 <button>Select</button>
                             </div>
                         </motion.div>
-                        <motion.div variants={fadeIn}>
+                        <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
                             <h3>Monthly</h3>
                             <hr/>
                             <p>$9.99/month</p>

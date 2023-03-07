@@ -24,4 +24,13 @@
     justify-content: center;
     gap: 3rem;
     list-style: none;
+    cursor: pointer;
+}
+
+.navLinks li {
+    transition: all 0.2s;
+}
+
+.navLinks li:hover {
+    color: #443C68;
 }

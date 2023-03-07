@@ -66,6 +66,10 @@
     max-height: 983px;
 }
 
+.hero > * {
+    overflow: visible;
+}
+
 .hero div, .heroForm button {
     max-width: 622.5px;
     width: 100%;
@@ -162,10 +166,11 @@
     justify-content: center;
     gap: 3rem;
     background-color: #18122B;
+    overflow: visible;
 }
 
 .pricing div:not(.featuredContainer) {
-    padding: 3rem;
+    padding: 2rem;
     height: 100%;
     text-align: center;
     color: #000000;
@@ -202,8 +207,8 @@
     animation: title-gradient 10s linear infinite;
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1800px) {
     .hero {
-      height: 106.25vh;
-    }
-  }
+        height: 93.5vh;
+      }
+}

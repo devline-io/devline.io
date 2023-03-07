@@ -1,0 +1,43 @@
+.imageContainer {
+    position: relative;
+    aspect-ratio: 16/9;
+    height: 100%;
+    width: 30rem;
+    border-radius: 10px;
+}
+
+.container div > * {
+    background-color: #393053;
+}
+
+.container {
+    width: min-content;
+    padding: 1.5rem;
+    color: #F7EFE5;
+    border-radius: 15px;
+    background-color: #393053;
+}
+
+.container h2, .container p {
+    margin: 0;
+    font-size: 1.7rem;
+    padding: 1rem 0;
+}
+
+.container p {
+    padding-bottom: 0;
+}
+
+.container hr {
+    margin: 0;
+}
+
+.courseWrapper {
+    padding: 3rem;
+    margin-top: 5rem;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    align-items: center;
+    justify-items: center;
+}
