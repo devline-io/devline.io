@@ -23,8 +23,8 @@ export default function Catalog() {
                 const height  = ref.offsetHeight;
                 const centerX = ref.offsetLeft + width/2;
                 const centerY = ref.offsetTop + height/2;
-                const mouseX  = event.clientX - centerX;
-                const mouseY  = event.clientY - centerY;
+                const mouseX  = event.pageX - centerX;
+                const mouseY  = event.pageY - centerY;
                 const rotateX = 20 * mouseY / (height / 2);
                 const rotateY = 20 * mouseX / (width / 2)
 
