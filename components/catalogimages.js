@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-export default function CatalogImages({ fadeIn, containerClass, imageContainer, hasDescription }) {
+export default function CatalogImages({ fadeIn, containerClass, imageContainer, hasDescription, hoverAnimation, imageRefs }) {
     const thumbnails = [
         '/thumbnails/placeholderThumbnail1.png',
         '/thumbnails/placeholderThumbnail2.png',
@@ -14,27 +14,27 @@ export default function CatalogImages({ fadeIn, containerClass, imageContainer, 
         <section>
             <h2>Full Stack With React</h2>
             <hr/>
-            <p>Learn how to creat a full stack web application</p>
+            <p>Learn how to create a full stack web application</p>
         </section>,
         <section>
             <h2>Full Stack With React</h2>
             <hr/>
-            <p>Learn how to creat a full stack web application</p>
+            <p>Learn how to create a full stack web application</p>
         </section>,
         <section>
             <h2>Full Stack With React</h2>
             <hr/>
-            <p>Learn how to creat a full stack web application</p>
+            <p>Learn how to create a full stack web application</p>
         </section>,
         <section>
             <h2>Full Stack With React</h2>
             <hr/>
-            <p>Learn how to creat a full stack web application</p>
+            <p>Learn how to create a full stack web application</p>
         </section>,
         <section>
             <h2>Full Stack With React</h2>
             <hr/>
-            <p>Learn how to creat a full stack web application</p>
+            <p>Learn how to create a full stack web application</p>
         </section>
     ]
 
@@ -50,8 +50,8 @@ export default function CatalogImages({ fadeIn, containerClass, imageContainer, 
 
     return (
         thumbnails.map((thumbnail, index) => (
-            <motion.div className={containerClass} whileHover={{scale: 1.05}}>
-                <div className={imageContainer} variants={fadeIn} key={thumbnail}>
+            <motion.div key={thumbnail} ref={imageRefs[index]} className={containerClass} initial={{filter: "0"}} whileHover={hoverAnimation} transition={{duration: 0.1, ease: "linear"}}>
+                <div className={imageContainer} variants={fadeIn}>
                     <Image alt={thumbnail} src={thumbnail} fill sizes='25vw' />
                 </div>
                 {description[index]}
