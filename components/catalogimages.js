@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function CatalogImages({ fadeIn, containerClass, imageContainer, hasDescription, hoverAnimation, imageRefs }) {
     const thumbnails = [
@@ -8,6 +9,15 @@ export default function CatalogImages({ fadeIn, containerClass, imageContainer, 
         '/thumbnails/placeholderThumbnail3.png',
         '/thumbnails/placeholderThumbnail4.png',
         '/thumbnails/placeholderThumbnail5.png'
+    ];
+
+    const router = useRouter();
+    const thumbnailPage = [
+        () => router.push('/catalog/placeholderLesson'),
+        () => router.push('/catalog/placeholderLesson'),
+        () => router.push('/catalog/placeholderLesson'),
+        () => router.push('/catalog/placeholderLesson'),
+        () => router.push('/catalog/placeholderLesson')
     ];
 
     const description = [
@@ -50,7 +60,7 @@ export default function CatalogImages({ fadeIn, containerClass, imageContainer, 
 
     return (
         thumbnails.map((thumbnail, index) => (
-            <motion.div key={thumbnail} ref={imageRefs[index]} className={containerClass} initial={{filter: "0"}} whileHover={hoverAnimation} transition={{duration: 0.1, ease: "linear"}}>
+            <motion.div key={thumbnail} onClick={thumbnailPage[index]} ref={imageRefs[index]} className={containerClass} initial={{filter: "0"}} whileHover={hoverAnimation} transition={{duration: 0.1, ease: "linear"}}>
                 <div className={imageContainer} variants={fadeIn}>
                     <Image alt={thumbnail} src={thumbnail} fill sizes='25vw' />
                 </div>

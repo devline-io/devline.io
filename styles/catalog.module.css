@@ -1,3 +1,23 @@
+.title {
+    margin-top: 2rem;
+    padding: 0 3rem;
+    text-align: center;
+}
+
+.title h2 {
+    padding: 1rem 0;
+    font-weight: 500;
+}
+
+.title hr {
+    width: 75vw;
+}
+
+.title span {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #393053;
+}
 .imageContainer {
     position: relative;
     aspect-ratio: 16/9;
@@ -35,7 +55,6 @@
 
 .courseWrapper {
     padding: 3rem;
-    margin-top: 5rem;
     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
