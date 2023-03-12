@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
-import Register from '../auth';
+import { Register } from '../auth';
 import Sleep from '../sleep';
 
 const container = {
@@ -76,17 +76,17 @@ export default function HomePage() {
     }
 
     return (
-        <div>
+        <>
             <Head>
                 <title>Devline.io</title>
                 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
             </Head>
             <Navbar homeLink={navHome} catalogLink={navCatalog} aboutLink={navAbout} pricingLink={navPricing} navbarRef={nav} home={scrollHome} catalog={scrollCatalog} about={scrollAbout} pricing={scrollPricing}/>
             <main>
-                <motion.div id='home'className={styles.hero}>
+                <div id='home'className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
-                    <motion.h1 variants={fadeIn} className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></motion.h1>
-                    <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
+                        <motion.h1 variants={fadeIn} className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></motion.h1>
+                        <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
                     </motion.div>
                     <motion.form onSubmit={submitForm} method='post' initial="hidden" whileInView="show" delay={0.5} variants={container}
                     className={styles.heroForm}>
@@ -104,7 +104,7 @@ export default function HomePage() {
                     </motion.div>
                     <motion.button variants={fadeIn}>Sign Up</motion.button>
                     </motion.form>
-                </motion.div>
+                </div>
 
                 <Darkdivider dividerPosition='top'/>
 
@@ -186,6 +186,6 @@ export default function HomePage() {
                     </section>
                 </motion.div>
             </main>
-        </div>
+        </>
     );
 }

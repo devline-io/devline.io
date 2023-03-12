@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import Sleep from './sleep';
@@ -13,14 +12,13 @@ const firebaseConfig = {
   measurementId: "G-MGWD301CFR"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-export default function Register(email, password) {
+export function Register(email, password) {
     createUserWithEmailAndPassword(auth, email.value, password.value)
         .then((userCredential) => {
-            console.log("registered user and logged in as: " + userCredential.user);
+            window.location.replace('/profile/');
         })
         .catch((error) => {
             const errorCode = error.code;

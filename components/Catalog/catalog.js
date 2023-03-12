@@ -4,17 +4,33 @@ import CatalogImages from '../catalogimages';
 import styles from '../../styles/catalog.module.css';
 import { useRef, useEffect } from 'react';
 import Head from 'next/head'
+import { motion } from 'framer-motion';
+
+const container = {
+    hidden: { opacity: 1},
+    show: {transition: {
+            staggerChildren: .1
+            }}
+};
+
+const fadeIn = {
+    hidden: { opacity: 0, y: 15 },
+    show: { opacity: 1, y: 0, 
+            transition: {
+            duration: .5,
+            }}
+};
 
 export default function Catalog() {
     const router = useRouter();
 
-    var imageRefs = [
+    const imageRefs = [
         useRef(null),
         useRef(null),
         useRef(null),
         useRef(null),
         useRef(null)
-    ]
+    ];
 
     useEffect(() => {
         for (let index = 0; index < imageRefs.length; index++) {
@@ -35,7 +51,7 @@ export default function Catalog() {
     });
 
     return (
-        <div>
+        <>
             <Head>
                 <title>Devline.io | Catalog</title>
             </Head>
@@ -48,21 +64,22 @@ export default function Catalog() {
                 />
 
             <main>
-                <div className={styles.title}>
-                    <h1>Catalog</h1>
-                    <h2>Engaging<span> project based</span> tutorials that teach through your choice of <span>written, video and interactive</span> formats</h2>
+                <motion.div className={styles.title} initial="hidden" whileInView="show" variants={container}>
+                    <motion.h1 variants={fadeIn}>Catalog</motion.h1>
+                    <motion.h2 variants={fadeIn}>Engaging<span> project based</span> tutorials that teach through your choice of <span>written, video and interactive</span> formats</motion.h2>
                     <hr/>
-                </div>
+                </motion.div>
                 <div className={styles.courseWrapper}>
                     <CatalogImages
                         imageContainer={styles.imageContainer}
                         containerClass={styles.container}
                         hoverAnimation={{scale: 1.01, filter: "drop-shadow(0 0 0.75rem #18122B)"}}
                         hasDescription={true}
-                        imageRefs = {imageRefs}
+                        imageRefs={imageRefs}
+                        fadeIn={fadeIn}
                     />
                 </div>
             </main>
-        </div>
+        </>
     );
 }
