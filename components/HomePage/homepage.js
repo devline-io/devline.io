@@ -92,15 +92,15 @@ export default function HomePage() {
                     className={styles.heroForm}>
                     <motion.div variants={fadeIn}>
                         <label htmlFor='email'>Email</label>
-                        <input ref={email} type='email' id='email'/>
+                        <input required ref={email} type='email' id='email'/>
                     </motion.div>
                     <motion.div variants={fadeIn}>
                         <label htmlFor='password'>Password</label>
-                        <input ref={password} type='password' id='password' />
+                        <input required ref={password} type='password' id='password' />
                     </motion.div>
                     <motion.div variants={fadeIn}>
                         <label htmlFor='confirm-password'>Confirm Your Password</label>
-                        <input ref={confirmPassword} type='password' id='confirm-password'/>
+                        <input required ref={confirmPassword} type='password' id='confirm-password'/>
                     </motion.div>
                     <motion.button variants={fadeIn}>Sign Up</motion.button>
                     </motion.form>
