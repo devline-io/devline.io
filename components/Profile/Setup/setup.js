@@ -1,7 +1,8 @@
 import { auth } from '../../firebase';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import styles from '../../../styles/setup.module.css'
 
 export default function SetupAccount() {
     const username = useRef();
@@ -20,13 +21,15 @@ export default function SetupAccount() {
         } 
     }
     return(
-        <>
-            <h1>Lets Finish Setting Up Your Account</h1>
-            <form>
-                <label htmlFor='username'>Username</label>
-                <input ref={username} required id='username' type='text'/>
-                <button onClick={handleSubmit}>Submit</button>
-            </form>
-        </>
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <h1>Lets Finish Setting Up Your Account</h1>
+                <form>
+                    <label htmlFor='username'>Username</label>
+                    <input ref={username} required id='username' type='text'/>
+                    <button onClick={handleSubmit}>Submit</button>
+                </form>
+            </div>
+        </div>
     )
 }

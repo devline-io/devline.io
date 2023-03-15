@@ -1,0 +1,27 @@
+.wrapper {
+    background-color: #18122B;
+}
+.container { 
+    margin: 25vh 20rem auto 20rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container button {
+    margin-top: 1rem;
+}
