@@ -60,7 +60,15 @@ export default function CatalogImages({ fadeIn, containerClass, imageContainer, 
 
     return (
         thumbnails.map((thumbnail, index) => (
-            <motion.div key={thumbnail} variants={fadeIn} initial="hidden" whileInView="show" onClick={thumbnailPage[index]} ref={imageRefs[index]} className={containerClass} whileHover={hoverAnimation} transition={{duration: 0.1, ease: "linear"}}>
+            <motion.div key={thumbnail}
+             variants={fadeIn} 
+             initial={{opacity: 0, y: 15, filter: 'none'}} 
+             whileInView="show" 
+             onClick={thumbnailPage[index]} 
+             ref={imageRefs[index]} 
+             className={containerClass} 
+             whileHover={hoverAnimation}
+             transition={{duration: 0.1, ease: "linear"}}>
                 <div className={imageContainer}>
                     <Image alt={thumbnail} src={thumbnail} fill sizes='25vw' />
                 </div>

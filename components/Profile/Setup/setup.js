@@ -8,9 +8,10 @@ export default function SetupAccount() {
     const username = useRef();
     const router = useRouter();
 
+    const container = useRef();
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(auth.currentUser);
         if(auth.currentUser) {
             updateProfile(auth.currentUser, {
                 displayName:  username.current.value
@@ -20,9 +21,10 @@ export default function SetupAccount() {
             router.push('/');
         } 
     }
+
     return(
         <div className={styles.wrapper}>
-            <div className={styles.container}>
+            <div ref={container} className={styles.container}>
                 <h1>Lets Finish Setting Up Your Account</h1>
                 <form>
                     <label htmlFor='username'>Username</label>

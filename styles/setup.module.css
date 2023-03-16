@@ -1,14 +1,21 @@
 .wrapper {
     background-color: #18122B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
 }
+
 .container { 
-    margin: 25vh 20rem auto 20rem;
     padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     gap: 2rem;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 0.5rem #F7EFE5);
 }
 
 .container h1 {
