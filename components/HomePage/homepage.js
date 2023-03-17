@@ -3,7 +3,7 @@ import Head from 'next/head';
 import styles from '../../styles/homepage.module.css';
 import Darkdivider from '../darkdivider';
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
 import { Register } from '../auth';
@@ -75,17 +75,6 @@ export default function HomePage() {
             });
         }
     }
-
-    useEffect(() => {
-        if(auth.currentUser && auth.currentUser.displayName) {
-        console.log("going to profile" + auth.currentUser.displayName);
-        //router.push('/profile');
-        }
-        else if(auth.currentUser) {
-            console.log("going to setup");
-            router.push('/profile/setup');
-        }
-    });
 
     return (
         <>

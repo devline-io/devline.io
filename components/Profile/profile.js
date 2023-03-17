@@ -6,13 +6,9 @@ export default function Profile() {
     const router = useRouter();
 
     const user = auth.currentUser;
-    if(user && user.displayName) {
-        return(
-            <div>
-                <h1>Welcome {user.displayName}</h1>
-            </div>
-        )
-    } else {
-        useEffect(() => {router.push('/')});
-    }
+    return(
+        <div>
+            <h1>Welcome {user.displayName}</h1>
+        </div>
+    )
 }

@@ -15,31 +15,21 @@ export default function SetupAccount() {
         updateProfile(auth.currentUser, {
             displayName:  username.current.value
         });
-        router.replace('/profile');
+        router.push('/profile');
     }
 
-    if(auth.currentUser && auth.currentUser.displayName) {
-        useEffect(() => {
-            router.replace('/profile');
-        })  
-    } else if(auth.currentUser) {
-        return(
-            <div className={styles.wrapper}>
-                <div ref={container} className={styles.container}>
-                    <h1>Lets Finish Setting Up Your Account</h1>
-                    <form>
-                        <div>
-                            <label htmlFor='username'>Username</label>
-                            <input ref={username} required id='username' type='text'/>
-                        </div>
-                        <button onClick={handleSubmit}>Submit</button>
-                    </form>
-                </div>
+    return(
+        <div className={styles.wrapper}>
+            <div ref={container} className={styles.container}>
+                <h1>Lets Finish Setting Up Your Account</h1>
+                <form>
+                    <div>
+                        <label htmlFor='username'>Username</label>
+                        <input ref={username} required id='username' type='text'/>
+                    </div>
+                    <button onClick={handleSubmit}>Submit</button>
+                </form>
             </div>
-        )
-    } else {
-        useEffect(() => {
-            router.replace('/');
-        })  
-    }
+        </div>
+    )
 }
