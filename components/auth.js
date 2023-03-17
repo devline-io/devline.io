@@ -30,7 +30,11 @@ export function Register(email, password) {
 export function Login(email, password) {
     signInWithEmailAndPassword(auth, email.value, password.value)
         .then(() => {
-            window.location.href = '/profile';
+            if(auth.currentUser.displayName) {
+                window.location.href = '/profile';
+            } else {
+                window.location.href = '/profile/setup';
+            }
         })
         .catch((error) => {
             console.log(error.code);

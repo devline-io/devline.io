@@ -24,10 +24,10 @@
     justify-content: center;
     gap: 3rem;
     list-style: none;
-    cursor: pointer;
 }
 
 .navLinks li {
+    cursor: pointer;
     transition: all 0.2s;
 }
 

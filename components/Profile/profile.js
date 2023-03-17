@@ -6,7 +6,7 @@ export default function Profile() {
     const router = useRouter();
 
     const user = auth.currentUser;
-    if(user) {
+    if(user && user.displayName) {
         return(
             <div>
                 <h1>Welcome {user.displayName}</h1>

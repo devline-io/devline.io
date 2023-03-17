@@ -47,12 +47,18 @@ button {
   border-color: #393053;
   background-color: #443C68;
   color: #F7EFE5;
+  cursor: pointer;
+  text-align: center;
 }
 
 button:hover {
   border-color: #000000;
   background-color: #F7EFE5;
   color: #000000;
+}
+
+input {
+  border-style: solid;
 }
 
 @media screen and (max-width: 1800px) {

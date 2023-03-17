@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import styles from '../styles/navbar.module.css';
+import { useRouter } from 'next/router';
 
 export default function Navbar(props) {
+    const router = useRouter();
+
     const navItems = [
         <a ref={props.homeLink} onClick={props.home}>Home</a>,
         <a ref={props.catalogLink} onClick={props.catalog}>Catalog</a>, 
@@ -19,7 +22,7 @@ export default function Navbar(props) {
                             <li key={item}>{item}</li>
                         ))}
                     </ul>
-                    <button>Sign Up</button>
+                    <button onClick={() => router.push('/login')}>Sign In</button>
                 </div>
             </div>
         </div>

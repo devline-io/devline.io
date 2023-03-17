@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
 import { Register } from '../auth';
 import Sleep from '../sleep';
+import { auth } from '../firebase';
 
 const container = {
     hidden: { opacity: 1},
@@ -75,6 +76,17 @@ export default function HomePage() {
         }
     }
 
+    useEffect(() => {
+        if(auth.currentUser && auth.currentUser.displayName) {
+        console.log("going to profile" + auth.currentUser.displayName);
+        //router.push('/profile');
+        }
+        else if(auth.currentUser) {
+            console.log("going to setup");
+            router.push('/profile/setup');
+        }
+    });
+
     return (
         <>
             <Head>
@@ -117,7 +129,7 @@ export default function HomePage() {
                         </motion.div>
                     </motion.div>
                     <div className={styles.buttonContainer}>
-                        <motion.button onClick={() => router.push('/catalog/')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1, cursor: 'pointer'}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
+                        <motion.button onClick={() => router.push('/catalog/')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
                     </div>
                 </motion.div>
 
