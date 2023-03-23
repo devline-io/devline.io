@@ -14,7 +14,7 @@ export default function SetupAccount() {
 
     const router = useRouter();
 
-    const [user] = useAuthState();
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
         if(!user) {
