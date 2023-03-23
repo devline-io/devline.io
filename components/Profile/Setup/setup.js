@@ -32,8 +32,8 @@ export default function SetupAccount() {
             await updateProfile(auth.currentUser, {displayName:  username.current.value})
             router.push('/profile');
         }
-        catch {
-            console.log("an error occurred");
+        catch(error) {
+            console.log(error.code);
         }
     }
 

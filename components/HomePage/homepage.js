@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
-import Register from '../auth'
+import Register from '../register'
 
 export const container = {
     hidden: { opacity: 1},

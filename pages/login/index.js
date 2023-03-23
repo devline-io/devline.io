@@ -1,7 +1,7 @@
-import SignIn from '../../components/Login/login'
+import LoginForm from '../../components/Authentication/login'
 
 export default function Index() {
     return(
-        <SignIn/>
+        <LoginForm/>
     )
 }
