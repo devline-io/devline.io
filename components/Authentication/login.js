@@ -1,12 +1,21 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/setup.module.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function LoginForm()
 {
     const router = useRouter();
     const email = useRef();
     const password = useRef();
+
+    const [user] = useAuthState();
+
+    useEffect(() => {
+        if(user) {
+            router.push('/profile');
+        }
+    })
 
     const handleLogin = async(event) => {
         event.preventDefault();
