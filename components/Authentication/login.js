@@ -9,7 +9,7 @@ export default function LoginForm()
     const email = useRef();
     const password = useRef();
 
-    const [user] = useAuthState();
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
         if(user) {
@@ -21,7 +21,6 @@ export default function LoginForm()
         event.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
-            router.push('/profile');
         } catch(error) {
             console.log(error.code);
         }

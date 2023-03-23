@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { container, fadeIn } from '../HomePage/homepage';
 import styles from '../styles/homepage.module.css';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function RegisterForm() {
     initFirebase();
@@ -17,9 +17,11 @@ export default function RegisterForm() {
     const password = useRef(null);
     const confirmPassword = useRef(null);
 
-    if(user) {
-        router.push('/profile/setup');
-    }
+    useEffect(() => {
+        if(user) {
+            router.push('/profile/setup');
+        }
+    });
 
     const handleRegister = async (event) => {
         event.preventDefault();
