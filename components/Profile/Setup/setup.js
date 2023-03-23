@@ -18,7 +18,11 @@ export default function SetupAccount() {
 
     useEffect(() => {
         if(!user) {
-            router.push('/')
+            router.push('/');
+        }
+
+        if(user && user.displayName) {
+            router.push('/profile');
         }
     })
 

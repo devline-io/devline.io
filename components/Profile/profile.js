@@ -17,7 +17,11 @@ export default function Profile() {
             router.push('/')
         }
         if(user) {
-            setUsername(user.displayName);
+            if(!user.displayName) {
+                router.push('/profile/setup');
+            } else {
+                setUsername(user.displayName);
+            }
         }
     })
 
