@@ -1,21 +1,36 @@
-import { auth } from '../../firebase';
-import { useRef, useEffect } from 'react';
-import { updateProfile } from 'firebase/auth';
+import { initFirebase } from '../../firebase';
+import { useRef } from 'react';
+import { updateProfile, getAuth } from 'firebase/auth';
 import styles from '../../../styles/setup.module.css'
 import { useRouter } from 'next/router';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function SetupAccount() {
+    initFirebase();
+    const auth = getAuth();
+
     const username = useRef();
     const container = useRef();
 
     const router = useRouter();
 
-    const handleSubmit = (event) => {
+    const [user] = useAuthState();
+
+    useEffect(() => {
+        if(!user) {
+            router.push('/')
+        }
+    })
+
+    const handleSubmit = async(event) => {
         event.preventDefault();
-        updateProfile(auth.currentUser, {
-            displayName:  username.current.value
-        });
-        router.push('/profile');
+        try {
+            await updateProfile(auth.currentUser, {displayName:  username.current.value})
+            router.push('/profile');
+        }
+        catch {
+            console.log("an error occurred");
+        }
     }
 
     return(

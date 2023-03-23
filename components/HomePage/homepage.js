@@ -3,21 +3,19 @@ import Head from 'next/head';
 import styles from '../../styles/homepage.module.css';
 import Darkdivider from '../darkdivider';
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
-import { Register } from '../auth';
-import Sleep from '../sleep';
-import { auth } from '../firebase';
+import Register from '../auth'
 
-const container = {
+export const container = {
     hidden: { opacity: 1},
     show: {transition: {
             staggerChildren: .1
             }}
 };
 
-const fadeIn = {
+export const fadeIn = {
     hidden: { opacity: 0, y: 15 },
     show: { opacity: 1, y: 0, 
             transition: {
@@ -37,10 +35,6 @@ export default function HomePage() {
     const navCatalog = useRef(null);
     const navAbout = useRef(null);
     const navPricing = useRef(null);
-
-    const email = useRef(null);
-    const password = useRef(null);
-    const confirmPassword = useRef(null);
 
     const scrollHome = () => {
         window.scrollTo({behavior: 'smooth', top: 0});
@@ -62,20 +56,6 @@ export default function HomePage() {
         window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
     }
 
-    const submitForm = (event) => {
-        event.preventDefault();
-        if(password.current.value == confirmPassword.current.value) {
-            Register(email.current, password.current);
-        } else {
-            confirmPassword.current.setCustomValidity('Passwords do not match');
-            confirmPassword.current.reportValidity();
-
-            Sleep(3000).then(() => {
-                confirmPassword.current.setCustomValidity('');
-            });
-        }
-    }
-
     return (
         <>
             <Head>
@@ -89,22 +69,8 @@ export default function HomePage() {
                         <motion.h1 variants={fadeIn} className={styles.title}>Code <span>SMARTER,</span><br/> Not <span>HARDER</span></motion.h1>
                         <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
                     </motion.div>
-                    <motion.form onSubmit={submitForm} method='post' initial="hidden" whileInView="show" delay={0.5} variants={container}
-                    className={styles.heroForm}>
-                    <motion.div variants={fadeIn}>
-                        <label htmlFor='email'>Email</label>
-                        <input required ref={email} type='email' id='email'/>
-                    </motion.div>
-                    <motion.div variants={fadeIn}>
-                        <label htmlFor='password'>Password</label>
-                        <input required ref={password} type='password' id='password' />
-                    </motion.div>
-                    <motion.div variants={fadeIn}>
-                        <label htmlFor='confirm-password'>Confirm Your Password</label>
-                        <input required ref={confirmPassword} type='password' id='confirm-password'/>
-                    </motion.div>
-                    <motion.button variants={fadeIn}>Sign Up</motion.button>
-                    </motion.form>
+
+                    <Register/>
                 </div>
 
                 <Darkdivider dividerPosition='top'/>

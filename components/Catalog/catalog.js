@@ -1,25 +1,11 @@
-import Navbar from '../../components/navbar';
+import Navbar from '../navbar';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
 import styles from '../../styles/catalog.module.css';
 import { useRef, useEffect } from 'react';
 import Head from 'next/head'
 import { motion } from 'framer-motion';
-
-const container = {
-    hidden: { opacity: 1},
-    show: {transition: {
-            staggerChildren: .1
-            }}
-};
-
-const fadeIn = {
-    hidden: { opacity: 0, y: 15},
-    show: { opacity: 1, y: 0, 
-            transition: {
-            duration: .5,
-            }}
-};
+import { container, fadeIn } from '../HomePage/homepage';
 
 export default function Catalog() {
     const router = useRouter();
