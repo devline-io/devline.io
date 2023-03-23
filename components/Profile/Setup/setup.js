@@ -1,5 +1,5 @@
 import { initFirebase } from '../../firebase';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { updateProfile, getAuth } from 'firebase/auth';
 import styles from '../../../styles/setup.module.css'
 import { useRouter } from 'next/router';
