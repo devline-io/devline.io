@@ -2,10 +2,15 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/setup.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { initFirebase } from '../firebase';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function LoginForm()
 {
+    initFirebase();
+    const auth = getAuth();
     const router = useRouter();
+    
     const email = useRef();
     const password = useRef();
 
@@ -21,7 +26,8 @@ export default function LoginForm()
         event.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
-        } catch(error) {
+        } 
+        catch(error) {
             console.log(error.code);
         }
 
@@ -33,11 +39,11 @@ export default function LoginForm()
                 <h1>Login</h1>
                 <form onSubmit={handleLogin}>
                     <div>
-                        <label for='email'>Email</label>
+                        <label htmlFor='email'>Email</label>
                         <input required id='email' type='text' ref={email}/>
                     </div>
                     <div>
-                        <label for='password'>Password</label>
+                        <label htmlFor='password'>Password</label>
                         <input required id='password' type='password' ref={password}/>
                     </div>
                     <button>Login</button>
