@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
 import { useState, useEffect } from 'react';
+import Link from 'next/link'
+import Navbar from '../navbar';
 
 export default function Profile() {
     initFirebase();
@@ -25,9 +27,17 @@ export default function Profile() {
         }
     })
 
+    const navItems = [
+        <Link href='/'>Home</Link>,
+        <Link href='/'>Catalog</Link>, 
+        <Link href='/'>Progress</Link>,
+        <Link href='/'>Upgrade</Link>
+        ];
+
     return(
         <div>
-            <h1>Welcome {username}</h1>
+            <Navbar navItems={navItems} button={<p>{username}</p>}/>
+            <h1>Welcome</h1>
             <button onClick={() => auth.signOut()}>Sign Out</button>
         </div>
     )
