@@ -1,4 +1,5 @@
 import Navbar from '../navbar';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
 import styles from '../../styles/catalog.module.css';
@@ -36,18 +37,20 @@ export default function Catalog() {
         }
     });
 
+    const navItems = [
+        <Link href='/'>Home</Link>,
+        <Link href='/#catalog'>Catalog</Link>, 
+        <Link href='/#about'>About</Link>,
+        <Link href='/#pricing'>Pricing</Link>
+        ];
+
     return (
         <>
             <Head>
                 <title>Devline.io | Catalog</title>
             </Head>
 
-            <Navbar 
-                    home={() => router.push('/')} 
-                    catalog={() => router.push('/#catalog')}
-                    about={() => router.push('/#about')} 
-                    pricing={() => router.push('/#pricing')}
-                />
+            <Navbar navItems={navItems}/>
 
             <main>
                 <motion.div className={styles.title} initial="hidden" whileInView="show" variants={container}>
