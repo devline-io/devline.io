@@ -15,7 +15,7 @@ export default function Navbar(props) {
                             <li key={item}>{item}</li>
                         ))}
                     </ul>
-                    <button onClick={() => router.push('/login')}>Sign In</button>
+                    {props.button}
                 </div>
             </div>
         </div>

@@ -69,7 +69,7 @@ export default function HomePage() {
                 <title>Devline.io</title>
                 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
             </Head>
-            <Navbar navItems={navItems} navbarRef={nav}/>
+            <Navbar navItems={navItems} navbarRef={nav} button={<button onClick={() => router.push('/login')}>Sign In</button>}/>
             <main>
                 <div id='home'className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
