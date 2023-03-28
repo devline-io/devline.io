@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { container, fadeIn } from '../HomePage/homepage';
-import styles from '../../styles/homepage.module.css';
+import styles from '../styles/homepage.module.css';
 import { useRef, useEffect } from 'react';
 
 export default function RegisterForm() {

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
-import Register from '../Authentication/register'
+import Register from '../register'
 
 export const container = {
     hidden: { opacity: 1},
@@ -56,20 +56,13 @@ export default function HomePage() {
         window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
     }
 
-    const navItems = [
-        <a ref={navHome} onClick={scrollHome}>Home</a>,
-        <a ref={navCatalog} onClick={scrollCatalog}>Catalog</a>, 
-        <a ref={navAbout} onClick={scrollAbout}>About</a>,
-        <a ref={navPricing} onClick={scrollPricing}>Pricing</a>
-        ];
-
     return (
         <>
             <Head>
                 <title>Devline.io</title>
                 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
             </Head>
-            <Navbar navItems={navItems} navbarRef={nav}/>
+            <Navbar homeLink={navHome} catalogLink={navCatalog} aboutLink={navAbout} pricingLink={navPricing} navbarRef={nav} home={scrollHome} catalog={scrollCatalog} about={scrollAbout} pricing={scrollPricing}/>
             <main>
                 <div id='home'className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
