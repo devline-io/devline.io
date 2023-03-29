@@ -16,7 +16,7 @@ export default function SetupAccount() {
 
     const router = useRouter();
 
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
 
     const avatar = useMemo(() => {
         return createAvatar(identicon, {
@@ -26,7 +26,7 @@ export default function SetupAccount() {
     }, []);
 
     useEffect(() => {
-        if(!user) {
+        if(!user && !loading) {
             router.push('/');
         }
 
