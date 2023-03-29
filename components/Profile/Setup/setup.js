@@ -21,7 +21,7 @@ export default function SetupAccount() {
     const avatar = useMemo(() => {
         return createAvatar(identicon, {
             backgroundColor: ['b6e3f4','c0aede','d1d4f9', 'ffd5dc','ffdfbf'],
-            size: 64
+            size: 48
         }).toDataUriSync();
     }, []);
 
@@ -41,7 +41,6 @@ export default function SetupAccount() {
             await updateProfile(auth.currentUser, {
                 displayName:  username.current.value,
                 photoURL: avatar,
-                radius: 50
             })
             router.push('/profile');
         }

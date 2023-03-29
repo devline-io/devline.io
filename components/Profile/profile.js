@@ -24,7 +24,8 @@ export default function Profile() {
                 setUsername(user.displayName);
                 setProfilePic(user.photoURL);
             }
-        } else {
+        }
+        if(!user) {
             router.push('/');
         }
     })
@@ -38,7 +39,7 @@ export default function Profile() {
 
     return(
         <div>
-            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={64} height={64}/>}/>}
+            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={48} height={48}/>}/>}
             <h1>Welcome {username}</h1>
             <button onClick={() => auth.signOut()}>Sign Out</button>
         </div>
