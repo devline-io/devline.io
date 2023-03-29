@@ -50,9 +50,9 @@ export default function Profile() {
                 </div>
                 <div className={styles.right}>
                     <div className={styles.cardContainer}>
-                        <CourseCards/>
-                        <CourseCards/>
-                        <CourseCards/>
+                        <CourseCards courseName={"Course 1"}/>
+                        <CourseCards courseName={"Course 2"}/>
+                        <CourseCards courseName={"Course 3"}/>
                     </div>
                 </div>
             </main>
