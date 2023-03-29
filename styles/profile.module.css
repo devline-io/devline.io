@@ -7,11 +7,13 @@
 .left {
     left: 0;
     width: 50%;
+    margin-left: 3vw;
 }
 
 .right {
     right: 0;
     width: 50%;
+    margin-top: 7%;
 }
 
 .cardContainer {
@@ -25,4 +27,4 @@
     left: calc(50% - 300px);
     display: flex;
     overflow: visible;
-} 
+}

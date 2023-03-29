@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 export default function Navbar(props) {
     const router = useRouter();
 
+    
     return (
         <div ref={props.navbarRef} className={styles.wrapper}>
             <div className={styles.container}>
@@ -16,6 +17,8 @@ export default function Navbar(props) {
                         ))}
                     </ul>
                     {props.button}
+                    {props.username}
+                    {props.signout}
                 </div>
             </div>
         </div>

@@ -33,19 +33,16 @@ export default function Profile() {
         <Link href='/'>Home</Link>,
         <Link href='/'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
-        <Link href='/'>Upgrade</Link>
+        <Link href='/'>Upgrade</Link>,
         ];
 
     return(
         <>
-            <Navbar navItems={navItems} button={<p>{username}</p>}/>
+            <Navbar navItems={navItems} username={<p>{username}</p>} signout={<button onClick={() => auth.signOut()}>Sign Out</button>}/>
             <main className={styles.main}>
                 <div className={styles.left}>
                     <div className={styles.welcome_msg}>
                         <h1>Welcome {username}</h1>
-                    </div>
-                    <div className={styles.sign_out_btn}>
-                        <button onClick={() => auth.signOut()}>Sign Out</button>
                     </div>
                 </div>
                 <div className={styles.right}>
