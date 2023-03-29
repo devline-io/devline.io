@@ -21,7 +21,8 @@ export default function SetupAccount() {
     const avatar = useMemo(() => {
         return createAvatar(identicon, {
             backgroundColor: ['b6e3f4','c0aede','d1d4f9', 'ffd5dc','ffdfbf'],
-            size: 48
+            size: 48,
+            randomizeIds: true
         }).toDataUriSync();
     }, []);
 
