@@ -15,15 +15,14 @@ export default function Profile() {
     const [username, setUsername] = useState(null);
     
     useEffect(() => {
-        if(!user) {
-            router.push('/')
-        }
         if(user) {
             if(!user.displayName) {
                 router.push('/profile/setup');
             } else {
                 setUsername(user.displayName);
             }
+        } else {
+            router.push('/');
         }
     })
 
