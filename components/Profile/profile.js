@@ -42,7 +42,7 @@ export default function Profile() {
 
     return(
         <>
-            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={48} height={48}/>}/>}
+            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={48} height={48}/>} signout={<button onClick={() => auth.signOut()}>Sign Out</button>}/>}
             <main className={styles.main}>
                 <div className={styles.left}>
                     <div className={styles.welcome_msg}>
@@ -56,7 +56,6 @@ export default function Profile() {
                         <CourseCards courseName={"Course 3"}/>
                     </div>
                 </div>
-                <button onClick={() => auth.signOut()}>Sign Out</button>
             </main>
         </>
     )
