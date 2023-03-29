@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
 import { useState, useEffect } from 'react';
-import Link from 'next/link'
+import styles from '../../styles/profile.module.css';
+import Link from 'next/link';
 import Navbar from '../navbar';
 
 export default function Profile() {
@@ -35,10 +36,16 @@ export default function Profile() {
         ];
 
     return(
-        <div>
+        <>
             <Navbar navItems={navItems} button={<p>{username}</p>}/>
-            <h1>Welcome</h1>
-            <button onClick={() => auth.signOut()}>Sign Out</button>
-        </div>
+            <main className={styles.main}>
+                <div className={styles.welcome_msg}>
+                    <h1>Welcome {username}</h1>
+                </div>
+                <div className={styles.sign_out_btn}>
+                    <button onClick={() => auth.signOut()}>Sign Out</button>
+                </div>
+            </main>
+        </>
     )
 }
