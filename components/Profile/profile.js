@@ -7,25 +7,29 @@ import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
 import CourseCards from '../courseCards';
+import Image from 'next/image';
 
 export default function Profile() {
     initFirebase();
     const auth = getAuth();
     const router = useRouter();
 
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
+    const [profilePic, setProfilePic] = useState(null);
     
     useEffect(() => {
-        if(!user) {
-            router.push('/')
-        }
         if(user) {
             if(!user.displayName) {
                 router.push('/profile/setup');
             } else {
                 setUsername(user.displayName);
+                setProfilePic(user.photoURL);
             }
+        }
+        if(!user && !loading) {
+            console.log(user);
+            router.push('/');
         }
     })
 
@@ -38,7 +42,7 @@ export default function Profile() {
 
     return(
         <>
-            <Navbar navItems={navItems} username={<p>{username}</p>} signout={<button onClick={() => auth.signOut()}>Sign Out</button>}/>
+            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={48} height={48}/>}/>}
             <main className={styles.main}>
                 <div className={styles.left}>
                     <div className={styles.welcome_msg}>
@@ -52,6 +56,7 @@ export default function Profile() {
                         <CourseCards courseName={"Course 3"}/>
                     </div>
                 </div>
+                <button onClick={() => auth.signOut()}>Sign Out</button>
             </main>
         </>
     )

@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import styles from '../styles/navbar.module.css';
-import { useRouter } from 'next/router';
 
 export default function Navbar(props) {
-    const router = useRouter();
 
     
     return (
