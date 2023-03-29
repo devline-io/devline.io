@@ -3,8 +3,10 @@ import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
 import { useState, useEffect } from 'react';
-import Link from 'next/link'
+import styles from '../../styles/profile.module.css';
+import Link from 'next/link';
 import Navbar from '../navbar';
+import CourseCards from '../courseCards';
 import Image from 'next/image';
 
 export default function Profile() {
@@ -35,14 +37,27 @@ export default function Profile() {
         <Link href='/'>Home</Link>,
         <Link href='/'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
-        <Link href='/'>Upgrade</Link>
+        <Link href='/'>Upgrade</Link>,
         ];
 
     return(
-        <div>
+        <>
             {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={48} height={48}/>}/>}
-            <h1>Welcome {username}</h1>
-            <button onClick={() => auth.signOut()}>Sign Out</button>
-        </div>
+            <main className={styles.main}>
+                <div className={styles.left}>
+                    <div className={styles.welcome_msg}>
+                        <h1>Welcome {username}</h1>
+                    </div>
+                </div>
+                <div className={styles.right}>
+                    <div className={styles.cardContainer}>
+                        <CourseCards courseName={"Course 1"}/>
+                        <CourseCards courseName={"Course 2"}/>
+                        <CourseCards courseName={"Course 3"}/>
+                    </div>
+                </div>
+                <button onClick={() => auth.signOut()}>Sign Out</button>
+            </main>
+        </>
     )
 }
