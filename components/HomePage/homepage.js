@@ -122,7 +122,7 @@ export default function HomePage() {
                             <p>Free</p>
                             <hr/>
                             <ul>
-                                <li>Limited Access to Courses</li>
+                                <li>Full Access to All Courses</li>
                                 <li className={styles.strikethrough}>Interactive Tutorials</li>
                                 <li className={styles.strikethrough}>Written and Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
