@@ -12,7 +12,7 @@ export default function Profile() {
     const auth = getAuth();
     const router = useRouter();
 
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
     
@@ -25,7 +25,8 @@ export default function Profile() {
                 setProfilePic(user.photoURL);
             }
         }
-        if(!user) {
+        if(!user && !loading) {
+            console.log(user);
             router.push('/');
         }
     })
