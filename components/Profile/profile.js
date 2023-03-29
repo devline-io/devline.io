@@ -5,6 +5,7 @@ import { initFirebase } from '../firebase';
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 import Navbar from '../navbar';
+import Image from 'next/image';
 
 export default function Profile() {
     initFirebase();
@@ -13,6 +14,7 @@ export default function Profile() {
 
     const [user] = useAuthState(auth);
     const [username, setUsername] = useState(null);
+    const [profilePic, setProfilePic] = useState(null);
     
     useEffect(() => {
         if(user) {
@@ -20,6 +22,7 @@ export default function Profile() {
                 router.push('/profile/setup');
             } else {
                 setUsername(user.displayName);
+                setProfilePic(user.photoURL);
             }
         } else {
             router.push('/');
@@ -35,8 +38,8 @@ export default function Profile() {
 
     return(
         <div>
-            <Navbar navItems={navItems} button={<p>{username}</p>}/>
-            <h1>Welcome</h1>
+            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={64} height={64}/>}/>}
+            <h1>Welcome {username}</h1>
             <button onClick={() => auth.signOut()}>Sign Out</button>
         </div>
     )

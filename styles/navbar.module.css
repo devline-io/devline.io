@@ -39,3 +39,7 @@
 .navLinks li:hover, .navLinks li a:hover {
     color: #443C68;
 }
+
+.navLinks img {
+    border-radius: 50%;
+}
