@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
+import CourseCards from '../courseCards';
 
 export default function Profile() {
     initFirebase();
@@ -39,11 +40,20 @@ export default function Profile() {
         <>
             <Navbar navItems={navItems} button={<p>{username}</p>}/>
             <main className={styles.main}>
-                <div className={styles.welcome_msg}>
-                    <h1>Welcome {username}</h1>
+                <div className={styles.left}>
+                    <div className={styles.welcome_msg}>
+                        <h1>Welcome {username}</h1>
+                    </div>
+                    <div className={styles.sign_out_btn}>
+                        <button onClick={() => auth.signOut()}>Sign Out</button>
+                    </div>
                 </div>
-                <div className={styles.sign_out_btn}>
-                    <button onClick={() => auth.signOut()}>Sign Out</button>
+                <div className={styles.right}>
+                    <div className={styles.cardContainer}>
+                        <CourseCards/>
+                        <CourseCards/>
+                        <CourseCards/>
+                    </div>
                 </div>
             </main>
         </>
