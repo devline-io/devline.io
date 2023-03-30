@@ -6,7 +6,6 @@ import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
-import CatalogImages from '../catalogimages';
 
 export default function Profile() {
     initFirebase();
