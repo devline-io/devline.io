@@ -1,4 +1,4 @@
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import Image from 'next/image';
 import { useRef } from 'react';
 import styles from '../styles/navbar.module.css';
@@ -15,9 +15,8 @@ export default function Navbar(props) {
         profileMenu.current.style.display = 'block';
     }    
 
-    const signOut = (e) => {
-        e.preventDefault();
-        auth.signOut;
+    const handleSignOut = () => {
+        signOut(auth);
     }
     
     return (
@@ -31,12 +30,12 @@ export default function Navbar(props) {
                         ))}
                     </ul>
                     {props.button}
-                    <div className={styles.profileContainer}>
+                    {props.profilePic && <div className={styles.profileContainer}>
                         <Image onClick={openProfileMenu} src={props.profilePic} width={48} height={48}/>
                         <div ref={profileMenu} className={styles.profileMenu}>
-                            <Link onClick={signOut} href='/'>Sign Out</Link>
+                            <Link onClick={handleSignOut} href='/'>Sign Out</Link>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>
