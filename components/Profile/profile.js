@@ -7,7 +7,6 @@ import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
 import CourseCards from '../courseCards';
-import Image from 'next/image';
 
 export default function Profile() {
     initFirebase();
