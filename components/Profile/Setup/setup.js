@@ -48,8 +48,8 @@ export default function SetupAccount() {
         }
     })
 
-    const handleSubmit = async(event) => {
-        event.preventDefault();
+    const handleSubmit = async(e) => {
+        e.preventDefault();
         try {
             await updateProfile(auth.currentUser, {
                 displayName:  username.current.value,

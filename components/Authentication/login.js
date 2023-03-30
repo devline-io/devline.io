@@ -22,8 +22,8 @@ export default function LoginForm()
         }
     })
 
-    const handleLogin = async(event) => {
-        event.preventDefault();
+    const handleLogin = async(e) => {
+        e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
         } 

@@ -28,3 +28,15 @@
     display: flex;
     overflow: visible;
 }
+
+.alternateButton {
+    background-color: #F7EFE5;
+    color: #18122B;
+    border-color: #18122B;
+}
+
+.alternateButton:hover {
+    border-color: #393053;
+    background-color: #443C68;
+    color: #F7EFE5;
+}
