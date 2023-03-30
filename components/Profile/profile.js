@@ -50,7 +50,6 @@ export default function Profile() {
               navbarRef={nav}
               button={<button onClick={()=>router.push('/')} className={styles.alternateButton}>Upgrade</button>} 
               profilePic={profilePic} 
-            //   signout={<button onClick={() => auth.signOut()}>Sign Out</button>}
             />}
             
             <main className={styles.main}>

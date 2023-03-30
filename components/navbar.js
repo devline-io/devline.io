@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import styles from '../styles/navbar.module.css';
 import { initFirebase } from './firebase';
+import Link from 'next/link';
 
 export default function Navbar(props) {
     initFirebase();
@@ -13,6 +14,11 @@ export default function Navbar(props) {
         e.preventDefault();
         profileMenu.current.style.display = 'block';
     }    
+
+    const signOut = (e) => {
+        e.preventDefault();
+        auth.signOut;
+    }
     
     return (
         <div ref={props.navbarRef} className={styles.wrapper}>
@@ -28,7 +34,7 @@ export default function Navbar(props) {
                     <div className={styles.profileContainer}>
                         <Image onClick={openProfileMenu} src={props.profilePic} width={48} height={48}/>
                         <div ref={profileMenu} className={styles.profileMenu}>
-                                <a onClick={() => console.log('signing out')}>Sign Out</a>
+                            <Link onClick={signOut} href='/'>Sign Out</Link>
                         </div>
                     </div>
                 </div>
