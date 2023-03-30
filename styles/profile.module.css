@@ -1,32 +1,6 @@
 .main {
-    margin-top: 10%;
-    margin-left: 2vw;
-    display: flex;
-}
-
-.left {
-    left: 0;
-    width: 50%;
-    margin-left: 3vw;
-}
-
-.right {
-    right: 0;
-    width: 50%;
-    margin-top: 7%;
-}
-
-.cardContainer {
-    align-items: center;
-    margin-top: 10%;
-    margin-left: 20vw;
-    position: absolute;
-    height: 600px;
-    width: 800px;
-    top: 60px;
-    left: calc(50% - 300px);
-    display: flex;
-    overflow: visible;
+    margin-top: 2rem;
+    padding: 3rem;
 }
 
 .alternateButton {

@@ -6,8 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
-import CourseCards from '../courseCards';
-import Image from 'next/image';
+import CatalogImages from '../catalogimages';
 
 export default function Profile() {
     initFirebase();
@@ -41,8 +40,6 @@ export default function Profile() {
         <Link href='/'>Progress</Link>,
         ];
 
-    
-
     return(
         <>
             {profilePic && <Navbar 
@@ -53,16 +50,14 @@ export default function Profile() {
             />}
             
             <main className={styles.main}>
-                <div className={styles.left}>
+                <div>
+                    <h1>Get Started</h1>
                     <div>
-                        <h1>Welcome {username}</h1>
+                        <h2>Recommended Courses</h2>
+
                     </div>
-                </div>
-                <div className={styles.right}>
-                    <div className={styles.cardContainer}>
-                        <CourseCards courseName={"Course 1"}/>
-                        <CourseCards courseName={"Course 2"}/>
-                        <CourseCards courseName={"Course 3"}/>
+                    <div>
+                        <h2>Recommended Articles</h2>
                     </div>
                 </div>
             </main>
