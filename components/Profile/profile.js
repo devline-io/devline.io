@@ -2,7 +2,7 @@ import { getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
@@ -13,6 +13,8 @@ export default function Profile() {
     initFirebase();
     const auth = getAuth();
     const router = useRouter();
+
+    const nav = useRef(null);
 
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
@@ -37,15 +39,23 @@ export default function Profile() {
         <Link href='/'>Home</Link>,
         <Link href='/'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
-        <Link href='/'>Upgrade</Link>,
         ];
+
+    
 
     return(
         <>
-            {profilePic && <Navbar navItems={navItems} button={<Image src={profilePic} width={48} height={48}/>} signout={<button onClick={() => auth.signOut()}>Sign Out</button>}/>}
+            {profilePic && <Navbar 
+              navItems={navItems} 
+              navbarRef={nav}
+              button={<button onClick={()=>router.push('/')} className={styles.alternateButton}>Upgrade</button>} 
+              profilePic={profilePic} 
+            //   signout={<button onClick={() => auth.signOut()}>Sign Out</button>}
+            />}
+            
             <main className={styles.main}>
                 <div className={styles.left}>
-                    <div className={styles.welcome_msg}>
+                    <div>
                         <h1>Welcome {username}</h1>
                     </div>
                 </div>
