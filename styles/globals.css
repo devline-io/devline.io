@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-*:not(section, p, h2, button, h1, h3, a) {
+*:not(section, p, h2, button, h1, h3) {
   background-color: #F7EFE5;
 }
 

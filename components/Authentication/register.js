@@ -1,5 +1,5 @@
 import { initFirebase } from '../firebase';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -23,8 +23,8 @@ export default function RegisterForm() {
         }
     });
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
+    const handleRegister = async (event) => {
+        event.preventDefault();
         try {
             await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
         } 

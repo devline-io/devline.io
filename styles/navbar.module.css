@@ -5,7 +5,6 @@
     justify-content: space-between;
     width: 100%;
     max-width: 1968px;
-    overflow: visible;
 }
 
 .wrapper {
@@ -14,7 +13,6 @@
     justify-content: center;
     position: fixed;
     width: 100%;
-    overflow: visible;
 }
 
 .navLinks {
@@ -26,7 +24,6 @@
     justify-content: center;
     gap: 3rem;
     list-style: none;
-    overflow: visible;
 }
 
 .navLinks li {
@@ -45,22 +42,4 @@
 
 .navLinks img {
     border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-}
-
-.profileContainer {
-    position: relative;
-    overflow: visible;
-}
-
-.profileMenu {
-    position: absolute;
-    right: 0;
-    z-index: 1;
-    background-color: #18122B;
-    color: #F7EFE5;
-    white-space: nowrap;
-    padding: .5rem;
-    display: none;
 }
