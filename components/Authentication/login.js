@@ -47,6 +47,7 @@ export default function LoginForm()
                         <input required id='password' type='password' ref={password}/>
                     </div>
                     <button>Login</button>
+                    <button onClick={() => router.push('/register')}>Create New Account</button>
                 </form>
             </div>
         </div>
