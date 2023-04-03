@@ -52,7 +52,7 @@ export default function RegisterForm( {darkForm} ) {
                         <label htmlFor='confirm-password'>Confirm Your Password</label>
                         <input required ref={confirmPassword} type='password' id='confirm-password'/>
                     </div>
-                    <button className={styles.fullSize}>Sign Up</button>
+                    <button className={styles.fullButton}>Sign Up</button>
                 </form>
                 <p>Already have an account? <Link href='/login'>Login</Link></p>
             </div>
