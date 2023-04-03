@@ -43,8 +43,8 @@ export default function LoginForm()
             else if(error.code == 'auth/invalid-password') {
                 setPasswordErrorMessage('Incorrect Password');
             } else {
-                setEmailErrorMessage('An Internal Error Occur');
-                setPasswordErrorMessage('Internal Error');
+                setEmailErrorMessage('An Internal Error Occurred');
+                setPasswordErrorMessage('An Internal Error Occurred');
             }
         }
 
@@ -68,6 +68,7 @@ export default function LoginForm()
                     <button className={styles.fullButton}>Login</button>
                 </form>
                 <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
+                <Link href='/password-reset'>Reset Password</Link>
             </div>
         </div>
     )
