@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,6 +17,9 @@ export default function LoginForm()
 
     const [user] = useAuthState(auth);
 
+    const [emailErrorMessage, setEmailErrorMessage] = useState(null);
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+
     useEffect(() => {
         if(user) {
             router.push('/profile');
@@ -25,11 +28,24 @@ export default function LoginForm()
 
     const handleLogin = async(event) => {
         event.preventDefault();
+        const formEmail = email.current.value;
+        const formPassword = email.current.value;
+
         try {
-            await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
+            await signInWithEmailAndPassword(auth, formEmail, formPassword);
         } 
         catch(error) {
             console.log(error.code);
+
+            if(error.code == 'auth/invalid-email') {
+                setEmailErrorMessage('Invalid Email');
+            }
+            else if(error.code == 'auth/invalid-password') {
+                setPasswordErrorMessage('Incorrect Password');
+            } else {
+                setEmailErrorMessage('An Internal Error Occur');
+                setPasswordErrorMessage('Internal Error');
+            }
         }
 
     }
@@ -41,11 +57,13 @@ export default function LoginForm()
                 <form onSubmit={handleLogin}>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input required id='email' type='text' ref={email}/>
+                        <input id='email' type='text' ref={email}/>
+                        <span>{emailErrorMessage}</span>
                     </div>
                     <div>
                         <label htmlFor='password'>Password</label>
-                        <input required id='password' type='password' ref={password}/>
+                        <input id='password' type='password' ref={password}/>
+                        <span>{passwordErrorMessage}</span>
                     </div>
                     <button className={styles.fullButton}>Login</button>
                 </form>
