@@ -29,7 +29,7 @@ export default function LoginForm()
     const handleLogin = async(event) => {
         event.preventDefault();
         const formEmail = email.current.value;
-        const formPassword = email.current.value;
+        const formPassword = password.current.value;
 
         try {
             await signInWithEmailAndPassword(auth, formEmail, formPassword);
@@ -37,14 +37,31 @@ export default function LoginForm()
         catch(error) {
             console.log(error.code);
 
-            if(error.code == 'auth/invalid-email') {
-                setEmailErrorMessage('Invalid Email');
-            }
-            else if(error.code == 'auth/invalid-password') {
-                setPasswordErrorMessage('Incorrect Password');
-            } else {
-                setEmailErrorMessage('An Internal Error Occurred');
-                setPasswordErrorMessage('An Internal Error Occurred');
+            switch(error.code) {
+                //email
+                case 'auth/missing-email':
+                    setEmailErrorMessage('Please Enter An Email')
+                    break;
+                case 'auth/invalid-email':
+                    setEmailErrorMessage('Invalid Email');
+                    break;
+                case 'auth/user-not-found':
+                    setPasswordErrorMessage(null);
+                    setEmailErrorMessage('User With This Email Not Found');
+                    break;
+                //password
+                case 'auth/wrong-password':
+                    setEmailErrorMessage(null);
+                    setPasswordErrorMessage('Wrong Password');
+                    break;
+                case 'auth/internal-error':
+                    setEmailErrorMessage(null);
+                    if(formPassword == '') {
+                        setPasswordErrorMessage('Please Enter A Password');
+                        break;
+                    }
+                    setEmailErrorMessage('Internal Error: Please Try Again Later');
+                    setPasswordErrorMessage(null);
             }
         }
 
@@ -67,8 +84,10 @@ export default function LoginForm()
                     </div>
                     <button className={styles.fullButton}>Login</button>
                 </form>
-                <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
-                <Link href='/password-reset'>Reset Password</Link>
+                <div>
+                    <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
+                    <Link href='/password-reset'>Reset Password</Link>
+                </div>
             </div>
         </div>
     )

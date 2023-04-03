@@ -45,7 +45,7 @@
 }
 
 .container p {
-    margin: 0 4rem;
+    margin: 0 8rem 1rem 0;
     font-size: 1.2rem;
 }
 
@@ -53,6 +53,10 @@
     font-size: 1.2rem;
     color: #393053;
     font-weight: 800;
+}
+
+.container div {
+    text-align: left;
 }
 
 .container .fullButton {
