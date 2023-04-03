@@ -77,7 +77,7 @@ export default function HomePage() {
                         <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
                     </motion.div>
 
-                    <Register/>
+                    <Register darkForm={false}/>
                 </div>
 
                 <Darkdivider dividerPosition='top'/>

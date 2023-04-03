@@ -1,9 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../../styles/setup.module.css';
+import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import Link from 'next/link';
 
 export default function LoginForm()
 {
@@ -46,8 +47,9 @@ export default function LoginForm()
                         <label htmlFor='password'>Password</label>
                         <input required id='password' type='password' ref={password}/>
                     </div>
-                    <button>Login</button>
+                    <button className={styles.fullButton}>Login</button>
                 </form>
+                <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
             </div>
         </div>
     )

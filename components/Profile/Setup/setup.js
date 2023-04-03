@@ -1,7 +1,7 @@
 import { initFirebase } from '../../firebase';
 import { useRef, useEffect, useMemo } from 'react';
 import { updateProfile, getAuth } from 'firebase/auth';
-import styles from '../../../styles/setup.module.css'
+import styles from '../../../styles/form.module.css'
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { createAvatar } from '@dicebear/core';
