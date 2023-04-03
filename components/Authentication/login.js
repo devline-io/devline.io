@@ -68,6 +68,7 @@ export default function LoginForm()
                     <button className={styles.fullButton}>Login</button>
                 </form>
                 <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
+                <p><Link href=''>Forgot Password?</Link></p>
             </div>
         </div>
     )
