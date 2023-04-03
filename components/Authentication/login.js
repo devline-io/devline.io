@@ -29,7 +29,7 @@ export default function LoginForm()
     const handleLogin = async(event) => {
         event.preventDefault();
         const formEmail = email.current.value;
-        const formPassword = email.current.value;
+        const formPassword = password.current.value;
 
         try {
             await signInWithEmailAndPassword(auth, formEmail, formPassword);
