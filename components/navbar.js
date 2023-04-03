@@ -10,9 +10,17 @@ export default function Navbar(props) {
     const auth = getAuth();
 
     const profileMenu = useRef(null);
+    var OnOff = 0;
     const openProfileMenu = (e) => {
         e.preventDefault();
-        profileMenu.current.style.display = 'block';
+        if (OnOff == 0){
+            profileMenu.current.style.display = 'block';
+            OnOff++;
+        }
+        else {
+            profileMenu.current.style.display = 'none';
+            OnOff--;
+        }
     }    
 
     const handleSignOut = () => {
