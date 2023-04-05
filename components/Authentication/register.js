@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { container, fadeIn } from '../HomePage/homepage';
 import styles from '../../styles/form.module.css';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function RegisterForm( {darkForm} ) {
@@ -18,6 +18,10 @@ export default function RegisterForm( {darkForm} ) {
     const password = useRef(null);
     const confirmPassword = useRef(null);
 
+    const [emailErrorMessage, setEmailErrorMessage] = useState(null);
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+    const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState(null)
+
     useEffect(() => {
         if(user) {
             router.push('/profile/setup');
@@ -26,11 +30,20 @@ export default function RegisterForm( {darkForm} ) {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        try {
-            await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
-        } 
-        catch(error) {
-            console.log(error.code);
+        
+        const formEmail = email.current.value;
+        const formPassword = password.current.value;
+        const formConfirmPassword = confirmPassword.current.value;
+
+        if(formPassword == formConfirmPassword) {
+            try {
+                await createUserWithEmailAndPassword(auth, formEmail, formPassword );
+            } 
+            catch(error) {
+                console.log(error.code);
+            }
+        } else {
+            setConfirmPasswordErrorMessage('Passwords Do Not Match');
         }
     }
 
@@ -42,15 +55,15 @@ export default function RegisterForm( {darkForm} ) {
                 <form onSubmit={handleRegister} method='post'>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input required ref={email} type='email' id='email'/>
+                        <input ref={email} type='text' id='email'/>
                     </div>
                     <div>
                         <label htmlFor='password'>Password</label>
-                        <input required ref={password} type='password' id='password' />
+                        <input ref={password} type='password' id='password' />
                     </div>
                     <div>
                         <label htmlFor='confirm-password'>Confirm Your Password</label>
-                        <input required ref={confirmPassword} type='password' id='confirm-password'/>
+                        <input ref={confirmPassword} type='password' id='confirm-password'/>
                     </div>
                     <button className={styles.fullButton}>Sign Up</button>
                 </form>

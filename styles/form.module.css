@@ -59,6 +59,10 @@
     text-align: left;
 }
 
+.container > span {
+    color: #393053;
+}
+
 .container .fullButton {
     width: 100%;
 }
