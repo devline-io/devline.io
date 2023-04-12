@@ -26,6 +26,30 @@ export default function RegisterForm( {darkForm} ) {
         if(user) {
             router.push('/profile/setup');
         }
+
+        if(emailErrorMessage) {
+            email.current.style.borderColor = '#393053';
+            email.current.style.borderWidth = '3px';
+        } else {
+            email.current.style.borderColor = 'initial';
+            email.current.style.borderWidth = '2px';
+        }
+
+        if(passwordErrorMessage) {
+            password.current.style.borderColor = '#393053';
+            password.current.style.borderWidth = '3px';
+        } else {
+            password.current.style.borderColor = 'initial';
+            password.current.style.borderWidth = '2px';
+        }
+
+        if(confirmPasswordErrorMessage) {
+            confirmPassword.current.style.borderColor = '#393053';
+            confirmPassword.current.style.borderWidth = '3px';
+        } else {
+            confirmPassword.current.style.borderColor = 'initial';
+            confirmPassword.current.style.borderWidth = '2px';
+        }
     });
 
     const handleRegister = async (e) => {
@@ -43,6 +67,11 @@ export default function RegisterForm( {darkForm} ) {
                 console.log(error.code);
                 switch(error.code) {
                     case 'auth/invalid-email':
+                        setConfirmPasswordErrorMessage(null);
+                        setPasswordErrorMessage(null);
+                        setEmailErrorMessage('Enter An Email');
+                        break;
+                    case 'auth/missing-email':
                         setConfirmPasswordErrorMessage(null);
                         setPasswordErrorMessage(null);
                         setEmailErrorMessage('Enter An Email');
@@ -76,7 +105,7 @@ export default function RegisterForm( {darkForm} ) {
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <h1>Sign Up</h1>
-                <form onSubmit={handleRegister} method='post'>
+                <form className={styles.form} onSubmit={handleRegister} method='post'>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input ref={email} type='text' id='email'/>

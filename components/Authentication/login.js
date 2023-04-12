@@ -24,6 +24,22 @@ export default function LoginForm()
         if(user) {
             router.push('/profile');
         }
+
+        if(emailErrorMessage) {
+            email.current.style.borderColor = '#393053';
+            email.current.style.borderWidth = '3px';
+        } else {
+            email.current.style.borderColor = 'initial';
+            email.current.style.borderWidth = '2px';
+        }
+
+        if(passwordErrorMessage) {
+            password.current.style.borderColor = '#393053';
+            password.current.style.borderWidth = '3px';
+        } else {
+            password.current.style.borderColor = 'initial';
+            password.current.style.borderWidth = '2px';
+        }
     })
 
     const handleLogin = async(event) => {
@@ -38,9 +54,11 @@ export default function LoginForm()
             switch(error.code) {
                 //email
                 case 'auth/missing-email':
-                    setEmailErrorMessage('Enter An Email')
+                    setPasswordErrorMessage(null);
+                    setEmailErrorMessage('Enter An Email');
                     break;
                 case 'auth/invalid-email':
+                    setPasswordErrorMessage(null);
                     setEmailErrorMessage('Invalid Email');
                     break;
                 case 'auth/user-not-found':
@@ -69,7 +87,7 @@ export default function LoginForm()
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <h1>Login</h1>
-                <form onSubmit={handleLogin}>
+                <form className={styles.form} onSubmit={handleLogin}>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input id='email' type='text' ref={email}/>

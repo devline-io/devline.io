@@ -66,12 +66,12 @@ export default function SetupAccount() {
         <div className={styles.wrapper}>
             <div ref={container} className={styles.container}>
                 <h1>Lets Finish Setting Up Your Account</h1>
-                <form>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='username'>Username</label>
                         <input ref={username} required id='username' type='text'/>
                     </div>
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button>Submit</button>
                 </form>
             </div>
         </div>
