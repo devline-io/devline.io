@@ -1,5 +1,5 @@
 import { initFirebase } from '../../firebase';
-import { useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import { updateProfile, getAuth } from 'firebase/auth';
 import styles from '../../../styles/form.module.css'
 import { useRouter } from 'next/router';
@@ -17,6 +17,8 @@ export default function SetupAccount() {
     const router = useRouter();
 
     const [user, loading] = useAuthState(auth);
+
+    const [error, setError] = useState(null);
 
     const makeid = (length) => {
         let result = '';
@@ -46,19 +48,32 @@ export default function SetupAccount() {
         if(user && user.displayName) {
             router.push('/profile');
         }
+
+        if(error) {
+            username.current.style.borderColor = '#393053';
+            username.current.style.borderWidth = '3px';
+        } else {
+            username.current.style.borderColor = 'initial';
+            username.current.style.borderWidth = '2px';
+        }
     })
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        try {
-            await updateProfile(auth.currentUser, {
-                displayName:  username.current.value,
-                photoURL: avatar,
-            })
-            router.push('/profile');
-        }
-        catch(error) {
-            console.log(error.code);
+        if(username.current.value != '') {
+            setError(null);
+            try {
+                await updateProfile(auth.currentUser, {
+                    displayName:  username.current.value,
+                    photoURL: avatar,
+                })
+                router.push('/profile');
+            }
+            catch(error) {
+                console.log(error.code);
+            }
+        } else {
+            setError('Please Enter A Username');
         }
     }
 
@@ -69,7 +84,7 @@ export default function SetupAccount() {
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='username'>Username</label>
-                        <input ref={username} required id='username' type='text'/>
+                        <input ref={username} id='username' type='text'/>
                     </div>
                     <button>Submit</button>
                 </form>
