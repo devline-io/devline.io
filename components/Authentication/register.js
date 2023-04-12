@@ -41,8 +41,32 @@ export default function RegisterForm( {darkForm} ) {
             } 
             catch(error) {
                 console.log(error.code);
+                switch(error.code) {
+                    case 'auth/invalid-email':
+                        setConfirmPasswordErrorMessage(null);
+                        setPasswordErrorMessage(null);
+                        setEmailErrorMessage('Enter An Email');
+                        break;
+                    case 'auth/weak-password':
+                        setConfirmPasswordErrorMessage(null);
+                        setEmailErrorMessage(null);
+                        setPasswordErrorMessage('Password Must Be At Least 6 Characters Long');
+                        break;
+                    case 'auth/internal-error':
+                        setConfirmPasswordErrorMessage(null)
+                        console.log(formPassword, formEmail.includes('@'), formEmail.includes('.'));
+                        if(!(formEmail.includes('@') && formEmail.includes('.'))) {
+                            setPasswordErrorMessage(null);
+                            setEmailErrorMessage('Enter A Valid Email');
+                        } else if(formPassword == '') {
+                            setEmailErrorMessage(null);
+                            setPasswordErrorMessage('Enter A Password');
+                        }
+                }
             }
         } else {
+            setEmailErrorMessage(null);
+            setPasswordErrorMessage(null);
             setConfirmPasswordErrorMessage('Passwords Do Not Match');
         }
     }
@@ -56,14 +80,17 @@ export default function RegisterForm( {darkForm} ) {
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input ref={email} type='text' id='email'/>
+                        <span>{emailErrorMessage}</span>
                     </div>
                     <div>
                         <label htmlFor='password'>Password</label>
                         <input ref={password} type='password' id='password' />
+                        <span>{passwordErrorMessage}</span>
                     </div>
                     <div>
                         <label htmlFor='confirm-password'>Confirm Your Password</label>
                         <input ref={confirmPassword} type='password' id='confirm-password'/>
+                        <span>{confirmPasswordErrorMessage}</span>
                     </div>
                     <button className={styles.fullButton}>Sign Up</button>
                 </form>
@@ -78,15 +105,19 @@ export default function RegisterForm( {darkForm} ) {
         className={styles.heroForm}>
             <motion.div variants={fadeIn}>
                 <label htmlFor='email'>Email</label>
-                <input required ref={email} type='email' id='email'/>
+                <input ref={email} type='text' id='email'/>
+                <span>{emailErrorMessage}</span>
             </motion.div>
             <motion.div variants={fadeIn}>
                 <label htmlFor='password'>Password</label>
-                <input required ref={password} type='password' id='password' />
+                <input ref={password} type='password' id='password' />
+                <span>{passwordErrorMessage}</span>
+
             </motion.div>
             <motion.div variants={fadeIn}>
                 <label htmlFor='confirm-password'>Confirm Your Password</label>
-                <input required ref={confirmPassword} type='password' id='confirm-password'/>
+                <input ref={confirmPassword} type='password' id='confirm-password'/>
+                <span>{confirmPasswordErrorMessage}</span>
             </motion.div>
             <motion.button variants={fadeIn}>Sign Up</motion.button>
         </motion.form>

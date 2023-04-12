@@ -35,12 +35,10 @@ export default function LoginForm()
             await signInWithEmailAndPassword(auth, formEmail, formPassword);
         } 
         catch(error) {
-            console.log(error.code);
-
             switch(error.code) {
                 //email
                 case 'auth/missing-email':
-                    setEmailErrorMessage('Please Enter An Email')
+                    setEmailErrorMessage('Enter An Email')
                     break;
                 case 'auth/invalid-email':
                     setEmailErrorMessage('Invalid Email');
@@ -57,10 +55,10 @@ export default function LoginForm()
                 case 'auth/internal-error':
                     setEmailErrorMessage(null);
                     if(formPassword == '') {
-                        setPasswordErrorMessage('Please Enter A Password');
+                        setPasswordErrorMessage('Enter A Password');
                         break;
                     }
-                    setEmailErrorMessage('Internal Error: Please Try Again Later');
+                    setEmailErrorMessage('Internal Error: Try Again Later');
                     setPasswordErrorMessage(null);
             }
         }
