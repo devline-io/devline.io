@@ -85,6 +85,7 @@ export default function SetupAccount() {
                     <div>
                         <label htmlFor='username'>Username</label>
                         <input ref={username} id='username' type='text'/>
+                        <span>{error}</span>
                     </div>
                     <button>Submit</button>
                 </form>
