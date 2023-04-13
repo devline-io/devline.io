@@ -70,7 +70,7 @@
     overflow: visible;
 }
 
-.hero div {
+.hero > div {
     max-width: 622.5px;
     width: 100%;
 }

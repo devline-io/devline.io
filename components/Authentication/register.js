@@ -138,6 +138,7 @@ export default function RegisterForm( {darkForm} ) {
                         </div>
                     </div>
                 </div>
+                <hr/>
                 <p>Already have an account? <Link href='/login'>Login</Link></p>
             </div>
         </div>
@@ -145,25 +146,34 @@ export default function RegisterForm( {darkForm} ) {
     }
 
     return (
-        <motion.form onSubmit={handleRegister} method='post' initial="hidden" whileInView="show" delay={0.5} variants={container}
-        className={styles.heroForm}>
-            <motion.div variants={fadeIn}>
-                <label htmlFor='email'>Email</label>
-                <input ref={email} type='text' id='email'/>
-                <span>{emailErrorMessage}</span>
+        <div className={styles.heroFormWrapper}>
+            <motion.form onSubmit={handleRegister} method='post' initial="hidden" whileInView="show" delay={0.5} variants={container}
+            className={styles.heroForm}>
+                <motion.div variants={fadeIn}>
+                    <label htmlFor='email'>Email</label>
+                    <input ref={email} type='text' id='email'/>
+                    <span>{emailErrorMessage}</span>
+                </motion.div>
+                <motion.div variants={fadeIn}>
+                    <label htmlFor='password'>Password</label>
+                    <input ref={password} type='password' id='password' />
+                    <span>{passwordErrorMessage}</span>
+                </motion.div>
+                <motion.div variants={fadeIn}>
+                    <label htmlFor='confirm-password'>Confirm Your Password</label>
+                    <input ref={confirmPassword} type='password' id='confirm-password'/>
+                    <span>{confirmPasswordErrorMessage}</span>
+                </motion.div>
+                <motion.button variants={fadeIn}>Sign Up</motion.button>
+            </motion.form>
+            <motion.div className={styles.otherAuth} initial="hidden" whileInView="show" delay={0.5} variants={container}>
+                <motion.p variants={fadeIn}>Or Sign Up With:</motion.p>
+                <div className={styles.authOptions}>
+                    <motion.div onClick={googleLogIn} className={styles.authLogo} variants={fadeIn}>
+                        <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                    </motion.div>
+                </div>
             </motion.div>
-            <motion.div variants={fadeIn}>
-                <label htmlFor='password'>Password</label>
-                <input ref={password} type='password' id='password' />
-                <span>{passwordErrorMessage}</span>
-
-            </motion.div>
-            <motion.div variants={fadeIn}>
-                <label htmlFor='confirm-password'>Confirm Your Password</label>
-                <input ref={confirmPassword} type='password' id='confirm-password'/>
-                <span>{confirmPasswordErrorMessage}</span>
-            </motion.div>
-            <motion.button variants={fadeIn}>Sign Up</motion.button>
-        </motion.form>
+        </div>
     )
 }
