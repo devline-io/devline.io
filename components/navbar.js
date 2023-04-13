@@ -1,25 +1,29 @@
 import { getAuth, signOut } from 'firebase/auth';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styles from '../styles/navbar.module.css';
 import { initFirebase } from './firebase';
 import Link from 'next/link';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Navbar(props) {
     initFirebase();
     const auth = getAuth();
 
+    const [user] = useAuthState(auth);
+
     const profileMenu = useRef(null);
-    var OnOff = 0;
+    const [menuToggle, setMenuToggle] = useState(true);
+
     const openProfileMenu = (e) => {
         e.preventDefault();
-        if (OnOff == 0){
+        if (menuToggle){
             profileMenu.current.style.display = 'block';
-            OnOff++;
+            setMenuToggle(false);
         }
         else {
             profileMenu.current.style.display = 'none';
-            OnOff--;
+            setMenuToggle(true);
         }
     }    
 
@@ -41,6 +45,7 @@ export default function Navbar(props) {
                     {props.profilePic && <div className={styles.profileContainer}>
                         <Image onClick={openProfileMenu} src={props.profilePic} width={48} height={48}/>
                         <div ref={profileMenu} className={styles.profileMenu}>
+                            <p>{user.displayName}</p>
                             <Link onClick={handleSignOut} href='/'>Sign Out</Link>
                         </div>
                     </div>}

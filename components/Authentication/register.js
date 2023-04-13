@@ -1,5 +1,5 @@
 import { initFirebase } from '../firebase';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -7,11 +7,14 @@ import { container, fadeIn } from '../HomePage/homepage';
 import styles from '../../styles/form.module.css';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function RegisterForm( {darkForm} ) {
     initFirebase();
     const auth = getAuth();
     const [user] = useAuthState(auth);
+    const google = new GoogleAuthProvider();
+
     const router = useRouter();
 
     const email = useRef(null);
@@ -100,6 +103,10 @@ export default function RegisterForm( {darkForm} ) {
         }
     }
 
+    const googleLogIn = () => {
+        signInWithRedirect(auth, google);
+    }
+
     if(darkForm) {
         return (
         <div className={styles.wrapper}>
@@ -123,6 +130,14 @@ export default function RegisterForm( {darkForm} ) {
                     </div>
                     <button className={styles.fullButton}>Sign Up</button>
                 </form>
+                <div className={styles.otherAuth}>
+                    <p>Or Sign Up With:</p>
+                    <div className={styles.authOptions}>
+                        <div onClick={googleLogIn} className={styles.authLogo}>
+                            <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                        </div>
+                    </div>
+                </div>
                 <p>Already have an account? <Link href='/login'>Login</Link></p>
             </div>
         </div>

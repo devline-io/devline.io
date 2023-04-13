@@ -94,3 +94,20 @@
     margin: 0;
     width: 100%;
 }
+
+.otherAuth p {
+    margin-right: 0;
+    text-align: center;
+}
+
+.authLogo {
+    position: relative;
+    aspect-ratio: 1/1;
+    width: 4rem;
+}
+
+.authOptions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
