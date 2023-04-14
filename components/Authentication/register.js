@@ -146,9 +146,8 @@ export default function RegisterForm( {darkForm} ) {
     }
 
     return (
-        <div className={styles.heroFormWrapper}>
-            <motion.form onSubmit={handleRegister} method='post' initial="hidden" whileInView="show" delay={0.5} variants={container}
-            className={styles.heroForm}>
+        <motion.div className={styles.heroFormWrapper} initial="hidden" whileInView="show" delay={0.5} variants={container}>
+            <form onSubmit={handleRegister} method='post'className={styles.heroForm}>
                 <motion.div variants={fadeIn}>
                     <label htmlFor='email'>Email</label>
                     <input ref={email} type='text' id='email'/>
@@ -165,8 +164,8 @@ export default function RegisterForm( {darkForm} ) {
                     <span>{confirmPasswordErrorMessage}</span>
                 </motion.div>
                 <motion.button variants={fadeIn}>Sign Up</motion.button>
-            </motion.form>
-            <motion.div className={styles.otherAuth} initial="hidden" whileInView="show" delay={0.5} variants={container}>
+            </form>
+            <motion.div className={styles.otherAuth}>
                 <motion.p variants={fadeIn}>Or Sign Up With:</motion.p>
                 <div className={styles.authOptions}>
                     <motion.div onClick={googleLogIn} className={styles.authLogo} variants={fadeIn}>
@@ -174,6 +173,6 @@ export default function RegisterForm( {darkForm} ) {
                     </motion.div>
                 </div>
             </motion.div>
-        </div>
+        </motion.div>
     )
 }

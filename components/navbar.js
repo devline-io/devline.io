@@ -5,12 +5,15 @@ import styles from '../styles/navbar.module.css';
 import { initFirebase } from './firebase';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useRouter } from 'next/router';
 
 export default function Navbar(props) {
     initFirebase();
     const auth = getAuth();
 
     const [user] = useAuthState(auth);
+
+    const router = useRouter();
 
     const profileMenu = useRef(null);
     const [menuToggle, setMenuToggle] = useState(true);
@@ -29,6 +32,7 @@ export default function Navbar(props) {
 
     const handleSignOut = () => {
         signOut(auth);
+        router.push('/');
     }
     
     return (
