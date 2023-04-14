@@ -83,6 +83,10 @@ export default function SignInForm()
 
     }
 
+    const googleLogIn = () => {
+        signInWithRedirect(auth, google);
+    }
+
     return(
         <div className={styles.wrapper}>
             <div className={styles.container}>
