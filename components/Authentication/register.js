@@ -139,7 +139,7 @@ export default function RegisterForm( {darkForm} ) {
                     </div>
                 </div>
                 <hr/>
-                <p>Already have an account? <Link href='/login'>Login</Link></p>
+                <p>Already have an account? <Link href='/sign-in'>Sign In</Link></p>
             </div>
         </div>
         );

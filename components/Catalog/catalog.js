@@ -50,7 +50,7 @@ export default function Catalog() {
                 <title>Devline.io | Catalog</title>
             </Head>
 
-            <Navbar navItems={navItems} button={<button onClick={() => router.push('/login')}>Sign In</button>}/>
+            <Navbar navItems={navItems} button={<button onClick={() => router.push('/sign-in')}>Sign In</button>}/>
 
             <main>
                 <motion.div className={styles.title} initial="hidden" whileInView="show" variants={container}>

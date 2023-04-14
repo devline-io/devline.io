@@ -6,7 +6,7 @@ import { initFirebase } from '../firebase';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import Link from 'next/link';
 
-export default function LoginForm()
+export default function SignInForm()
 {
     initFirebase();
     const auth = getAuth();
@@ -100,9 +100,18 @@ export default function LoginForm()
                     </div>
                     <button className={styles.fullButton}>Login</button>
                 </form>
+                <div className={styles.otherAuth}>
+                    <p>Or Sign In With:</p>
+                    <div className={styles.authOptions}>
+                        <div onClick={googleLogIn} className={styles.authLogo}>
+                            <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
                 <div>
                     <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
-                    <Link href='/password-reset'>Reset Password</Link>
+                    <Link className={styles.resetPassword} href='/password-reset'>Reset Password</Link>
                 </div>
             </div>
         </div>
