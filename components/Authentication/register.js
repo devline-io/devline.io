@@ -158,15 +158,15 @@ export default function RegisterForm( {darkForm} ) {
                 </form>
                 <div className={styles.otherAuth}>
                     <p>Or Sign Up With:</p>
-                    <span>{providerErrorMessage}</span>
                     <div className={styles.authOptions}>
-                        <div onClick={providerLogIn(google)} className={styles.authLogo}>
+                        <div onClick={() => providerLogIn(google)} className={styles.authLogo}>
                             <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
                         </div>
-                        <div onClick={providerLogIn(microsoft)} className={styles.authLogo}>
+                        <div onClick={() => providerLogIn(microsoft)} className={styles.authLogo}>
                             <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                     </div>
+                    <span>{providerErrorMessage}</span>
                 </div>
                 <hr/>
                 <p>Already have an account? <Link href='/sign-in'>Sign In</Link></p>
@@ -197,7 +197,6 @@ export default function RegisterForm( {darkForm} ) {
             </form>
             <motion.div className={styles.otherAuth}>
                 <motion.p variants={fadeIn}>Or Sign Up With:</motion.p>
-                <span>{providerErrorMessage}</span>
                 <div className={styles.authOptions}>
                     <motion.div onClick={() => providerLogIn(google)} className={styles.authLogo} variants={fadeIn}>
                         <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
@@ -206,6 +205,7 @@ export default function RegisterForm( {darkForm} ) {
                         <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                     </motion.div>
                 </div>
+                <span>{providerErrorMessage}</span>
             </motion.div>
         </motion.div>
     )

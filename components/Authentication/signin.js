@@ -24,6 +24,7 @@ export default function SignInForm()
 
     const [emailErrorMessage, setEmailErrorMessage] = useState(null);
     const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+    const [providerErrorMessage, setProviderErrorMessage] = useState(null);
 
     useEffect(() => {
         if(user) {
@@ -137,6 +138,7 @@ export default function SignInForm()
                             <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                     </div>
+                    <span>{providerErrorMessage}</span>
                 </div>
                 <hr/>
                 <div>
