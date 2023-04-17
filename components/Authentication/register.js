@@ -1,5 +1,5 @@
 import { initFirebase } from '../firebase';
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -15,6 +15,7 @@ export default function RegisterForm( {darkForm} ) {
     const [user] = useAuthState(auth);
     const google = new GoogleAuthProvider();
     const microsoft = new OAuthProvider('microsoft.com');
+    const github = new GithubAuthProvider();
 
     const router = useRouter();
 
@@ -165,6 +166,9 @@ export default function RegisterForm( {darkForm} ) {
                         <div onClick={() => providerLogIn(microsoft)} className={styles.authLogo}>
                             <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
+                        <div onClick={() => providerLogIn(github)} className={styles.authLogo}>
+                            <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
+                        </div>
                     </div>
                     <span>{providerErrorMessage}</span>
                 </div>
@@ -202,6 +206,9 @@ export default function RegisterForm( {darkForm} ) {
                         <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
                     </motion.div>
                     <motion.div onClick={() => providerLogIn(microsoft)} className={styles.authLogo} variants={fadeIn}>
+                        <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
+                    </motion.div>
+                    <motion.div onClick={() => providerLogIn(github)} className={styles.authLogo} variants={fadeIn}>
                         <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                     </motion.div>
                 </div>

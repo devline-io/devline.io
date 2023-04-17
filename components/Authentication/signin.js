@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
-import { GoogleAuthProvider, OAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, OAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,6 +13,7 @@ export default function SignInForm()
     const auth = getAuth();
     const google = new GoogleAuthProvider();
     const microsoft = new OAuthProvider('microsoft.com');
+    const github = new GithubAuthProvider();
 
     const router = useRouter();
     
@@ -135,6 +136,9 @@ export default function SignInForm()
                             <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
                         </div>
                         <div onClick={() => providerLogIn(microsoft)} className={styles.authLogo}>
+                            <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
+                        </div>
+                        <div onClick={() => providerLogIn(github)} className={styles.authLogo}>
                             <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                     </div>
