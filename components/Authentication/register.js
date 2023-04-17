@@ -1,5 +1,5 @@
 import { initFirebase } from '../firebase';
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ export default function RegisterForm( {darkForm} ) {
     const auth = getAuth();
     const [user] = useAuthState(auth);
     const google = new GoogleAuthProvider();
+    const microsoft = new OAuthProvider('microsoft.com');
 
     const router = useRouter();
 
@@ -108,9 +109,9 @@ export default function RegisterForm( {darkForm} ) {
         }
     }
 
-    const googleLogIn = async() => {
+    const providerLogIn = async(provider) => {
         try {
-            await signInWithPopup(auth, google);
+            await signInWithPopup(auth, provider);
             router.push('/profile');
         } 
         catch(error) {
@@ -144,8 +145,11 @@ export default function RegisterForm( {darkForm} ) {
                 <div className={styles.otherAuth}>
                     <p>Or Sign Up With:</p>
                     <div className={styles.authOptions}>
-                        <div onClick={googleLogIn} className={styles.authLogo}>
+                        <div onClick={providerLogIn(google)} className={styles.authLogo}>
                             <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                        </div>
+                        <div onClick={providerLogIn(microsoft)} className={styles.authLogo}>
+                            <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                     </div>
                 </div>
@@ -179,7 +183,10 @@ export default function RegisterForm( {darkForm} ) {
             <motion.div className={styles.otherAuth}>
                 <motion.p variants={fadeIn}>Or Sign Up With:</motion.p>
                 <div className={styles.authOptions}>
-                    <motion.div onClick={googleLogIn} className={styles.authLogo} variants={fadeIn}>
+                    <motion.div onClick={providerLogIn(google)} className={styles.authLogo} variants={fadeIn}>
+                        <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                    </motion.div>
+                    <motion.div onClick={providerLogIn(microsoft)} className={styles.authLogo} variants={fadeIn}>
                         <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
                     </motion.div>
                 </div>

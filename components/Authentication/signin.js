@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
-import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, OAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,6 +12,7 @@ export default function SignInForm()
     initFirebase();
     const auth = getAuth();
     const google = new GoogleAuthProvider();
+    const microsoft = new OAuthProvider('microsoft.com');
 
     const router = useRouter();
     
@@ -87,9 +88,9 @@ export default function SignInForm()
 
     }
 
-    const googleLogIn = async() => {
+    const providerLogIn = async(provider) => {
         try {
-            await signInWithPopup(auth, google);
+            await signInWithPopup(auth, provider);
             router.push('/profile');
         } 
         catch(error) {
@@ -117,8 +118,11 @@ export default function SignInForm()
                 <div className={styles.otherAuth}>
                     <p>Or Sign In With:</p>
                     <div className={styles.authOptions}>
-                        <div onClick={googleLogIn} className={styles.authLogo}>
+                        <div onClick={providerLogIn(google)} className={styles.authLogo}>
                             <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                        </div>
+                        <div onClick={providerLogIn(microsoft)} className={styles.authLogo}>
+                            <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                     </div>
                 </div>
