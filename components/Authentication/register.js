@@ -1,5 +1,5 @@
 import { initFirebase } from '../firebase';
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -69,6 +69,11 @@ export default function RegisterForm( {darkForm} ) {
             catch(error) {
                 console.log(error.code);
                 switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        setConfirmPasswordErrorMessage(null);
+                        setPasswordErrorMessage(null);
+                        setEmailErrorMessage('An Account Using This Email Already Exists')
+                        break;
                     case 'auth/invalid-email':
                         setConfirmPasswordErrorMessage(null);
                         setPasswordErrorMessage(null);
@@ -103,8 +108,14 @@ export default function RegisterForm( {darkForm} ) {
         }
     }
 
-    const googleLogIn = () => {
-        signInWithRedirect(auth, google);
+    const googleLogIn = async() => {
+        try {
+            await signInWithPopup(auth, google);
+            router.push('/profile');
+        } 
+        catch(error) {
+            console.log(error.code);
+        }
     }
 
     if(darkForm) {

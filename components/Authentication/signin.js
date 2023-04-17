@@ -3,19 +3,23 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../firebase';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function SignInForm()
 {
     initFirebase();
     const auth = getAuth();
+    const google = new GoogleAuthProvider();
+
     const router = useRouter();
     
     const email = useRef();
     const password = useRef();
 
     const [user] = useAuthState(auth);
+    
 
     const [emailErrorMessage, setEmailErrorMessage] = useState(null);
     const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
@@ -83,8 +87,14 @@ export default function SignInForm()
 
     }
 
-    const googleLogIn = () => {
-        signInWithRedirect(auth, google);
+    const googleLogIn = async() => {
+        try {
+            await signInWithPopup(auth, google);
+            router.push('/profile');
+        } 
+        catch(error) {
+            console.log(error.code);
+        }
     }
 
     return(
