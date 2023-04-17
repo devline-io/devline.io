@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
-import Register from '../Authentication/register'
+import Register from '../Authentication/register';
+import Link from 'next/link';
 
 export const container = {
     hidden: { opacity: 1},
@@ -127,7 +128,7 @@ export default function HomePage() {
                                 <li className={styles.strikethrough}>Written and Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
                             </ul>
-                            <button>Select</button>
+                            <Link href='/register/'><button>Select</button></Link>
                         </motion.div>
                         <motion.div className={styles.featuredContainer} animate={{scale: 1.1}}variants={fadeIn} whileHover={{scale: 1.2}} transition={{duration: 0.3}}>
                             <div className={styles.featured}>
@@ -141,7 +142,7 @@ export default function HomePage() {
                                     <li>Written and Video Tutorials</li>
                                     <li>Project Based Learning</li>
                                 </ul>
-                                <button>Select</button>
+                                <Link href='/register/'><button>Select</button></Link>
                             </div>
                         </motion.div>
                         <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
@@ -155,7 +156,7 @@ export default function HomePage() {
                                 <li>Written and Video Tutorials</li>
                                 <li>Project Based Learning</li>
                             </ul>
-                            <button>Select</button>
+                            <Link href='/register/'><button>Select</button></Link>
                         </motion.div>
                     </section>
                 </motion.div>
