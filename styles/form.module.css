@@ -121,6 +121,7 @@
     aspect-ratio: 1/1;
     width: 4rem;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .authOptions {
@@ -128,6 +129,7 @@
     align-items: center;
     justify-content: center;
     overflow: visible;
+    gap: 1rem;
 }
 
 .heroFormWrapper .otherAuth p {

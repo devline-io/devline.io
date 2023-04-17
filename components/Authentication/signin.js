@@ -139,7 +139,7 @@ export default function SignInForm()
                             <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                         <div onClick={() => providerLogIn(github)} className={styles.authLogo}>
-                            <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
+                            <Image src='/authentication/github.svg' fill/>
                         </div>
                     </div>
                     <span>{providerErrorMessage}</span>
