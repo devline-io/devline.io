@@ -25,6 +25,7 @@ export default function RegisterForm( {darkForm} ) {
     const [emailErrorMessage, setEmailErrorMessage] = useState(null);
     const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState(null)
+    const [providerErrorMessage, setProviderErrorMessage] = useState(null);
 
     useEffect(() => {
         if(user) {
@@ -71,26 +72,31 @@ export default function RegisterForm( {darkForm} ) {
                 console.log(error.code);
                 switch(error.code) {
                     case 'auth/email-already-in-use':
+                        setProviderErrorMessage(null);
                         setConfirmPasswordErrorMessage(null);
                         setPasswordErrorMessage(null);
                         setEmailErrorMessage('An Account Using This Email Already Exists')
                         break;
                     case 'auth/invalid-email':
+                        setProviderErrorMessage(null);
                         setConfirmPasswordErrorMessage(null);
                         setPasswordErrorMessage(null);
                         setEmailErrorMessage('Enter An Email');
                         break;
                     case 'auth/missing-email':
+                        setProviderErrorMessage(null);
                         setConfirmPasswordErrorMessage(null);
                         setPasswordErrorMessage(null);
                         setEmailErrorMessage('Enter An Email');
                         break;
                     case 'auth/weak-password':
+                        setProviderErrorMessage(null);
                         setConfirmPasswordErrorMessage(null);
                         setEmailErrorMessage(null);
                         setPasswordErrorMessage('Password Must Be At Least 6 Characters Long');
                         break;
                     case 'auth/internal-error':
+                        setProviderErrorMessage(null);
                         setConfirmPasswordErrorMessage(null)
                         console.log(formPassword, formEmail.includes('@'), formEmail.includes('.'));
                         if(!(formEmail.includes('@') && formEmail.includes('.'))) {
@@ -105,6 +111,7 @@ export default function RegisterForm( {darkForm} ) {
         } else {
             setEmailErrorMessage(null);
             setPasswordErrorMessage(null);
+            setProviderErrorMessage(null);
             setConfirmPasswordErrorMessage('Passwords Do Not Match');
         }
     }
@@ -116,6 +123,13 @@ export default function RegisterForm( {darkForm} ) {
         } 
         catch(error) {
             console.log(error.code);
+            switch(error.code) {
+                case 'auth/account-exists-with-different-credential':
+                    setConfirmPasswordErrorMessage(null);
+                    setPasswordErrorMessage(null);
+                    setEmailErrorMessage(null)
+                    setProviderErrorMessage('Account Exists Using A Different Provider');
+            }
         }
     }
 
@@ -144,6 +158,7 @@ export default function RegisterForm( {darkForm} ) {
                 </form>
                 <div className={styles.otherAuth}>
                     <p>Or Sign Up With:</p>
+                    <span>{providerErrorMessage}</span>
                     <div className={styles.authOptions}>
                         <div onClick={providerLogIn(google)} className={styles.authLogo}>
                             <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
@@ -182,6 +197,7 @@ export default function RegisterForm( {darkForm} ) {
             </form>
             <motion.div className={styles.otherAuth}>
                 <motion.p variants={fadeIn}>Or Sign Up With:</motion.p>
+                <span>{providerErrorMessage}</span>
                 <div className={styles.authOptions}>
                     <motion.div onClick={() => providerLogIn(google)} className={styles.authLogo} variants={fadeIn}>
                         <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>

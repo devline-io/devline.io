@@ -59,29 +59,35 @@ export default function SignInForm()
             switch(error.code) {
                 //email
                 case 'auth/missing-email':
+                    setProviderErrorMessage(null);
                     setPasswordErrorMessage(null);
                     setEmailErrorMessage('Enter An Email');
                     break;
                 case 'auth/invalid-email':
+                    setProviderErrorMessage(null);
                     setPasswordErrorMessage(null);
                     setEmailErrorMessage('Invalid Email');
                     break;
                 case 'auth/user-not-found':
+                    setProviderErrorMessage(null);
                     setPasswordErrorMessage(null);
                     setEmailErrorMessage('User With This Email Not Found');
                     break;
                 //password
                 case 'auth/wrong-password':
+                    setProviderErrorMessage(null);
                     setEmailErrorMessage(null);
                     setPasswordErrorMessage('Wrong Password');
                     break;
                 case 'auth/internal-error':
+                    setProviderErrorMessage(null);
                     setEmailErrorMessage(null);
                     if(formPassword == '') {
                         setPasswordErrorMessage('Enter A Password');
                         break;
                     }
                     setEmailErrorMessage('Internal Error: Try Again Later');
+                    setProviderErrorMessage(null);
                     setPasswordErrorMessage(null);
             }
         }
@@ -95,6 +101,12 @@ export default function SignInForm()
         } 
         catch(error) {
             console.log(error.code);
+            switch(error.code) {
+                case 'auth/account-exists-with-different-credential':
+                    setPasswordErrorMessage(null);
+                    setEmailErrorMessage(null)
+                    setProviderErrorMessage('Account Exists Using A Different Provider');
+            }
         }
     }
 
