@@ -183,11 +183,11 @@ export default function RegisterForm( {darkForm} ) {
             <motion.div className={styles.otherAuth}>
                 <motion.p variants={fadeIn}>Or Sign Up With:</motion.p>
                 <div className={styles.authOptions}>
-                    <motion.div onClick={providerLogIn(google)} className={styles.authLogo} variants={fadeIn}>
+                    <motion.div onClick={() => providerLogIn(google)} className={styles.authLogo} variants={fadeIn}>
                         <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
                     </motion.div>
-                    <motion.div onClick={providerLogIn(microsoft)} className={styles.authLogo} variants={fadeIn}>
-                        <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
+                    <motion.div onClick={() => providerLogIn(microsoft)} className={styles.authLogo} variants={fadeIn}>
+                        <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                     </motion.div>
                 </div>
             </motion.div>

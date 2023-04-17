@@ -20,7 +20,7 @@ export default function Profile() {
     
     useEffect(() => {
         if(user) {
-            if(!user.displayName) {
+            if(!user.displayName || !user.photoURL) {
                 router.push('/profile/setup');
             } else {
                 setUsername(user.displayName);

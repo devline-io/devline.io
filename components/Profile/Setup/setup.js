@@ -45,7 +45,7 @@ export default function SetupAccount() {
             router.push('/');
         }
 
-        if(user && user.displayName) {
+        if(user && user.displayName && user.photoURL) {
             router.push('/profile');
         }
 

@@ -118,10 +118,10 @@ export default function SignInForm()
                 <div className={styles.otherAuth}>
                     <p>Or Sign In With:</p>
                     <div className={styles.authOptions}>
-                        <div onClick={providerLogIn(google)} className={styles.authLogo}>
+                        <div onClick={() => providerLogIn(google)} className={styles.authLogo}>
                             <Image src='/authentication/btn_google_dark_normal_ios.svg' fill/>
                         </div>
-                        <div onClick={providerLogIn(microsoft)} className={styles.authLogo}>
+                        <div onClick={() => providerLogIn(microsoft)} className={styles.authLogo}>
                             <Image src='/authentication/ms-symbollockup_mssymbol_19.svg' fill/>
                         </div>
                     </div>
