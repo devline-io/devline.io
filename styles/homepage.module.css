@@ -70,29 +70,8 @@
     overflow: visible;
 }
 
-.hero div, .heroForm button {
+.hero > div {
     max-width: 622.5px;
-    width: 100%;
-}
-
-.heroForm label {
-    display: block;
-    font-weight: 700;
-}
-
-.heroForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    gap: 1rem;
-    width: 100%;
-    height: 100%;
-}
-
-.heroForm input {
-    padding: 0.5rem 1rem;
-    margin: 0;
     width: 100%;
 }
 

@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
-import Register from '../Authentication/register'
+import Register from '../Authentication/register';
+import Link from 'next/link';
 
 export const container = {
     hidden: { opacity: 1},
@@ -69,7 +70,7 @@ export default function HomePage() {
                 <title>Devline.io</title>
                 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
             </Head>
-            <Navbar navItems={navItems} navbarRef={nav} button={<button onClick={() => router.push('/login')}>Sign In</button>}/>
+            <Navbar navItems={navItems} navbarRef={nav} button={<button onClick={() => router.push('/sign-in')}>Sign In</button>}/>
             <main>
                 <div id='home'className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
@@ -77,7 +78,7 @@ export default function HomePage() {
                         <motion.p variants={fadeIn} className={styles.subtitle}>Learn to code the <span>RIGHT WAY</span> with engaging, interactive tutorials</motion.p>
                     </motion.div>
 
-                    <Register/>
+                    <Register darkForm={false}/>
                 </div>
 
                 <Darkdivider dividerPosition='top'/>
@@ -127,7 +128,7 @@ export default function HomePage() {
                                 <li className={styles.strikethrough}>Written and Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
                             </ul>
-                            <button>Select</button>
+                            <Link href='/sign-up'><button>Select</button></Link>
                         </motion.div>
                         <motion.div className={styles.featuredContainer} animate={{scale: 1.1}}variants={fadeIn} whileHover={{scale: 1.2}} transition={{duration: 0.3}}>
                             <div className={styles.featured}>
@@ -141,7 +142,7 @@ export default function HomePage() {
                                     <li>Written and Video Tutorials</li>
                                     <li>Project Based Learning</li>
                                 </ul>
-                                <button>Select</button>
+                                <Link href='/sign-up'><button>Select</button></Link>
                             </div>
                         </motion.div>
                         <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
@@ -155,7 +156,7 @@ export default function HomePage() {
                                 <li>Written and Video Tutorials</li>
                                 <li>Project Based Learning</li>
                             </ul>
-                            <button>Select</button>
+                            <Link href='/sign-up'><button>Select</button></Link>
                         </motion.div>
                     </section>
                 </motion.div>
