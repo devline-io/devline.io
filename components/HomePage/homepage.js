@@ -24,7 +24,7 @@ export const fadeIn = {
             }}
 };
 
-export default function HomePage() {
+export default function HomePage({courses}) {
     const router = useRouter();
 
     const catalog = useRef(null);
@@ -87,8 +87,9 @@ export default function HomePage() {
                     <motion.h2 ref={catalog} variants={fadeIn}>./Catalog</motion.h2>
                     <motion.div>
                         <motion.div className={styles.carousel} initial="hidden" whileInView="show" variants={container}>
-                            <CatalogImages fadeIn={fadeIn} hasDescription={false} />
-                            <CatalogImages fadeIn={fadeIn} hasDescription={false} />
+                            <CatalogImages courses={courses} fadeIn={fadeIn} hasDescription={false} />
+                            <CatalogImages courses={courses} fadeIn={fadeIn} hasDescription={false} />
+                            <CatalogImages courses={courses} fadeIn={fadeIn} hasDescription={false} />
                         </motion.div>
                     </motion.div>
                     <div className={styles.buttonContainer}>

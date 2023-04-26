@@ -22,7 +22,7 @@ export async function getServerSideProps() {
     })
 
     for(const course in courses) {
-        await getDownloadURL(ref(storage, `Courses/${courses[course].name}/placeholderThumbnail1.png`))
+        await getDownloadURL(ref(storage, `Courses/${courses[course].name}/thumbnail.png`))
         .then((image) => {
             courses[course].thumbnail = image;
         });

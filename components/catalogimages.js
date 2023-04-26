@@ -16,17 +16,13 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
     if(hasDescription == false) {
         return (
             courses.map((course, index) => (
-            <motion.div className={containerClass} variants={fadeIn} key={thumbnail}>
-                <Image alt={course.thumbnail + index} src={course.thumbnail} fill sizes='25vw' />
-            </motion.div>
-        ))
+                <motion.div className={containerClass} variants={fadeIn} key={course.thumbnail + index}>
+                    <Image alt={course} src={course.thumbnail} fill sizes='25vw' />
+                </motion.div>
+            ))
         );
     }
-    console.log(courses);
-    courses.map(course => {
-        console.log(course.name)
-    })
-    
+
     return (
         courses.map((course, index) => (
             <motion.div key={course + index}
@@ -42,6 +38,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
                     <Image alt={course} src={course.thumbnail} fill sizes='25vw' />
                 </div>
                 <h3>{course.name}</h3>
+                <p>Level: {course.data.level}</p>
                 <p>{course.data.description}</p>
             </motion.div>
         ))
