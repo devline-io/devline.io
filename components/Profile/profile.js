@@ -6,8 +6,9 @@ import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
 import Navbar from '../navbar';
+import CatalogImages from '../catalogimages';
 
-export default function Profile() {
+export default function Profile({courses}) {
     initFirebase();
     const auth = getAuth();
     const router = useRouter();
@@ -17,6 +18,35 @@ export default function Profile() {
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
+
+    const imageRefs = [
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null)
+    ];
+
+    useEffect(() => {
+        for (let index = 0; index < imageRefs.length; index++) {
+            if(imageRefs[index].current != null) {
+                let ref = imageRefs[index].current;
+                ref.addEventListener('mousemove', (event) => {
+                    const width   = ref.offsetWidth;
+                    const height  = ref.offsetHeight;
+                    const centerX = ref.offsetLeft + width/2;
+                    const centerY = ref.offsetTop + height/2;
+                    const mouseX  = event.pageX - centerX;
+                    const mouseY  = event.pageY - centerY;
+                    const rotateX = -10 * mouseY / (height / 2);
+                    const rotateY = 10 * mouseX / (width / 2)
+
+                    ref.style.transform = `perspective(1000px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+            }
+        }
+    });
     
     useEffect(() => {
         if(user) {
@@ -53,7 +83,7 @@ export default function Profile() {
                     <h1>Get Started</h1>
                     <div>
                         <h2>Recommended Courses</h2>
-
+                        <CatalogImages targetLevel={0}/>
                     </div>
                     <div>
                         <h2>Recommended Articles</h2>

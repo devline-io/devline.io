@@ -1,7 +1,8 @@
 import Navbar from '../navbar';
 import Head from 'next/head';
 import styles from '../../styles/homepage.module.css';
-import Darkdivider from '../darkdivider';
+import { TopDivider } from '../darkdivider';
+import { BottomDivider } from '../darkdivider';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
@@ -81,7 +82,7 @@ export default function HomePage({courses}) {
                     <Register darkForm={false}/>
                 </div>
 
-                <Darkdivider dividerPosition='top'/>
+                <TopDivider/>
 
                 <motion.div id='catalog' className={styles.catalog} initial="hidden" whileInView="show" variants={container}>
                     <motion.h2 ref={catalog} variants={fadeIn}>./Catalog</motion.h2>
@@ -97,7 +98,7 @@ export default function HomePage({courses}) {
                     </div>
                 </motion.div>
 
-                <Darkdivider dividerPosition='bottom'/>
+                <BottomDivider/>
 
                 <motion.div id='about'className={styles.about} initial="hidden" whileInView="show" variants={container}>
                     <motion.h2 ref={about} variants={fadeIn}>./About</motion.h2>
@@ -114,7 +115,8 @@ export default function HomePage({courses}) {
                     </div>
                 </motion.div>
 
-                <Darkdivider dividerPosition='top'/>
+                <TopDivider/>
+
                 <motion.div id='pricing' className={styles.pricing} initial="hidden" whileInView="show" variants={container}>
                     <motion.h2 ref={pricing} variants={fadeIn}>./Pricing</motion.h2>
                     <section className={styles.pricingContainer}>
