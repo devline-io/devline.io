@@ -1,7 +1,7 @@
 import Profile from "../../components/Profile/profile";
 import { initFirebase } from "../../components/firebase";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
-import { getStorage, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export default function Index({courses}) {
     return(

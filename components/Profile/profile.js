@@ -83,7 +83,7 @@ export default function Profile({courses}) {
                     <h1>Get Started</h1>
                     <div>
                         <h2>Recommended Courses</h2>
-                        <CatalogImages targetLevel={0}/>
+                        <CatalogImages imageRefs={imageRefs} courses={courses} targetLevel={0}/>
                     </div>
                     <div>
                         <h2>Recommended Articles</h2>
