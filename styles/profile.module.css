@@ -2,3 +2,38 @@
     margin-top: 2rem;
     padding: 3rem;
 }
+
+.imageContainer {
+    position: relative;
+    aspect-ratio: 16/9;
+    height: 100%;
+    width: 30rem;
+    border-radius: 10px;
+}
+
+.container div > * {
+    background-color: #18122B;
+}
+
+.container {
+    width: min-content;
+    padding: 1.5rem;
+    color: #F7EFE5;
+    border-radius: 15px;
+    background-color: #18122B;
+    transition: all 0.3s;
+}
+
+.container h2, .container p {
+    margin: 0;
+    font-size: 1.7rem;
+    padding: 1rem 0;
+}
+
+.container p {
+    padding-bottom: 0;
+}
+
+.container hr {
+    margin: 0;
+}
