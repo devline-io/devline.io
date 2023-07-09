@@ -68,6 +68,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
                     </div>
                     <h3>{course.name}</h3>
                     <p>Level: {course.data.level}</p>
+                    <hr/>
                     <p>{course.data.description}</p>
                 </motion.div>
             ))}

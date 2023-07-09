@@ -50,17 +50,25 @@
 }
 
 .container hr {
-    margin: 0;
+    margin: 1rem auto 0 auto;
+    background-color: #F7EFE510;
+    border-color: #F7EFE510;
+    width: 90%;
 }
 
 .courseWrapper {
     padding: 3rem;
     display: grid;
     gap: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30rem, min-content));
     align-items: center;
     justify-items: center;
+    justify-content: center;
     margin: auto;
+}
+
+.courseWrapper h3 {
+    margin-top: 1.5rem;
 }
 
 .containerClass {
