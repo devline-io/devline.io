@@ -8,6 +8,7 @@ import styles from '../../styles/form.module.css';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getStorage } from 'firebase/storage';
 
 export default function RegisterForm( {darkForm} ) {
     initFirebase();
@@ -30,7 +31,7 @@ export default function RegisterForm( {darkForm} ) {
 
     useEffect(() => {
         if(user) {
-            router.push('/profile/setup');
+            router.push('/profile');
         }
 
         if(emailErrorMessage) {
@@ -68,6 +69,7 @@ export default function RegisterForm( {darkForm} ) {
         if(formPassword == formConfirmPassword) {
             try {
                 await createUserWithEmailAndPassword(auth, formEmail, formPassword );
+
             } 
             catch(error) {
                 console.log(error.code);

@@ -62,3 +62,7 @@
     justify-items: center;
     margin: auto;
 }
+
+.containerClass {
+    margin: 2rem 1rem;
+}

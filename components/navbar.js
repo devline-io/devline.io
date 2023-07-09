@@ -49,7 +49,7 @@ export default function Navbar(props) {
                     {props.profilePic && <div className={styles.profileContainer}>
                         <Image onClick={openProfileMenu} src={props.profilePic} width={48} height={48}/>
                         <div ref={profileMenu} className={styles.profileMenu}>
-                            <p>{user.displayName}</p>
+                            <p>{user && user.displayName}</p>
                             <Link onClick={handleSignOut} href='/'>Sign Out</Link>
                         </div>
                     </div>}

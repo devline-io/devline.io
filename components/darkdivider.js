@@ -1,10 +1,18 @@
 import Image from 'next/image';
 import styles from '../styles/divider.module.css';
 
-export default function Darkdivider({ dividerPosition }) {
+export function BottomDivider() {
     return (
-        <div className={styles[dividerPosition]}>
-            <Image src='/images/dark-slant.svg' fill alt='divider' sizes='100vw' overflow='hidden'/>
+        <div className={styles.divider}>
+            <Image src='/images/bottom-slant.svg' fill alt='divider' sizes='100vw' overflow='hidden'/>
+        </div>
+    );
+}
+
+export function TopDivider() {
+    return (
+        <div className={styles.divider}>
+            <Image src='/images/top-slant.svg' fill alt='divider' sizes='100vw' overflow='hidden'/>
         </div>
     );
 }

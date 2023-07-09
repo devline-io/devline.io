@@ -61,8 +61,7 @@ export default function Catalog({courses}) {
                     <motion.h2 variants={fadeIn}>Engaging<span> project based</span> tutorials that teach through your choice of <span>written, video and interactive</span> formats</motion.h2>
                     <hr/>
                 </motion.div>
-                <div className={styles.courseWrapper}>
-                    <CatalogImages
+                <CatalogImages
                         imageContainer={styles.imageContainer}
                         containerClass={styles.container}
                         hoverAnimation={{scale: 1.01, filter: "drop-shadow(0 0 0.75rem #18122B)"}}
@@ -70,8 +69,7 @@ export default function Catalog({courses}) {
                         imageRefs={imageRefs}
                         fadeIn={fadeIn}
                         courses={courses}
-                    />
-                </div>
+                />
             </main>
         </>
     );

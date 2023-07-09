@@ -1,11 +1,4 @@
-.top {
+.divider {
     position: relative;
     height: 50px;
-    rotate: 180deg;
-}
-
-.bottom {
-    position: relative;
-    height: 50px;
-    transform: rotateY(180deg);
 }
