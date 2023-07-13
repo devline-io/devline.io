@@ -7,8 +7,16 @@ import { useRef, useEffect } from 'react';
 import Head from 'next/head'
 import { motion } from 'framer-motion';
 import { container, fadeIn } from '../HomePage/homepage';
+import { initFirebase } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuth } from 'firebase/auth';
 
 export default function Catalog({courses}) {
+    initFirebase();
+    const auth = getAuth();
+
+    const [user] = useAuthState(auth);
+
     const router = useRouter();
 
     const imageRefs = [
@@ -53,7 +61,7 @@ export default function Catalog({courses}) {
                 <title>Devline.io | Catalog</title>
             </Head>
 
-            <Navbar navItems={navItems} button={<button onClick={() => router.push('/sign-in')}>Sign In</button>}/>
+            <Navbar navItems={navItems} button={!user && <button onClick={() => router.push('/sign-in')}>Sign In</button>} profilePic={user && user.photoURL}/>
 
             <main>
                 <motion.div className={styles.title} initial="hidden" whileInView="show" variants={container}>

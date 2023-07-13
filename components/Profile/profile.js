@@ -66,7 +66,7 @@ export default function Profile({courses}) {
 
     const navItems = [
         <Link href='/'>Home</Link>,
-        <Link href='/'>Catalog</Link>, 
+        <Link href='/catalog'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
         ];
 
