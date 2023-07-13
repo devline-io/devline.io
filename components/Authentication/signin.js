@@ -28,9 +28,9 @@ export default function SignInForm()
     const [providerErrorMessage, setProviderErrorMessage] = useState(null);
 
     useEffect(() => {
-        if(user) {
-            router.push('/profile');
-        }
+        // if(user) {
+        //     router.push('/profile');
+        // }
 
         if(emailErrorMessage) {
             email.current.style.borderColor = '#393053';

@@ -9,6 +9,9 @@ import { useRouter } from 'next/router';
 import CatalogImages from '../catalogimages';
 import Register from '../Authentication/register';
 import Link from 'next/link';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { initFirebase } from '../firebase';
+import { getAuth } from 'firebase/auth';
 
 export const container = {
     hidden: { opacity: 1},
@@ -26,6 +29,10 @@ export const fadeIn = {
 };
 
 export default function HomePage({courses}) {
+    initFirebase();
+    const auth = getAuth();
+    const [user] = useAuthState(auth);
+
     const router = useRouter();
 
     const catalog = useRef(null);
@@ -37,6 +44,7 @@ export default function HomePage({courses}) {
     const navCatalog = useRef(null);
     const navAbout = useRef(null);
     const navPricing = useRef(null);
+    
 
     const scrollHome = () => {
         window.scrollTo({behavior: 'smooth', top: 0});
@@ -71,7 +79,7 @@ export default function HomePage({courses}) {
                 <title>Devline.io</title>
                 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
             </Head>
-            <Navbar navItems={navItems} navbarRef={nav} button={<button onClick={() => router.push('/sign-in')}>Sign In</button>}/>
+            <Navbar navItems={navItems} navbarRef={nav} button={!user && <button onClick={() => router.push('/sign-in')}>Sign In</button>} profilePic={user && user.photoURL}/>
             <main>
                 <div id='home'className={styles.hero}>
                     <motion.div className={styles.titleContainer} initial="hidden" whileInView="show" variants={container}>
@@ -94,7 +102,7 @@ export default function HomePage({courses}) {
                         </motion.div>
                     </motion.div>
                     <div className={styles.buttonContainer}>
-                        <motion.button onClick={() => router.push('/catalog/')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
+                        <motion.button onClick={() => ('/catalog/')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
                     </div>
                 </motion.div>
 
