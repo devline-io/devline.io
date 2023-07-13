@@ -8,6 +8,10 @@
     overflow: visible;
 }
 
+.container img {
+    cursor: pointer;
+}
+
 .wrapper {
     display: flex;
     z-index: 1;
