@@ -172,6 +172,9 @@ export default function HomePage({courses}) {
                     </section>
                 </motion.div>
             </main>
+            <footer className={styles.footer}>
+                &copy;Copywrite
+            </footer>
         </>
     );
 }

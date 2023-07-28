@@ -185,6 +185,13 @@
     animation: title-gradient 10s linear infinite;
 }
 
+.footer{
+    background-color: #18122B;
+    padding: 2rem;
+    text-align: center;
+
+}
+
 @media screen and (max-width: 1800px) {
     .hero {
         height: 93.5vh;
