@@ -135,7 +135,7 @@ export default function HomePage({courses}) {
                             <hr/>
                             <ul>
                                 <li>Full Access to All Courses</li>
-                                <li className={styles.strikethrough}>Interactive Tutorials</li>
+                                <li className={styles.strikethrough}>Unlimited Daily Lessons</li>
                                 <li className={styles.strikethrough}>Written and Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
                             </ul>
@@ -149,7 +149,7 @@ export default function HomePage({courses}) {
                                 <hr/>
                                 <ul>
                                     <li>Full Access to All Courses</li>
-                                    <li>Interactive Tutorials</li>
+                                    <li>Unlimited Daily Lessons</li>
                                     <li>Written and Video Tutorials</li>
                                     <li>Project Based Learning</li>
                                 </ul>
@@ -163,7 +163,7 @@ export default function HomePage({courses}) {
                             <hr/>
                             <ul>
                                 <li>Full Access to All Courses</li>
-                                <li>Interactive Tutorials</li>
+                                <li>Unlimited Daily Lessons</li>
                                 <li>Written and Video Tutorials</li>
                                 <li>Project Based Learning</li>
                             </ul>
