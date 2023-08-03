@@ -11,7 +11,7 @@
   "dependencies": {
     "@dicebear/collection": "^6.0.2",
     "@dicebear/core": "^6.0.2",
-    "codemirror": "^6.0.1",
+    "@uiw/react-codemirror": "^4.21.9",
     "firebase": "^9.17.2",
     "framer-motion": "^9.1.7",
     "next": "^13.1.6",
