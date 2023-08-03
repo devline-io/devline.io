@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.9",
     "@dicebear/collection": "^6.0.2",
     "@dicebear/core": "^6.0.2",
     "@uiw/react-codemirror": "^4.21.9",
