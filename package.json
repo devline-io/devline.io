@@ -13,13 +13,13 @@
     "@dicebear/collection": "^6.0.2",
     "@dicebear/core": "^6.0.2",
     "@uiw/react-codemirror": "^4.21.9",
-    "firebase": "^9.17.2",
+    "firebase": "^8.6.8",
     "framer-motion": "^9.1.7",
     "next": "^13.1.6",
     "nextjs": "^0.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-firebase-hooks": "^5.1.1"
+    "react-firebase-hooks": "^3.0.5"
   },
   "devDependencies": {
     "eslint-plugin-react-hooks": "^4.6.0"
