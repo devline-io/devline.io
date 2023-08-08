@@ -1,7 +1,7 @@
-import IDE from '../../components/ide';
+import CodeEditor from '../../components/codeeditor';
 
 export default function Index() {
     return(
-        <IDE/>
+        <CodeEditor/>
     );
 }

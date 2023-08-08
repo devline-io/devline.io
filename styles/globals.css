@@ -2,14 +2,14 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Mulish', sans-serif;
-  font-size: 1.2rem;
-  overflow-x: hidden;
+  /* font-family: 'Mulish', sans-serif; */
+  /* font-size: 1.2rem; */
+  /* overflow-x: hidden; */
 }
 
-*:not(section, p, h2, button, h1, h3) {
+/* *:not(section, p, h2, button, h1, h3) {
   background-color: #F7EFE5;
-}
+} */
 
 p {
   font-size: 2rem;

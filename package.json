@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.1.9",
     "@dicebear/collection": "^6.0.2",
     "@dicebear/core": "^6.0.2",
-    "@uiw/react-codemirror": "^4.21.9",
-    "firebase": "^8.6.8",
+    "@monaco-editor/react": "^4.5.1",
+    "firebase": "^10.1.0",
     "framer-motion": "^9.1.7",
+    "monaco-editor": "^0.41.0",
     "next": "^13.1.6",
     "nextjs": "^0.0.3",
     "react": "^18.2.0",
