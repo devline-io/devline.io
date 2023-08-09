@@ -1,4 +1,4 @@
-import { initFirebase } from '../../firebase';
+import { initFirebase } from '../../Firebase';
 import { useRef, useEffect, useMemo, useState } from 'react';
 import { updateProfile, getAuth } from 'firebase/auth';
 import styles from '../../../styles/form.module.css'

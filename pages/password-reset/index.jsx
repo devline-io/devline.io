@@ -1,4 +1,4 @@
-import PasswordReset from "../../components/Authentication/passwordreset";
+import PasswordReset from "../../components/Authentication/PasswordReset";
 
 export default function Index() {
     return (

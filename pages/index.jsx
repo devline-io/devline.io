@@ -1,5 +1,5 @@
 import HomePage from '../components/HomePage/homepage';
-import { initFirebase } from '../components/firebase';
+import { initFirebase } from '../components/Firebase';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 

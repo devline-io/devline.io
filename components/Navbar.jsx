@@ -2,7 +2,7 @@ import { getAuth, signOut } from 'firebase/auth';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import styles from '../styles/navbar.module.css';
-import { initFirebase } from './firebase';
+import { initFirebase } from './Firebase';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';

@@ -1,16 +1,16 @@
-import Navbar from '../navbar';
+import Navbar from '../Navbar';
 import Head from 'next/head';
 import styles from '../../styles/homepage.module.css';
-import { TopDivider } from '../darkdivider';
-import { BottomDivider } from '../darkdivider';
+import { TopDivider } from '../DarkDivider';
+import { BottomDivider } from '../DarkDivider';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import CatalogImages from '../catalogimages';
-import Register from '../Authentication/register';
+import CatalogImages from '../CatalogImages';
+import Register from '../Authentication/Register';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initFirebase } from '../firebase';
+import { initFirebase } from '../Firebase';
 import { getAuth } from 'firebase/auth';
 
 export const container = {
@@ -74,7 +74,7 @@ export default function HomePage({courses}) {
         ];
 
     return (
-        <>
+        <div className={styles.wrapper}>
             <Head>
                 <title>Devline.io</title>
                 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
@@ -175,6 +175,6 @@ export default function HomePage({courses}) {
             <footer className={styles.footer}>
                 &copy;Copywrite
             </footer>
-        </>
+        </div>
     );
 }

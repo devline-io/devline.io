@@ -1,13 +1,13 @@
 import { getAuth } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initFirebase } from '../firebase';
+import { initFirebase } from '../Firebase';
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
-import Navbar from '../navbar';
-import CatalogImages from '../catalogimages';
-import { fadeIn } from '../HomePage/homepage';
+import Navbar from '../Navbar';
+import CatalogImages from '../CatalogImages';
+import { fadeIn } from '../HomePage/HomePage';
 
 export default function Profile({courses}) {
     initFirebase();

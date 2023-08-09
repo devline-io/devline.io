@@ -1,4 +1,4 @@
-import CodeEditor from '../../components/codeeditor';
+import CodeEditor from '../../components/CodeEditor';
 
 export default function Index() {
     return(

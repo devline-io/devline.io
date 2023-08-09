@@ -1,4 +1,4 @@
-import SignInForm from '../../components/Authentication/signin'
+import SignInForm from '../../components/Authentication/Signin'
 
 export default function Index() {
     return(
