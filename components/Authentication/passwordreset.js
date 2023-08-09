@@ -1,7 +1,7 @@
 import styles from '../../styles/form.module.css';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { useRef } from 'react';
-import { initFirebase } from '../Firebase';
+import { initFirebase } from '../firebase';
 
 export default function PasswordReset() {
     initFirebase();

@@ -1,9 +1,9 @@
-import { initFirebase } from '../Firebase';
+import { initFirebase } from '../firebase';
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import { container, fadeIn } from '../HomePage/HomePage';
+import { container, fadeIn } from '../HomePage/homepage';
 import styles from '../../styles/form.module.css';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';

@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initFirebase } from '../Firebase';
+import { initFirebase } from '../firebase';
 import { GithubAuthProvider, GoogleAuthProvider, OAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';

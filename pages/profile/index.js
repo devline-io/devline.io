@@ -1,11 +1,11 @@
-import Catalog from '../../components/Catalog/Catalog';
-import { initFirebase } from '../../components/Firebase';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import Profile from "../../components/Profile/profile";
+import { initFirebase } from "../../components/firebase";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export default function Index({courses}) {
     return(
-        <Catalog courses={courses}/>
+        <Profile courses={courses}/>
     );
 }
 
