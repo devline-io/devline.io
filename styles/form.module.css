@@ -145,3 +145,7 @@
     font-weight: 700;
     text-align: center;
 }
+
+.otherAuth p {
+    font-size: 1.2rem !important;
+}
