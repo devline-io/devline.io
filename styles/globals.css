@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
+*:not(.noGlobal *) {
   box-sizing: border-box;
-  /* font-family: 'Mulish', sans-serif; */
-  /* font-size: 1.2rem; */
-  /* overflow-x: hidden; */
+  font-family: 'Mulish', sans-serif;
+  font-size: 1.2rem;
+  overflow-x: hidden;
 }
 
-/* *:not(section, p, h2, button, h1, h3) {
+*:not(section, p, h2, button, h1, h3, .noGlobal *) {
   background-color: #F7EFE5;
-} */
+}
 
 p {
-  font-size: 2rem;
+  font-size: 2rem !important;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 4rem !important;
   margin-bottom: 0;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.5rem !important;
   margin: 0;
   padding-bottom: 3rem;
   max-width: 1968px;
@@ -29,7 +29,7 @@ h2 {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 2rem !important;
   font-weight: 800;
   margin: 0;
 }
