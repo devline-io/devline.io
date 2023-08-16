@@ -16,7 +16,7 @@ export default function CodeEditor() {
           <Editor
             height='100%'
             width='100%'
-            language='javascript'
+            language='python'
             theme='vs-dark'
             defaultValue="// start your code here"
             onChange={handleChange}
