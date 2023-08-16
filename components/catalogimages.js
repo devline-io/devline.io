@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styles from '../styles/catalog.module.css'
+import styles from '../styles/catalog.module.css';
 
 export default function CatalogImages({ courses, fadeIn, containerClass, imageContainer, hasDescription, hoverAnimation, imageRefs, targetLevel}) {    
 

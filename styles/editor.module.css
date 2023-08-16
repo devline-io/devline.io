@@ -1,0 +1,45 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.output {
+    background-color: #1E293B;
+    display: flex;
+    flex-direction: column;
+}
+.output code{
+    color: #F7EFE5;
+    font-size: 1rem;
+}
+
+.output section {
+    background-color: #131a26;
+    padding: .5rem;
+    height: 100%;
+}
+
+.output {
+    padding: 1rem;
+}
+
+.output button {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-style: solid;
+    font-weight: 900;
+    border-width: 3px;
+    transition: all 0.2s;
+    border-color: green;
+    background-color: green;
+    color: #F7EFE5;
+    cursor: pointer;
+    text-align: center;
+    margin-right: auto;
+}
+
+.output hr {
+    border-color: #F7EfE52A;
+}
+

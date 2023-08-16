@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*:not(.noGlobal *) {
+* {
   box-sizing: border-box;
+}
+
+*:not(.noGlobal *, .noGobal) {
   font-family: 'Mulish', sans-serif;
   font-size: 1.2rem;
   overflow-x: hidden;
 }
 
-*:not(section, p, h2, button, h1, h3, .noGlobal *) {
+*:not(section, p, h2, button, h1, h3, .noGlobal *, .noGlobal) {
   background-color: #F7EFE5;
 }
 
@@ -38,7 +41,7 @@ body {
   margin: 0;
 }
 
-button {
+button:not(.noGlobal *, .noGlobal) {
   padding: 0.5rem 1rem;
   border-style: solid;
   font-weight: 900;
@@ -51,7 +54,7 @@ button {
   text-align: center;
 }
 
-button:hover {
+button:hover:not(.noGlobal *, .noGlobal) {
   border-color: #000000;
   background-color: #F7EFE5;
   color: #000000;
