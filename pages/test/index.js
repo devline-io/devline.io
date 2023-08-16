@@ -6,7 +6,9 @@ import CodeEditor from '../../components/codeeditor';
 export default function Index() {
     return(
         <PythonProvider>
-            <CodeEditor/>
+            <main>
+                <CodeEditor/>
+            </main>
         </PythonProvider>
         
     );
