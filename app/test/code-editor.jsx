@@ -49,9 +49,10 @@ export default function CodeEditor() {
             />
         </div>
         <div className={styles.output}>
-          <button onClick={run}>Run &#9654;</button>
+          <button onClick={run} disabled={isLoading || isRunning}>Run &#9654;</button>
           <hr/>
           <pre>
+            {isLoading ? <code>Loading...</code> : null}
             {banner}
             <br/>
             {output}
