@@ -1,9 +1,11 @@
-import { initFirebase } from '../firebase';
+'use client'
+
+import { initFirebase } from '../../components/firebase';
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { container, fadeIn } from '../HomePage/homepage';
+import { container, fadeIn } from '../homepage';
 import styles from '../../styles/form.module.css';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -122,7 +124,7 @@ export default function RegisterForm( {darkForm} ) {
     const providerLogIn = async(provider) => {
         try {
             await signInWithPopup(auth, provider);
-            router.push('/profile');
+            router.push('/dashboard');
         } 
         catch(error) {
             console.log(error.code);

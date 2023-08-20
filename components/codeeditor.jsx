@@ -3,14 +3,14 @@
 import { useState } from 'react';
 import { Editor } from '@monaco-editor/react';
 import styles from '../styles/editor.module.css';
-import { usePythonConsole } from 'react-py';
-import { ConsoleState } from 'react-py/dist/types/Console';
+//import { usePythonConsole } from 'react-py';
+//import { ConsoleState } from 'react-py/dist/types/Console';
 
 export default function CodeEditor() {
   const [code, setCode] = useState();
 
 
-  const { runPython, stdout, stderr, isLoading, isRunning, banner, consoleState } = usePythonConsole();
+  //const { runPython, stdout, stderr, isLoading, isRunning, banner, consoleState } = usePythonConsole();
 
   const handleChange = (value) => {
     setCode(value);

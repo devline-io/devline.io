@@ -1,15 +1,17 @@
+'use client'
+
 import { getAuth } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initFirebase } from '../firebase';
+import { initFirebase } from '../../components/firebase';
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/profile.module.css';
 import Link from 'next/link';
-import Navbar from '../navbar';
-import CatalogImages from '../catalogimages';
-import { fadeIn } from '../HomePage/homepage';
+import Navbar from '../../components/navbar';
+import CatalogImages from '../../components/catalogimages';
+import { fadeIn } from '../homepage';
 
-export default function Profile({courses}) {
+export default function Dashboard({courses}) {
     initFirebase();
     const auth = getAuth();
     const router = useRouter();

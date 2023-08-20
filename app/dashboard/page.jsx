@@ -1,15 +1,16 @@
-import Profile from "../../components/Profile/profile";
+import Dashboard from "./dashboard";
 import { initFirebase } from "../../components/firebase";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-export default function Index({courses}) {
+export default async function Page() {
+    const courses = await getServerSideProps();
     return(
-        <Profile courses={courses}/>
+        <Dashboard courses={courses}/>
     );
 }
 
-export async function getServerSideProps() {
+async function getServerSideProps() {
     initFirebase();
     const firestore = getFirestore();
     const storage = getStorage();
@@ -29,5 +30,5 @@ export async function getServerSideProps() {
     }
 
     
-    return {props: { courses }}
+    return courses;
 }

@@ -1,13 +1,15 @@
-import Navbar from '../navbar';
+'use client'
+
+import Navbar from '../../components/navbar';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import CatalogImages from '../catalogimages';
+import { useRouter } from 'next/navigation';
+import CatalogImages from '../../components/catalogimages';
 import styles from '../../styles/catalog.module.css';
 import { useRef, useEffect } from 'react';
 import Head from 'next/head'
 import { motion } from 'framer-motion';
-import { container, fadeIn } from '../HomePage/homepage';
-import { initFirebase } from '../firebase';
+import { container, fadeIn } from '../homepage';
+import { initFirebase } from '../../components/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 

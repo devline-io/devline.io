@@ -1,13 +1,15 @@
-import { initFirebase } from '../../firebase';
+'use client'
+
+import { initFirebase } from '../../../components/firebase';
 import { useRef, useEffect, useMemo, useState } from 'react';
 import { updateProfile, getAuth } from 'firebase/auth';
 import styles from '../../../styles/form.module.css'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { createAvatar } from '@dicebear/core';
 import { identicon } from '@dicebear/collection';
 
-export default function SetupAccount() {
+export default function ProfileSetup() {
     initFirebase();
     const auth = getAuth();
 

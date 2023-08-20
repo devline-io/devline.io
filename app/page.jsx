@@ -1,15 +1,16 @@
-import HomePage from '../components/HomePage/homepage';
+import HomePage from './homepage';
 import { initFirebase } from '../components/firebase';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
-export default function Index({courses}) {
+export default async function Page() {
+  const courses = await getServerSideProps();
   return(
     <HomePage courses={courses}/>
   );
 }
 
-export async function getServerSideProps() {
+async function getServerSideProps() {
   initFirebase();
   const firestore = getFirestore();
   const storage = getStorage();
@@ -29,5 +30,5 @@ export async function getServerSideProps() {
   }
 
   
-  return {props: { courses }}
+  return courses;
 }

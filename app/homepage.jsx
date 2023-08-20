@@ -1,16 +1,18 @@
-import Navbar from '../navbar';
+'use client'
+
+import Navbar from '../components/navbar';
 import Head from 'next/head';
-import styles from '../../styles/homepage.module.css';
-import { TopDivider } from '../darkdivider';
-import { BottomDivider } from '../darkdivider';
+import styles from '../styles/homepage.module.css';
+import { TopDivider } from '../components/darkdivider';
+import { BottomDivider } from '../components/darkdivider';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import { useRouter } from 'next/router';
-import CatalogImages from '../catalogimages';
-import Register from '../Authentication/register';
+import { useRouter } from 'next/navigation';
+import CatalogImages from '../components/catalogimages';
+import Register from './sign-up/register.jsx';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initFirebase } from '../firebase';
+import { initFirebase } from '../components/firebase';
 import { getAuth } from 'firebase/auth';
 
 export const container = {

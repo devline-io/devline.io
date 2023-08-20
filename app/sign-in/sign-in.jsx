@@ -1,8 +1,10 @@
+'use client'
+
 import { useRef, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import styles from '../../styles/form.module.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { initFirebase } from '../firebase';
+import { initFirebase } from '../../components/firebase';
 import { GithubAuthProvider, GoogleAuthProvider, OAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -99,7 +101,7 @@ export default function SignInForm()
     const providerLogIn = async(provider) => {
         try {
             await signInWithPopup(auth, provider);
-            router.push('/profile');
+            router.push('/dashboard');
         } 
         catch(error) {
             console.log(error.code);

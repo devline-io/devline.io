@@ -1,4 +1,4 @@
-import RegisterForm from "../../components/Authentication/register"
+import RegisterForm from "./register"
 
 export default function Index() {
     return(

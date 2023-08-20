@@ -5,7 +5,7 @@ import styles from '../styles/navbar.module.css';
 import { initFirebase } from './firebase';
 import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar(props) {
     initFirebase();
