@@ -66,14 +66,23 @@
     padding: .5rem;
     display: none;
     background-color: #18122B;
+    opacity: 87%;
+    border-radius: 5%;
 }
 
 .profileMenu p {
     margin: 0;
     color: #F7EFE5;
+    padding-bottom: 1rem;
 }
 
 .profileMenu a {
     background-color: #18122B;
     color: #F7EFE5;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: .2rem;
+    text-decoration: none;
 }
