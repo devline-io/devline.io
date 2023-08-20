@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../../components/firebase';
 import { useState, useEffect, useRef } from 'react';
-import styles from '../../styles/profile.module.css';
+import styles from '../../styles/dashboard.module.css';
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
 import CatalogImages from '../../components/catalogimages';

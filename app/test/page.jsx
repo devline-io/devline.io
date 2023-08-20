@@ -1,15 +1,15 @@
 'use client'
 
-//import { PythonProvider } from 'react-py';
-import CodeEditor from '../../components/codeeditor';
+import { PythonProvider } from 'react-py';
+import CodeEditor from './code-editor';
 
 export default function Index() {
     return(
-        // <PythonProvider>
-        //     <main>
+        <PythonProvider>
+            <main>
                 <CodeEditor/>
-            /* </main>
-        </PythonProvider> */
+            </main>
+        </PythonProvider>
         
     );
 }
