@@ -4,26 +4,26 @@
     height: 100vh;
 }
 
-.output {
+.compiler {
     background-color: #1E293B;
     display: flex;
     flex-direction: column;
 }
 
-.output pre {
+.output {
     background-color: #131a26;
     margin: 0;
     padding: .5rem;
     height: 100%;
 }
 
-.output {
+.compiler {
     padding: 1rem;
     color: #F7EFE5;
     font-size: 1rem;
 }
 
-.output button {
+.compiler button {
     display: block;
     padding: 0.5rem 1rem;
     border-style: solid;
@@ -38,8 +38,11 @@
     margin-right: auto;
 }
 
-.output hr {
+.compiler hr {
     border-color: #F7EfE52A;
     width: 100%;
 }
 
+.errorMessage {
+    color: #ef4444;
+}

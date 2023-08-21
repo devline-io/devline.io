@@ -7,8 +7,8 @@ import { usePythonConsole } from 'react-py';
 import { ConsoleState } from 'react-py/dist/types/Console';
 
 export default function CodeEditor() {
-  const [code, setCode] = useState();
-  const [output, setOutput] = useState('');
+  const [code, setCode] = useState('');
+  const [output, setOutput] = useState([]);
 
 
   const { runPython, stdout, stderr, isLoading, isRunning, banner, consoleState } = usePythonConsole();
@@ -18,20 +18,21 @@ export default function CodeEditor() {
   }
 
   useEffect(() => {
-    setOutput((prev) => [...prev, stdout])
+    stdout && setOutput((prev) => [...prev, {text: stdout}]);
   }, [stdout])
 
   useEffect(() => {
-    setOutput((prev) => [...prev, stderr])
+    stderr && setOutput((prev) => [...prev, {text: stderr + '\n', className: `${styles.errorMessage}`}]);
   }, [stderr])
 
   function getPrompt() {
-    return consoleState === ConsoleState.incomplete ? '... ' : '>>> '
+    return consoleState === ConsoleState.incomplete ? '... ' : '>>> ';
   }
 
-  function run() {
-    setOutput((prev) => [...prev, getPrompt() + 'python main.py' + '\n'])
-    runPython(code)
+  function runCode() {
+    setOutput([]);
+    setOutput((prev) => [...prev, {text: getPrompt() + 'python main.py' + '\n'}]);
+    runPython(code);
   }
 
 
@@ -48,14 +49,19 @@ export default function CodeEditor() {
             onChange={handleChange}
             />
         </div>
-        <div className={styles.output}>
-          <button onClick={run} disabled={isLoading || isRunning}>Run &#9654;</button>
+        <div className={styles.compiler}>
+          <button onClick={runCode}>Run &#9654;</button>
           <hr/>
-          <pre>
+          <pre className={styles.output}>
             {isLoading ? <code>Loading...</code> : null}
             {banner}
             <br/>
-            {output}
+            {output.map((line, i) => (
+              <code className={line.className} key={i}>
+                {line.text}
+              </code>
+            ))}
+            {isLoading ? null: getPrompt()}
           </pre>
         </div>
       </div>
