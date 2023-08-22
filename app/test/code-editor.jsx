@@ -3,36 +3,21 @@
 import { useState, useEffect } from 'react';
 import { Editor } from '@monaco-editor/react';
 import styles from '../../styles/editor.module.css';
-import { usePythonConsole } from 'react-py';
+import { usePython } from 'react-py';
 import { ConsoleState } from 'react-py/dist/types/Console';
 
 export default function CodeEditor() {
   const [code, setCode] = useState('');
-  const [output, setOutput] = useState([]);
 
 
-  const { runPython, stdout, stderr, isLoading, isRunning, banner, consoleState } = usePythonConsole();
+  const { runPython, stdout, stderr, isLoading, isRunning } = usePython();
 
   const handleChange = (value) => {
     setCode(value);
   }
 
-  useEffect(() => {
-    stdout && setOutput((prev) => [...prev, {text: stdout}]);
-  }, [stdout])
-
-  useEffect(() => {
-    stderr && setOutput((prev) => [...prev, {text: stderr + '\n', className: `${styles.errorMessage}`}]);
-  }, [stderr])
-
-  function getPrompt() {
-    return consoleState === ConsoleState.incomplete ? '... ' : '>>> ';
-  }
-
-  function runCode() {
-    setOutput([]);
-    setOutput((prev) => [...prev, {text: getPrompt() + 'python main.py' + '\n'}]);
-    runPython(code);
+  async function runCode() {
+    await runPython(code);
   }
 
 
@@ -53,15 +38,9 @@ export default function CodeEditor() {
           <button onClick={runCode}>Run &#9654;</button>
           <hr/>
           <pre className={styles.output}>
-            {isLoading ? <code>Loading...</code> : null}
-            {banner}
-            <br/>
-            {output.map((line, i) => (
-              <code className={line.className} key={i}>
-                {line.text}
-              </code>
-            ))}
-            {isLoading ? null: getPrompt()}
+            {isLoading ? <code>Loading...</code> : <code>{'Welcome to the Devline.io python compiler powered by react-py\nPython 3.11.2 (main, Jul  7 2023 05:19:00) on WebAssembly/Emscripten\n'}</code>}
+            <code>{stdout}</code>
+            <code className={styles.errorMessage}>{stderr}</code>
           </pre>
         </div>
       </div>
