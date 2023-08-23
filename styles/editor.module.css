@@ -11,10 +11,14 @@
 }
 
 .output {
-    background-color: #131a26;
+    background-color: #131A26;
     margin: 0;
     padding: .5rem;
     height: 100%;
+}
+
+.output code {
+    display: block;
 }
 
 .compiler {
@@ -45,4 +49,20 @@
 
 .errorMessage {
     color: #ef4444;
+}
+
+.terminal {
+    margin: 0;
+}
+
+.terminal input {
+    background-color:#131A26;
+    border: none;
+    color: #F7EFE5;
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+.terminal input:focus {
+    outline: none;
 }

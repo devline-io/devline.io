@@ -1,16 +1,38 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Editor } from '@monaco-editor/react';
 import styles from '../../styles/editor.module.css';
 import { usePython } from 'react-py';
-import { ConsoleState } from 'react-py/dist/types/Console';
 
 export default function CodeEditor() {
   const [code, setCode] = useState('');
+  const [output, setOutput] = useState([]);
+  const [compiled, setCompiled] = useState(false);
 
+  const terminalInput = useRef(null);
 
   const { runPython, stdout, stderr, isLoading, isRunning } = usePython();
+
+  useEffect(() => {
+    if(!compiled) {
+      stdout && setOutput((prev) => prev.concat(<code>{stdout}</code>))
+      setCompiled(true);
+    }
+  },[stdout])
+
+  useEffect(() => {
+    stderr && setOutput((prev) => prev.concat(<code className={styles.errorMessage}>{stderr}</code>))
+  },[stderr])
+
+  async function onKeyPress(e) {
+    if(e.key == 'Enter') {
+      setOutput((prev) => prev.concat(<code>{'>>> ' + terminalInput.current.value}</code>))
+      await runPython(terminalInput.current.value);
+      terminalInput.current.value = '';
+      setCompiled(false);
+    }
+  }
 
   const handleChange = (value) => {
     setCode(value);
@@ -38,9 +60,14 @@ export default function CodeEditor() {
           <button onClick={runCode}>Run &#9654;</button>
           <hr/>
           <pre className={styles.output}>
-            {isLoading ? <code>Loading...</code> : <code>{'Welcome to the Devline.io python compiler powered by react-py\nPython 3.11.2 (main, Jul  7 2023 05:19:00) on WebAssembly/Emscripten\n'}</code>}
-            <code>{stdout}</code>
-            <code className={styles.errorMessage}>{stderr}</code>
+            {isLoading ? <code>Loading...</code> : <code className={styles.banner}>
+              Welcome to the Devline.io python compiler powered by <strong>react-py</strong><br/>Python 3.11.2 on WebAssembly/Emscripten<br/>
+              </code>}
+            <br/>
+            <code>{output}</code>
+            <pre className={styles.terminal}>
+              {!isLoading && <code>{'>>> '}<input ref={terminalInput} onKeyPress={(e) => onKeyPress(e)}/></code>}
+            </pre>
           </pre>
         </div>
       </div>
