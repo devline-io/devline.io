@@ -27,7 +27,7 @@ export default function CodeEditor() {
 
   async function onKeyPress(e) {
     if(e.key == 'Enter') {
-      setOutput((prev) => prev.concat(<code>{'>>> ' + terminalInput.current.value}</code>))
+      setOutput((prev) => prev.concat(<code>{'>>> ' + terminalInput.current.value}</code>));
       await runPython(terminalInput.current.value);
       terminalInput.current.value = '';
       setCompiled(false);
@@ -40,6 +40,8 @@ export default function CodeEditor() {
 
   async function runCode() {
     await runPython(code);
+    setOutput([<code>{'>>> python main.py\n'}</code>]);
+    setCompiled(false);
   }
 
 
