@@ -83,7 +83,7 @@ export default function Dashboard({courses}) {
             
             <main className={styles.main}>
                 <div>
-                    <h1>Get Started</h1>
+                    <h1>Dashboard</h1>
                     <div>
                         <h2>Recommended Courses</h2>
                         <CatalogImages

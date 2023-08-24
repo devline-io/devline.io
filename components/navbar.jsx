@@ -50,7 +50,7 @@ export default function Navbar(props) {
                         <Image onClick={openProfileMenu} src={props.profilePic} width={48} height={48}/>
                         <div ref={profileMenu} className={styles.profileMenu}>
                             <p>{user && user.displayName}</p>
-                            <Link href='/profile'>Dashboard</Link>
+                            <Link href='/dashboard'>Dashboard</Link>
                             <Link href='/'>Profile</Link>
                             <Link href='/'>Settings</Link>
                             <Link onClick={handleSignOut} href='/'>Sign Out</Link>
