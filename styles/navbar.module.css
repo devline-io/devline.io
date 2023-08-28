@@ -67,7 +67,7 @@
     display: none;
     background-color: #18122B;
     opacity: 90%;
-    border-radius: 5%;
+    border-radius: 3%;
 }
 
 .profileMenu p {
@@ -94,7 +94,7 @@
 
 .signOutButton {
     color: red !important;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .signOutButton:hover {
