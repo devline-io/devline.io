@@ -87,7 +87,16 @@
     text-decoration: none;
 }
 
+.profileMenu a:hover {
+    color: #cac4bd;
+    -webkit-transform: scale(1.02);
+}
+
 .signOutButton {
     color: red !important;
     padding-top: 2rem;
+}
+
+.signOutButton:hover {
+    color: rgb(209, 5, 5) !important;
 }
