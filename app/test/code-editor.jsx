@@ -27,11 +27,11 @@ export default function CodeEditor() {
     stderr && setOutput((prev) => prev.concat(<code className={styles.errorMessage}>{stderr}</code>));
   },[stderr])
 
-  function onKeyPress(e) {
+  async function onKeyPress(e) {
     if(e.key == 'Enter') {
       setOutput(<code>{'>>> ' + terminalInput.current.value}</code>);
       setIsTerminal(true);
-      runPython(terminalInput.current.value);
+      await runPython(terminalInput.current.value);
       terminalInput.current.value = '';
     }
   }

@@ -4,7 +4,14 @@
 }
 
 .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: center;
+    justify-items: center;
+}
+
+.leftContent {
+    overflow-x: visible;
 }
 
 .header {
