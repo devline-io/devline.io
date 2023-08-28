@@ -177,7 +177,9 @@ export default function RegisterForm( {darkForm} ) {
                     <span>{providerErrorMessage}</span>
                 </div>
                 <hr/>
-                <p>Already have an account? <Link href='/sign-in'>Sign In</Link></p>
+                <div className={styles.footer}>
+                    <p>Already have an account? <Link href='/sign-in'>Sign In</Link></p>
+                </div>
             </div>
         </div>
         );

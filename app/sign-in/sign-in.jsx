@@ -147,7 +147,7 @@ export default function SignInForm()
                     <span>{providerErrorMessage}</span>
                 </div>
                 <hr/>
-                <div className={styles.passReset}>
+                <div className={styles.footer}>
                     <p>Don&apos;t have an account? <Link href='/sign-up'>Sign Up</Link></p>
                     <p>Forgot your password? <Link className={styles.resetPassword} href='/password-reset'>Reset Password</Link></p>
                 </div>
