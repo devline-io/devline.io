@@ -104,10 +104,16 @@ export default function Dashboard({courses}) {
                         </div>
                         <div className={styles.recentCourses}>
                             <h3>Recent Courses</h3>
+                            <div className={styles.courses}>
+                                
+                            </div>
                         </div>
                     </div>
                     <div className={styles.myProjects}>
                         <h3>My Projects</h3>
+                        <div className={styles.projects}>
+
+                        </div>
                     </div>
                 </div>
             </main>

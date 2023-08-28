@@ -37,6 +37,18 @@
     margin-right: 5rem;
 }
 
+.courses {
+    height: 18.45rem;
+    width: 60rem;
+    background-color: #393053;
+}
+
 .myProjects {
     justify-content: center;    
+}
+
+.projects {
+    width: 20rem;
+    height: 30rem;
+    background-color: #393053;
 }
