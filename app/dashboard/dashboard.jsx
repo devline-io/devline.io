@@ -85,17 +85,7 @@ export default function Dashboard({courses}) {
                 <div>
                     <h1>Dashboard</h1>
                     <div>
-                        <h2>Recommended Courses</h2>
-                        <CatalogImages
-                            imageContainer={styles.imageContainer}
-                            containerClass={styles.container}
-                            hoverAnimation={{scale: 1.01, filter: "drop-shadow(0 0 0.75rem #18122B)"}}
-                            hasDescription={true}
-                            imageRefs={imageRefs}
-                            fadeIn={fadeIn}
-                            courses={courses}
-                            targetLevel={"Introductory"}
-                        />
+                        
                     </div>
                 </div>
             </main>
