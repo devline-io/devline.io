@@ -94,7 +94,7 @@
 
 .signOutButton {
     color: red !important;
-    padding-top: 2rem;
+    margin-top: 2rem;
 }
 
 .signOutButton:hover {
