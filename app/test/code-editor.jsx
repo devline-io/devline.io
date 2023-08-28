@@ -8,29 +8,31 @@ import { usePython } from 'react-py';
 export default function CodeEditor() {
   const [code, setCode] = useState('');
   const [output, setOutput] = useState([]);
-  const [compiled, setCompiled] = useState(false);
+  const [isTerminal, setIsTerminal] = useState(false);
+  const [prompt, setPrompt] = useState(null);
 
   const terminalInput = useRef(null);
 
   const { runPython, stdout, stderr, isLoading, isRunning } = usePython();
 
   useEffect(() => {
-    if(!compiled) {
-      stdout && setOutput((prev) => prev.concat(<code>{stdout}</code>))
-      setCompiled(true);
+    if(isTerminal) {
+      stdout && setOutput((prev) => prev.concat(<code>{stdout}</code>));
+    } else {
+      stdout && setOutput(<code>{stdout}</code>);
     }
   },[stdout])
 
   useEffect(() => {
-    stderr && setOutput((prev) => prev.concat(<code className={styles.errorMessage}>{stderr}</code>))
+    stderr && setOutput((prev) => prev.concat(<code className={styles.errorMessage}>{stderr}</code>));
   },[stderr])
 
-  async function onKeyPress(e) {
+  function onKeyPress(e) {
     if(e.key == 'Enter') {
-      setOutput((prev) => prev.concat(<code>{'>>> ' + terminalInput.current.value}</code>));
-      await runPython(terminalInput.current.value);
+      setOutput(<code>{'>>> ' + terminalInput.current.value}</code>);
+      setIsTerminal(true);
+      runPython(terminalInput.current.value);
       terminalInput.current.value = '';
-      setCompiled(false);
     }
   }
 
@@ -38,10 +40,11 @@ export default function CodeEditor() {
     setCode(value);
   }
 
-  async function runCode() {
-    await runPython(code);
-    setOutput([<code>{'>>> python main.py\n'}</code>]);
-    setCompiled(false);
+  function runCode() {
+    setOutput(null);
+    setIsTerminal(false);
+    setPrompt(<code>{'>>> python main.py\n'}</code>);
+    runPython(code);
   }
 
 
@@ -66,7 +69,8 @@ export default function CodeEditor() {
               Welcome to the Devline.io python compiler powered by <strong>react-py</strong><br/>Python 3.11.2 on WebAssembly/Emscripten<br/>
               </code>}
             <br/>
-            <code>{output}</code>
+            {prompt && <code>{prompt}</code>}
+            {output && <code>{output}</code>}
             <pre className={styles.terminal}>
               {!isLoading && <code>{'>>> '}<input ref={terminalInput} onKeyPress={(e) => onKeyPress(e)}/></code>}
             </pre>
