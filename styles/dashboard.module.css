@@ -3,37 +3,33 @@
     padding: 3rem;
 }
 
-.imageContainer {
-    position: relative;
-    aspect-ratio: 16/9;
-    height: 100%;
-    width: 30rem;
-    border-radius: 10px;
-}
-
-.container div > * {
-    background-color: #18122B;
-}
-
 .container {
-    width: min-content;
-    padding: 1.5rem;
-    color: #F7EFE5;
-    border-radius: 15px;
-    background-color: #18122B;
-    transition: all 0.3s;
+    display: flex;
 }
 
-.container h2, .container p {
-    margin: 0;
-    font-size: 1.7rem;
-    padding: 1rem 0;
+.header {
+    margin-bottom: 3rem;
 }
 
-.container p {
-    padding-bottom: 0;
+.topRow {
+    display: flex;
+    margin-bottom: 3rem;
 }
 
-.container hr {
-    margin: 0;
+.weekCal {
+    height: 6rem;
+    width: 28rem;
+    background-color: #393053;
+    margin-right: 5rem;
+}
+
+.energyBar {
+    height: 6rem;
+    width: 28rem;
+    background-color: #393053;
+    margin-right: 5rem;
+}
+
+.myProjects {
+    justify-content: center;    
 }

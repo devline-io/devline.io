@@ -3,6 +3,7 @@
 import { getAuth } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { motion } from 'framer-motion';
 import { initFirebase } from '../../components/firebase';
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/dashboard.module.css';
@@ -82,10 +83,33 @@ export default function Dashboard({courses}) {
             />}
             
             <main className={styles.main}>
-                <div>
+                <div className={styles.header}>
                     <h1>Dashboard</h1>
-                    <div>
-                        
+                </div>
+                <div className={styles.container}>
+                    <div className={styles.leftContent}>
+                        <div className={styles.topRow}>
+                            <div className={styles.currentStreak}>
+                                <h3>Curent Streak</h3>
+                                <div className={styles.weekCal}>
+                                    <p>Calender placeholder. Want to put a week calander here Sunday - Saturday that will track each time you log in. If complete the week logging in every day you get some kind of reward </p>
+                                </div>
+                            </div>
+                            <div className={styles.lessonEnergy}>
+                                <h3>Lesson Energy</h3>
+                                <div className={styles.energyBar}>
+                                    <p>Simply just showing how much energy you have for the rest of the day</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.recentCourses}>
+                            <h3>Recent Courses</h3>
+                        </div>
+                    </div>
+                    <div className={styles.rightContent}>
+                        <div className={styles.myProjects}>
+                            <h3>My Projects</h3>
+                        </div>
                     </div>
                 </div>
             </main>
