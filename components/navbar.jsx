@@ -53,7 +53,7 @@ export default function Navbar(props) {
                             <Link href='/dashboard'>Dashboard</Link>
                             <Link href='/'>Profile</Link>
                             <Link href='/'>Settings</Link>
-                            <Link onClick={handleSignOut} href='/'>Sign Out</Link>
+                            <Link className={styles.signOutButton} onClick={handleSignOut} href='/'>Sign Out</Link>
                         </div>
                     </div>}
                 </div>

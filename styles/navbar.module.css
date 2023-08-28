@@ -66,7 +66,7 @@
     padding: .5rem;
     display: none;
     background-color: #18122B;
-    opacity: 87%;
+    opacity: 90%;
     border-radius: 5%;
 }
 
@@ -85,4 +85,9 @@
     justify-content: space-evenly;
     padding-bottom: .2rem;
     text-decoration: none;
+}
+
+.signOutButton {
+    color: red !important;
+    padding-top: 2rem;
 }
