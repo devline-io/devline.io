@@ -15,7 +15,7 @@
 }
 
 .header {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .topRow {
@@ -38,7 +38,7 @@
 }
 
 .courses {
-    height: 18.45rem;
+    height: 18rem;
     width: 60rem;
     background-color: #393053;
 }
@@ -49,6 +49,6 @@
 
 .projects {
     width: 20rem;
-    height: 30rem;
+    height: 29.5rem;
     background-color: #393053;
 }
