@@ -1,3 +1,5 @@
+'use client'
+
 import styles from '../../styles/form.module.css';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { useRef } from 'react';
