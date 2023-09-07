@@ -9,17 +9,20 @@ export default function CodeEditor() {
   const [code, setCode] = useState('');
   const [output, setOutput] = useState([]);
   const [isTerminal, setIsTerminal] = useState(false);
+  const [isTerminalRunning, setTerminalRunning] = useState(false);
   const [prompt, setPrompt] = useState(null);
 
   const terminalInput = useRef(null);
 
-  const { runPython, stdout, stderr, isLoading, isRunning } = usePython();
+  const { runPython, stdout, stderr, isLoading } = usePython();
 
   useEffect(() => {
-    if(isTerminal) {
+    if(isTerminal && !isTerminalRunning) {
       stdout && setOutput((prev) => prev.concat(<code>{stdout}</code>));
-    } else {
-      stdout && setOutput(<code>{stdout}</code>);
+      setTerminalRunning(true)
+    } else if(!isTerminal) {
+      console.log('why')
+      stdout && setOutput([<code>{stdout}</code>]);
     }
   },[stdout])
 
@@ -29,8 +32,9 @@ export default function CodeEditor() {
 
   async function onKeyPress(e) {
     if(e.key == 'Enter') {
-      setOutput(<code>{'>>> ' + terminalInput.current.value}</code>);
+      setOutput((prev) => prev.concat(<code>{'>>> ' + terminalInput.current.value}</code>));
       setIsTerminal(true);
+      setTerminalRunning(false);
       await runPython(terminalInput.current.value);
       terminalInput.current.value = '';
     }
@@ -41,7 +45,7 @@ export default function CodeEditor() {
   }
 
   function runCode() {
-    setOutput(null);
+    setOutput([]);
     setIsTerminal(false);
     setPrompt(<code>{'>>> python main.py\n'}</code>);
     runPython(code);
