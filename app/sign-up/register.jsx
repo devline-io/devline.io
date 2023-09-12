@@ -2,7 +2,6 @@
 
 import { initFirebase } from '../../components/firebase';
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, GithubAuthProvider } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { container, fadeIn } from '../homepage';
@@ -10,12 +9,12 @@ import styles from '../../styles/form.module.css';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getStorage } from 'firebase/storage';
+import { getFirestore, doc, setDoc } from 'firebase/firestore'
 
 export default function RegisterForm( {darkForm} ) {
     initFirebase();
     const auth = getAuth();
-    const [user] = useAuthState(auth);
+    const firestore = getFirestore();
     const google = new GoogleAuthProvider();
     const microsoft = new OAuthProvider('microsoft.com');
     const github = new GithubAuthProvider();
@@ -32,10 +31,6 @@ export default function RegisterForm( {darkForm} ) {
     const [providerErrorMessage, setProviderErrorMessage] = useState(null);
 
     useEffect(() => {
-        // if(user) {
-        //     router.push('/profile');
-        // }
-
         if(emailErrorMessage) {
             email.current.style.borderColor = '#393053';
             email.current.style.borderWidth = '3px';
@@ -70,8 +65,12 @@ export default function RegisterForm( {darkForm} ) {
 
         if(formPassword == formConfirmPassword) {
             try {
-                await createUserWithEmailAndPassword(auth, formEmail, formPassword );
-
+                console.log(formEmail)
+                await setDoc(doc(firestore, "User Data", formEmail), {
+                    subscribed: true
+                });
+                await createUserWithEmailAndPassword(auth, formEmail, formPassword)
+                router.push('/dashboard/setup')
             } 
             catch(error) {
                 console.log(error.code);
@@ -124,6 +123,10 @@ export default function RegisterForm( {darkForm} ) {
     const providerLogIn = async(provider) => {
         try {
             await signInWithPopup(auth, provider);
+            console.log(auth.currentUser.email);
+            await setDoc(doc(firestore, "User Data", auth.currentUser.email), {
+                subscribed: false
+            });
             router.push('/dashboard');
         } 
         catch(error) {
