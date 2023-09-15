@@ -141,7 +141,7 @@ export default function HomePage({courses}) {
                                 <li className={styles.strikethrough}>Written and Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
                             </ul>
-                            <Link href='/sign-up'><button>Select</button></Link>
+                            <Link href='/sign-up'><button>Get Started</button></Link>
                         </motion.div>
                         <motion.div className={styles.featuredContainer} animate={{scale: 1.1}}variants={fadeIn} whileHover={{scale: 1.2}} transition={{duration: 0.3}}>
                             <div className={styles.featured}>
@@ -155,7 +155,7 @@ export default function HomePage({courses}) {
                                     <li>Written and Video Tutorials</li>
                                     <li>Project Based Learning</li>
                                 </ul>
-                                <Link href='/sign-up'><button>Select</button></Link>
+                                <Link href='/sign-up'><button>Get Started</button></Link>
                             </div>
                         </motion.div>
                         <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
@@ -169,7 +169,7 @@ export default function HomePage({courses}) {
                                 <li>Written and Video Tutorials</li>
                                 <li>Project Based Learning</li>
                             </ul>
-                            <Link href='/sign-up'><button>Select</button></Link>
+                            <Link href='/sign-up'><button>Get Started</button></Link>
                         </motion.div>
                     </section>
                 </motion.div>
