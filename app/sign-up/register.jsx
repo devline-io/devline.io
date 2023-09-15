@@ -67,7 +67,7 @@ export default function RegisterForm( {darkForm} ) {
             try {
                 await createUserWithEmailAndPassword(auth, formEmail, formPassword);
                 await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
-                    subscribed: false
+                    email: formEmail
                 });
                 router.push('/dashboard/setup')
             } 
@@ -124,7 +124,7 @@ export default function RegisterForm( {darkForm} ) {
             await signInWithPopup(auth, provider);
             console.log(auth.currentUser.email);
             await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
-                subscribed: false
+                email: auth.currentUser.email
             });
             router.push('/dashboard');
         } 
