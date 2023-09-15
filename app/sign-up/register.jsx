@@ -65,11 +65,10 @@ export default function RegisterForm( {darkForm} ) {
 
         if(formPassword == formConfirmPassword) {
             try {
-                console.log(formEmail)
-                await setDoc(doc(firestore, "User Data", formEmail), {
+                await createUserWithEmailAndPassword(auth, formEmail, formPassword);
+                await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
                     subscribed: false
                 });
-                await createUserWithEmailAndPassword(auth, formEmail, formPassword)
                 router.push('/dashboard/setup')
             } 
             catch(error) {
@@ -124,7 +123,7 @@ export default function RegisterForm( {darkForm} ) {
         try {
             await signInWithPopup(auth, provider);
             console.log(auth.currentUser.email);
-            await setDoc(doc(firestore, "User Data", auth.currentUser.email), {
+            await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
                 subscribed: false
             });
             router.push('/dashboard');
