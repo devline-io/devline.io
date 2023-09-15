@@ -55,7 +55,7 @@ export default function Dashboard({courses}) {
     useEffect(() => {
         if(user) {
             if(!user.displayName || !user.photoURL) {
-                router.push('/profile/setup');
+                router.push('/dashboard/setup');
             } else {
                 setUsername(user.displayName);
                 setProfilePic(user.photoURL);
