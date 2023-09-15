@@ -67,7 +67,7 @@ export default function RegisterForm( {darkForm} ) {
             try {
                 console.log(formEmail)
                 await setDoc(doc(firestore, "User Data", formEmail), {
-                    subscribed: true
+                    subscribed: false
                 });
                 await createUserWithEmailAndPassword(auth, formEmail, formPassword)
                 router.push('/dashboard/setup')
