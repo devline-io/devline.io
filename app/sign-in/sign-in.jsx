@@ -8,10 +8,12 @@ import { initFirebase } from '../../components/firebase';
 import { GithubAuthProvider, GoogleAuthProvider, OAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function SignInForm()
 {
     initFirebase();
+    const firestore = getFirestore();
     const auth = getAuth();
     const google = new GoogleAuthProvider();
     const microsoft = new OAuthProvider('microsoft.com');
@@ -51,7 +53,6 @@ export default function SignInForm()
         event.preventDefault();
         const formEmail = email.current.value;
         const formPassword = password.current.value;
-
         try {
             await signInWithEmailAndPassword(auth, formEmail, formPassword);
         } 
@@ -97,6 +98,12 @@ export default function SignInForm()
     const providerLogIn = async(provider) => {
         try {
             await signInWithPopup(auth, provider);
+            const document = await getDoc(doc(firestore, "User Data", auth.currentUser.uid));
+            if(!document) {
+                await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
+                    email: auth.currentUser.email
+                });
+            }
             router.push('/dashboard');
         } 
         catch(error) {
