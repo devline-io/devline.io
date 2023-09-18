@@ -48,7 +48,7 @@ export default function ProfileSetup() {
         }
 
         if(user && user.displayName && user.photoURL) {
-            router.push('/profile');
+            router.push('/dashboard');
         }
 
         if(error) {
@@ -69,7 +69,7 @@ export default function ProfileSetup() {
                     displayName:  username.current.value,
                     photoURL: avatar,
                 })
-                router.push('/profile');
+                router.push('/dashboard');
             }
             catch(error) {
                 console.log(error.code);
