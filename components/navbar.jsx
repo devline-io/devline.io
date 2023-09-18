@@ -51,7 +51,7 @@ export default function Navbar(props) {
                         <div ref={profileMenu} className={styles.profileMenu}>
                             <p>{user && user.displayName}</p>
                             <Link href='/dashboard'>Dashboard</Link>
-                            <Link href='/'>Profile</Link>
+                            <Link href='/profile'>Profile</Link>
                             <Link href='/'>Settings</Link>
                             <Link className={styles.signOutButton} onClick={handleSignOut} href='/'>Sign Out</Link>
                         </div>
