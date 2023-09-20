@@ -47,7 +47,7 @@ button:not(.noGlobal *, .noGlobal) {
   font-weight: 900;
   border-width: 3px;
   transition: all 0.2s;
-  border-color: #393053;
+  border-color: #443C68;
   background-color: #443C68;
   color: #F7EFE5;
   cursor: pointer;
