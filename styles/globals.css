@@ -46,6 +46,7 @@ button:not(.noGlobal *, .noGlobal) {
   border-style: solid;
   font-weight: 900;
   border-width: 3px;
+  border-radius: 5px;
   transition: all 0.2s;
   border-color: #443C68;
   background-color: #443C68;
