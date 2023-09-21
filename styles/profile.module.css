@@ -1,0 +1,9 @@
+.upperWrapper{
+    margin-top: 5rem;
+}
+
+.upperContainer {
+    display: flex;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
