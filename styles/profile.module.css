@@ -7,3 +7,13 @@
     padding-left: 3rem;
     padding-right: 3rem;
 }
+
+.midWrapper{
+    height: 22vw;
+}
+
+.divider {
+    width: 100%;
+    height: 10px;
+    background-color: #443C68;
+}

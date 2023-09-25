@@ -30,12 +30,21 @@ export default function Profile() {
 
     return (
         <>
-            <div className={styles.upperWrapper}>
+            <section className={styles.upperWrapper}>
                 <div className={styles.upperContainer}>
                     <button onClick={()=>router.push('/dashboard')} className={styles.backButton}>Back</button>
-                    <div className={styles.notificationBell}>
-                    </div>
+                    <div className={styles.notificationBell}></div>
                 </div>
+            </section>
+
+            <section className={styles.midWrapper}>
+                <div className={styles.midContainer}>
+
+                </div>
+            </section>
+
+            <div className={styles.divider}>
+                
             </div>
         </>
     );
