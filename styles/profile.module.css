@@ -1,10 +1,10 @@
 .upperWrapper{
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .upperContainer {
     display: flex;
-    padding-left: 3rem;
+    padding-left: 2rem;
     padding-right: 3rem;
 }
 
@@ -16,4 +16,10 @@
     width: 100%;
     height: 10px;
     background-color: #443C68;
+}
+
+.name {
+    font-size: 4rem !important;
+    margin: 0;
+    padding: 0;
 }
