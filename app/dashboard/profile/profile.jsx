@@ -46,6 +46,12 @@ export default function Profile() {
             <div className={styles.divider}>
                 
             </div>
+
+            <main>
+                <div className={styles.leftContainer}>
+                    <p className={styles.name}>{user && user.displayName}</p>
+                </div>
+            </main>
         </>
     );
 }
