@@ -2,14 +2,14 @@
 
 import { initFirebase } from '../../components/firebase';
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, GithubAuthProvider } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { container, fadeIn } from '../homepage';
 import styles from '../../styles/form.module.css';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getFirestore, doc, setDoc } from 'firebase/firestore'
+import { getFirestore, doc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function RegisterForm( {darkForm} ) {
     initFirebase();
@@ -20,6 +20,7 @@ export default function RegisterForm( {darkForm} ) {
     const github = new GithubAuthProvider();
 
     const router = useRouter();
+    const searchParams = useSearchParams();
 
     const email = useRef(null);
     const password = useRef(null);
@@ -54,6 +55,8 @@ export default function RegisterForm( {darkForm} ) {
             confirmPassword.current.style.borderColor = 'initial';
             confirmPassword.current.style.borderWidth = '2px';
         }
+
+        console.log(searchParams.get('nextPath'))
     });
 
     const handleRegister = async (e) => {

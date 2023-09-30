@@ -75,6 +75,10 @@ export default function HomePage({courses}) {
         <a ref={navPricing} onClick={scrollPricing}>Pricing</a>
         ];
 
+    const routeLogin = () => {
+        router.push('sign-up/?nextPath=subscribe');
+    }
+
     return (
         <>
             <Head>
@@ -141,7 +145,7 @@ export default function HomePage({courses}) {
                                 <li className={styles.strikethrough}>Video Tutorials</li>
                                 <li className={styles.strikethrough}>Project Based Learning</li>
                             </ul>
-                            <Link href='/sign-up'><button>Get Started</button></Link>
+                            <button onClick={routeLogin}>Get Started</button>
                         </motion.div>
                         <motion.div className={styles.featuredContainer} animate={{scale: 1.1}}variants={fadeIn} whileHover={{scale: 1.2}} transition={{duration: 0.3}}>
                             <div className={styles.featured}>
@@ -155,7 +159,7 @@ export default function HomePage({courses}) {
                                     <li>Video Tutorials</li>
                                     <li>Project Based Learning</li>
                                 </ul>
-                                <Link href='/sign-up'><button>Get Started</button></Link>
+                                <button onClick={routeLogin}>Get Started</button>
                             </div>
                         </motion.div>
                         <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
@@ -169,7 +173,7 @@ export default function HomePage({courses}) {
                                 <li>Video Tutorials</li>
                                 <li>Project Based Learning</li>
                             </ul>
-                            <Link href='/sign-up'><button>Get Started</button></Link>
+                            <button onClick={routeLogin}>Get Started</button>
                         </motion.div>
                     </section>
                 </motion.div>
