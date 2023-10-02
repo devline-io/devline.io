@@ -110,7 +110,7 @@ export default function SignInForm()
             // If the user document doesn't exist, create it with the email
             await setDoc(userDocRef, {
               email: currentUser.email,
-              date: formattedDate,
+              startDate: formattedDate,
               // Add other user data as needed
             });
           }

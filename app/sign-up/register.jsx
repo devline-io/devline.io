@@ -74,7 +74,7 @@ export default function RegisterForm( {darkForm} ) {
                 await createUserWithEmailAndPassword(auth, formEmail, formPassword);
                 await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
                     email: formEmail,
-                    date: formattedDate,
+                    startDate: formattedDate,
                 });
                 router.push('/dashboard/setup')
             } 
@@ -132,7 +132,7 @@ export default function RegisterForm( {darkForm} ) {
             console.log(auth.currentUser.email);
             await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
                 email: auth.currentUser.email,
-                date: formattedDate,
+                startDate: formattedDate,
             });
             router.push('/dashboard');
         } 
