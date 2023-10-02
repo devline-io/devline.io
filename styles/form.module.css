@@ -75,6 +75,10 @@
     width: 100%;
 }
 
+.fullButton {
+    margin-top: 2rem;
+}
+
 .heroForm label {
     display: block;
     font-weight: 700;
@@ -154,3 +158,6 @@
     font-size: 1.2rem !important;
 }
 
+.email {
+    padding-right: 1rem;
+}

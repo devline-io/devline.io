@@ -26,7 +26,7 @@ export default function PasswordReset() {
                 <h1>Reset Password</h1>
                 <form>
                     <div>
-                        <label htmlFor='email'>Email</label>
+                        <label className={styles.email} htmlFor='email'>Email</label>
                         <input ref={email} required id='email' type='text'/>
                     </div>
                     <button className={styles.fullButton} onClick={handleSubmit}>Submit</button>
