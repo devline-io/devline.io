@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { initFirebase } from '../../../components/firebase';
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../../styles/profile.module.css';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 
 export default function Profile() {
@@ -17,16 +18,32 @@ export default function Profile() {
     const router = useRouter();
 
     const [user, loading] = useAuthState(auth);
+    const [startDate, setStartDate] = useState(null);
 
     useEffect(() => {
-        if(user) {
+        if (user) {
+            // Fetch the user's startDate from Firestore
+            const db = getFirestore();
+            const userDocRef = doc(db, 'User Data', user.uid);
+
+            getDoc(userDocRef)
+                .then((docSnapshot) => {
+                    if (docSnapshot.exists()) {
+                        const userData = docSnapshot.data();
+                        setStartDate(userData.startDate); // Set the startDate in state
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error fetching user data:', error);
+                });
+
             return;
         }
-        if(!user && !loading) {
+        if (!user && !loading) {
             console.log(user);
             router.push('/');
         }
-    })
+    }, [user, router, loading]);
 
     return (
         <>
@@ -50,6 +67,7 @@ export default function Profile() {
             <main>
                 <div className={styles.leftContainer}>
                     <p className={styles.name}>{user && user.displayName}</p>
+                    <p className={styles.startDate}>Been Learning Since: {startDate && startDate}</p>
                 </div>
             </main>
         </>
