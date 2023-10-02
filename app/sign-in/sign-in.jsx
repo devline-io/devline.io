@@ -121,10 +121,6 @@ export default function SignInForm()
               setEmailErrorMessage(null);
               setProviderErrorMessage('Account Exists Using A Different Provider');
               break;
-            // Handle other error cases here
-            default:
-              // Handle other error cases here
-              break;
           }
         }
       };
