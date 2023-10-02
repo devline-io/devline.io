@@ -95,27 +95,39 @@ export default function SignInForm()
 
     }
 
-    const providerLogIn = async(provider) => {
+    const providerLogIn = async (provider) => {
         try {
-            await signInWithPopup(auth, provider);
-            const document = await getDoc(doc(firestore, "User Data", auth.currentUser.uid));
-            if(!document) {
-                await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
-                    email: auth.currentUser.email
-                });
-            }
-            router.push('/dashboard');
-        } 
-        catch(error) {
-            console.log(error.code);
-            switch(error.code) {
-                case 'auth/account-exists-with-different-credential':
-                    setPasswordErrorMessage(null);
-                    setEmailErrorMessage(null)
-                    setProviderErrorMessage('Account Exists Using A Different Provider');
-            }
+          await signInWithPopup(auth, provider);
+          const currentUser = auth.currentUser;
+          const userDocRef = doc(firestore, "User Data", currentUser.uid);
+      
+          const userDocSnapshot = await getDoc(userDocRef);
+      
+          if (!userDocSnapshot.exists()) {
+            // If the user document doesn't exist, create it with the email
+            await setDoc(userDocRef, {
+              email: currentUser.email,
+              // Add other user data as needed
+            });
+          }
+      
+          router.push('/dashboard');
+        } catch (error) {
+          console.log(error.code);
+          switch (error.code) {
+            case 'auth/account-exists-with-different-credential':
+              setConfirmPasswordErrorMessage(null);
+              setPasswordErrorMessage(null);
+              setEmailErrorMessage(null);
+              setProviderErrorMessage('Account Exists Using A Different Provider');
+              break;
+            // Handle other error cases here
+            default:
+              // Handle other error cases here
+              break;
+          }
         }
-    }
+      };
 
     return(
         <div className={styles.wrapper}>
