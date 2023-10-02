@@ -31,6 +31,9 @@ export default function SignInForm()
     const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
     const [providerErrorMessage, setProviderErrorMessage] = useState(null);
 
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+
     useEffect(() => {
         if(emailErrorMessage) {
             email.current.style.borderColor = '#393053';
@@ -107,6 +110,7 @@ export default function SignInForm()
             // If the user document doesn't exist, create it with the email
             await setDoc(userDocRef, {
               email: currentUser.email,
+              date: formattedDate,
               // Add other user data as needed
             });
           }

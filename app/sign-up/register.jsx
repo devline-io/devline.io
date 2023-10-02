@@ -31,6 +31,9 @@ export default function RegisterForm( {darkForm} ) {
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState(null)
     const [providerErrorMessage, setProviderErrorMessage] = useState(null);
 
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+
     useEffect(() => {
         if(emailErrorMessage) {
             email.current.style.borderColor = '#393053';
@@ -70,7 +73,8 @@ export default function RegisterForm( {darkForm} ) {
             try {
                 await createUserWithEmailAndPassword(auth, formEmail, formPassword);
                 await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
-                    email: formEmail
+                    email: formEmail,
+                    date: formattedDate,
                 });
                 router.push('/dashboard/setup')
             } 
@@ -127,7 +131,8 @@ export default function RegisterForm( {darkForm} ) {
             await signInWithPopup(auth, provider);
             console.log(auth.currentUser.email);
             await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
-                email: auth.currentUser.email
+                email: auth.currentUser.email,
+                date: formattedDate,
             });
             router.push('/dashboard');
         } 
