@@ -19,10 +19,10 @@ export default function Profile() {
 
     const [user, loading] = useAuthState(auth);
     const [startDate, setStartDate] = useState(null);
+    const [xp, setXP] = useState(null);
 
     useEffect(() => {
         if (user) {
-            // Fetch the user's startDate from Firestore
             const db = getFirestore();
             const userDocRef = doc(db, 'User Data', user.uid);
 
@@ -30,7 +30,8 @@ export default function Profile() {
                 .then((docSnapshot) => {
                     if (docSnapshot.exists()) {
                         const userData = docSnapshot.data();
-                        setStartDate(userData.startDate); // Set the startDate in state
+                        setStartDate(userData.startDate);
+                        setXP(userData.xp);
                     }
                 })
                 .catch((error) => {
@@ -68,6 +69,7 @@ export default function Profile() {
                 <div className={styles.leftContainer}>
                     <p className={styles.name}>{user && user.displayName}</p>
                     <p className={styles.startDate}>Been Learning Since: {startDate && startDate}</p>
+                    <p className={styles.xp}>Experience Points: {xp && xp}</p>
                 </div>
             </main>
         </>

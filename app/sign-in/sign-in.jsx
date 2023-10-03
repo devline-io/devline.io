@@ -111,7 +111,7 @@ export default function SignInForm()
             await setDoc(userDocRef, {
               email: currentUser.email,
               startDate: formattedDate,
-              // Add other user data as needed
+              xp: 0
             });
           }
       

@@ -9,7 +9,7 @@
 }
 
 .midWrapper{
-    height: 22vw;
+    height: 30vw;
 }
 
 .divider {
@@ -25,13 +25,19 @@
 }
 
 .startDate {
-    margin: 0;
+    margin: .5rem;
+    margin-top: 1rem;
     font-size: 1.1rem !important;
-    padding-left: .3rem;
     font-weight: 800;
 }
 
 .leftContainer {
     margin-left: 1.5rem;
     margin-top: 1rem;
+}
+
+.xp {
+    margin: 0;
+    font-size: 1.5rem !important;
+    padding-left: .5rem;
 }
