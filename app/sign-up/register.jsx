@@ -58,8 +58,6 @@ export default function RegisterForm( {darkForm} ) {
             confirmPassword.current.style.borderColor = 'initial';
             confirmPassword.current.style.borderWidth = '2px';
         }
-
-        console.log(searchParams.get('nextPath'))
     });
 
     const handleRegister = async (e) => {
@@ -77,7 +75,12 @@ export default function RegisterForm( {darkForm} ) {
                     startDate: formattedDate,
                     xp: 0
                 });
-                router.push('/dashboard/setup')
+                console.log(searchParams.get('nextPath'), searchParams.get('nextPath') == null)
+                if(searchParams.get('nextPath') == null) {
+                    router.push('/dashboard/setup')
+                } else {
+                    router.push(`/${searchParams.get('nextPath')}`)
+                }
             } 
             catch(error) {
                 console.log(error.code);
@@ -136,7 +139,11 @@ export default function RegisterForm( {darkForm} ) {
                 startDate: formattedDate,
                 xp: 0
             });
-            router.push('/dashboard');
+            if(searchParams.get('nextPath') == null) {
+                router.push('/dashboard/setup')
+            } else {
+                router.push(`/${searchParams.get('nextPath')}`)
+            }
         } 
         catch(error) {
             console.log(error.code);
