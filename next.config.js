@@ -16,9 +16,6 @@ module.exports = {
         ]
     },
     /** @type {import('next').NextConfig} */
-    experimental: {
-        appDir: true,
-      },
       webpack: (config, { isServer }) => {
         config.resolve.alias['@dicebear/converter'] = path.resolve(__dirname, 'node_modules/@dicebear/converter/lib/index.js');
         
