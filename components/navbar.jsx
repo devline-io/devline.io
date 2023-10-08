@@ -52,7 +52,7 @@ export default function Navbar(props) {
                             <p>{user && user.displayName}</p>
                             <Link href='/dashboard'>Dashboard</Link>
                             <Link href='/dashboard/profile'>Profile</Link>
-                            <Link href='/'>Settings</Link>
+                            <Link href='/dashboard/settings'>Settings</Link>
                             <Link className={styles.signOutButton} onClick={handleSignOut} href='/'>Sign Out</Link>
                         </div>
                     </div>}
