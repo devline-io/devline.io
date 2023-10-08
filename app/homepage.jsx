@@ -10,7 +10,6 @@ import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import CatalogImages from '../components/catalogimages';
 import Register from './sign-up/register.jsx';
-import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../components/firebase';
 import { getAuth } from 'firebase/auth';
