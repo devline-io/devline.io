@@ -15,7 +15,7 @@
     "firebase": "^10.1.0",
     "framer-motion": "^9.1.7",
     "monaco-editor": "^0.41.0",
-    "next": "^13.4.18-canary.0",
+    "next": "^13.5.4",
     "nextjs": "^0.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
