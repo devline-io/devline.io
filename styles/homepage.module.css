@@ -2,6 +2,7 @@
     border-color: #F7EFE5 !important;
     color: #F7EFE5 !important;
     background-color: #18122B !important;
+    margin-bottom: 1rem;
 }
 
 .buttonContainer {
@@ -77,8 +78,7 @@
 
 /* catalog */
 .catalog, .pricing {
-    padding: 3rem;
-    padding-top: 0;
+    padding: 3rem 0 0 3rem;
     background-color: #18122B;
     color: #F7EFE5;
 }
