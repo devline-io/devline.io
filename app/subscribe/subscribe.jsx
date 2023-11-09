@@ -19,7 +19,7 @@ export default function Subscribe(){
                         <li className={styles.strikethrough}>Video Tutorials</li>
                         <li className={styles.strikethrough}>Project Based Learning</li>
                     </ul>
-                    <button>Get Started</button>
+                    <button>Continue Free</button>
                 </motion.div>
                 <motion.div className={styles.featuredContainer} animate={{scale: 1.1}}variants={fadeIn} whileHover={{scale: 1.2}} transition={{duration: 0.3}}>
                     <div className={styles.featured}>
@@ -33,7 +33,7 @@ export default function Subscribe(){
                             <li>Video Tutorials</li>
                             <li>Project Based Learning</li>
                         </ul>
-                        <button>Get Started</button>
+                        <button>Subscribe Yearly</button>
                     </div>
                 </motion.div>
                 <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
@@ -47,7 +47,7 @@ export default function Subscribe(){
                         <li>Video Tutorials</li>
                         <li>Project Based Learning</li>
                     </ul>
-                    <button>Get Started</button>
+                    <button>Subscribe Monthly</button>
                 </motion.div>
             </section>
         </motion.div>
