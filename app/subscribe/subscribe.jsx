@@ -6,7 +6,7 @@ import { fadeIn, container } from '../homepage';
 
 export default function Subscribe(){
     return (
-        <motion.div className={styles.pricing} initial="hidden" whileInView="show" variants={container}>
+        <motion.div className={styles.subscribe} initial="hidden" whileInView="show" variants={container}>
             <section className={styles.pricingContainer}>
                 <motion.div variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.3}}>
                     <h3>Free</h3>
