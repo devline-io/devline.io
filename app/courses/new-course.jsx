@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar";
 import { useRef, useState, useEffect } from "react";
 import { initFirebase } from "../../components/firebase";
 import { getAuth } from "firebase/auth";
+import Link from 'next/link';
 import { useRouter } from "next/navigation";
 
 export default function NewCourse() {
@@ -33,6 +34,12 @@ export default function NewCourse() {
             router.push('/sign-in');
         }
     })
+
+    const navItems = [
+        <Link href='/'>Home</Link>,
+        <Link href='/catalog'>Catalog</Link>, 
+        <Link href='/'>Progress</Link>,
+        ];
 
     return (
         <>

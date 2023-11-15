@@ -7,11 +7,11 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
 
     const router = useRouter();
     const thumbnailPage = [
-        () => router.push('/catalog/placeholderLesson'),
-        () => router.push('/catalog/placeholderLesson'),
-        () => router.push('/catalog/placeholderLesson'),
-        () => router.push('/catalog/placeholderLesson'),
-        () => router.push('/catalog/placeholderLesson')
+        () => router.push('/courses'),
+        () => router.push('/courses'),
+        () => router.push('/courses'),
+        () => router.push('/courses'),
+        () => router.push('/courses')
     ];
 
     if(hasDescription == false) {
