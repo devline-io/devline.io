@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+}
+
+.content{
+    width: 30%;
+    height: auto;
+}
+
+.codeEditor{
+    width: 70%;
+}
+

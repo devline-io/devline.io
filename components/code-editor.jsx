@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Editor } from '@monaco-editor/react';
-import styles from '../../styles/editor.module.css';
+import styles from '../styles/editor.module.css';
 import { usePython } from 'react-py';
 
 export default function CodeEditor() {
