@@ -8,10 +8,8 @@ import { getAuth } from "firebase/auth";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../styles/courses.module.css';
-import { PythonProvider } from 'react-py';
-import CodeEditor from '../../../components/code-editor';
 
-export default function NewCourse() {
+export default function TestCourse() {
     initFirebase();
     const auth = getAuth()
 

@@ -1,7 +1,7 @@
-import NewCourse from "./new-course";
+import TestCourse from "./test-course";
 
 export default function Page() {
     return (
-        <NewCourse/>
+        <TestCourse/>
     )
 }
