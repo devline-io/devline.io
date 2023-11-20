@@ -6,13 +6,6 @@ import styles from '../styles/catalog.module.css';
 export default function CatalogImages({ courses, fadeIn, containerClass, imageContainer, hasDescription, hoverAnimation, imageRefs, targetLevel}) {    
 
     const router = useRouter();
-    const thumbnailPage = [
-        () => router.push('/courses'),
-        () => router.push('/courses'),
-        () => router.push('/courses'),
-        () => router.push('/courses'),
-        () => router.push('/courses')
-    ];
 
     if(hasDescription == false) {
         return (
@@ -33,7 +26,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
                         variants={fadeIn} 
                         initial={{opacity: 0, y: 15, filter: 'none'}} 
                         whileInView="show" 
-                        onClick={thumbnailPage[index]} 
+                        onClick={() => router.push(`/courses/${course.name.replace(/ /g,'-').toLowerCase()}`)} 
                         ref={imageRefs[index]} 
                         className={containerClass} 
                         whileHover={hoverAnimation}
@@ -43,6 +36,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
                             </div>
                             <h3>{course.name}</h3>
                             <p>Level: {course.data.level}</p>
+                            <hr/>
                             <p>{course.data.description}</p>
                         </motion.div>
                     )
@@ -58,7 +52,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
                 variants={fadeIn} 
                 initial={{opacity: 0, y: 15, filter: 'none'}} 
                 whileInView="show" 
-                onClick={thumbnailPage[index]} 
+                onClick={() => router.push(`/courses/${course.name.replace(/ /g,'-').toLowerCase()}`)} 
                 ref={imageRefs[index]} 
                 className={containerClass} 
                 whileHover={hoverAnimation}
