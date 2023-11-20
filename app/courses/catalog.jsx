@@ -3,7 +3,7 @@
 import Navbar from '../../components/navbar';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import CatalogImages from '../../components/catalogimages';
+import CatalogImages from '../../components/catalog-images';
 import styles from '../../styles/catalog.module.css';
 import { useRef, useEffect } from 'react';
 import Head from 'next/head'

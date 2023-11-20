@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/dashboard.module.css';
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
-import CatalogImages from '../../components/catalogimages';
+import CatalogImages from '../../components/catalog-images';
 import { fadeIn } from '../homepage';
 
 export default function Dashboard({courses}) {

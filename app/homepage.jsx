@@ -3,12 +3,12 @@
 import Navbar from '../components/navbar';
 import Head from 'next/head';
 import styles from '../styles/homepage.module.css';
-import { TopDivider } from '../components/darkdivider';
-import { BottomDivider } from '../components/darkdivider';
+import { TopDivider } from '../components/dark-divider.jsx';
+import { BottomDivider } from '../components/dark-divider.jsx';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import CatalogImages from '../components/catalogimages';
+import CatalogImages from '../components/catalog-images.jsx';
 import Register from './sign-up/register.jsx';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../components/firebase';
