@@ -34,7 +34,7 @@ export default function NewCourse() {
         }
         if(!user && !loading) {
             console.log(user);
-            router.push('/sign-in');
+            router.push('sign-up/?nextPath=courses');
         }
     })
 
