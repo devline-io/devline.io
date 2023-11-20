@@ -13,7 +13,7 @@ import { initFirebase } from '../../components/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 
-export default function Catalog({courses}) {
+export default function Courses({courses}) {
     initFirebase();
     const auth = getAuth();
 

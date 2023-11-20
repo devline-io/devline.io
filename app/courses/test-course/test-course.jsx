@@ -7,7 +7,7 @@ import { initFirebase } from "../../../components/firebase";
 import { getAuth } from "firebase/auth";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
-import styles from '../../styles/courses.module.css';
+import styles from '../../../styles/courses.module.css';
 
 export default function TestCourse() {
     initFirebase();

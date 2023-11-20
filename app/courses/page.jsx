@@ -1,12 +1,12 @@
-import Catalog from './catalog';
 import { initFirebase } from '../../components/firebase';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import Courses from './catalog';
 
 export default async function Page() {
     const courses = await getServerSideProps();
     return(
-        <Catalog courses={courses}/>
+        <Courses courses={courses}/>
     );
 }
 
