@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
 
-export default function TestCourse() {
+export default function TestCourse({outline}) {
     initFirebase();
     const auth = getAuth()
 
