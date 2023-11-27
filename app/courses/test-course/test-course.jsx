@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
 
-export default function TestCourse({outline}) {
+export default function TestCourse({jsonOutline}) {
     initFirebase();
     const auth = getAuth()
 
@@ -20,6 +20,11 @@ export default function TestCourse({outline}) {
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
+
+    const outline = JSON.parse(JSON.stringify(jsonOutline));
+    for(let i = 0; i < outline.length; i++) {
+        console.log(outline[''][`chapter${i+1}`].title);
+    }
 
     useEffect(() => {
         if(user) {

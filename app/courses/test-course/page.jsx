@@ -5,7 +5,7 @@ import { initFirebase } from "../../../components/firebase";
 export default async function Page() {
     const outline = await getServerSideProps();
     return (
-        <TestCourse outline={outline}/>
+        <TestCourse jsonOutline={outline}/>
     )
 }
 
