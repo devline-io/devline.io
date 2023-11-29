@@ -22,8 +22,14 @@ export default function TestCourse({jsonOutline}) {
     const [profilePic, setProfilePic] = useState(null);
 
     const outline = JSON.parse(JSON.stringify(jsonOutline));
-    for(let i = 0; i < outline.length; i++) {
-        console.log(outline[''][`chapter${i+1}`].title);
+    for(let chapter = 0; chapter < outline.length; chapter++) {
+        console.log(outline[''][`chapter${chapter+1}`].title);
+        for(let unit = 0; unit < outline[''][`chapter${chapter+1}`].length; unit++) {
+            console.log(outline[''][`chapter${chapter+1}`][`unit${unit+1}`].title)
+            for(let lesson = 0; lesson < outline[''][`chapter${chapter+1}`][`unit${unit+1}`].length; lesson++) {
+                console.log(outline[''][`chapter${chapter+1}`][`unit${unit+1}`][`lesson${lesson+1}`].title)
+            }
+        }
     }
 
     useEffect(() => {
