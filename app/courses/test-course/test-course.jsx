@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
 
-export default function TestCourse({jsonOutline}) {
+export default function TestCourse({props}) {
     initFirebase();
     const auth = getAuth()
 
@@ -20,17 +20,6 @@ export default function TestCourse({jsonOutline}) {
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
-
-    const outline = JSON.parse(JSON.stringify(jsonOutline));
-    for(let chapter = 0; chapter < outline.length; chapter++) {
-        console.log(outline[''][`chapter${chapter+1}`].title);
-        for(let unit = 0; unit < outline[''][`chapter${chapter+1}`].length; unit++) {
-            console.log(outline[''][`chapter${chapter+1}`][`unit${unit+1}`].title)
-            for(let lesson = 0; lesson < outline[''][`chapter${chapter+1}`][`unit${unit+1}`].length; lesson++) {
-                console.log(outline[''][`chapter${chapter+1}`][`unit${unit+1}`][`lesson${lesson+1}`].title)
-            }
-        }
-    }
 
     useEffect(() => {
         if(user) {
@@ -47,6 +36,8 @@ export default function TestCourse({jsonOutline}) {
         }
     })
 
+    
+
     const navItems = [
         <Link href='/'>Home</Link>,
         <Link href='/catalog'>Catalog</Link>, 
@@ -61,6 +52,7 @@ export default function TestCourse({jsonOutline}) {
               button={<button onClick={()=>router.push('/')} className={styles.alternateButton}>Upgrade</button>} 
               profilePic={profilePic} 
             />}
+            <br/><br/>
         </>
     )
 }

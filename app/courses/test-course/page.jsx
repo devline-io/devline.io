@@ -5,7 +5,7 @@ import { initFirebase } from "../../../components/firebase";
 export default async function Page() {
     const outline = await getServerSideProps();
     return (
-        <TestCourse jsonOutline={outline}/>
+        <TestCourse props={outline}/>
     )
 }
 
@@ -18,16 +18,35 @@ async function fetchOutline() {
         try {
             const url = await getDownloadURL(outlineRef);
             const response = await fetch(url);
-            const outline = await response.json(); // Assuming your outline is a JSON file
+            const outline = await response.json();
 
             resolve(outline);
         } catch (error) {
             console.error(error);
-            reject(error); // Reject the promise in case of an error
+            reject(error);
         }
     });
 }
 
-async function getServerSideProps() {
-    return await fetchOutline();  
+async function getServerSideProps() { 
+    const outline = JSON.parse(JSON.stringify(await fetchOutline()));
+    const chapters = [];
+    const units = [];
+    const lessons = [];
+    for(let chapter = 0; chapter < outline.length; chapter++) {
+        chapters.push(outline[''][`chapter${chapter+1}`].title);
+        console.log(chapters[chapter])
+        for(let unit = 0; unit < outline[''][`chapter${chapter+1}`].length; unit++) {
+            const currentChapter = chapters[chapter];
+            units.push({currentChapter: outline[''][`chapter${chapter+1}`][`unit${unit+1}`].title})
+            console.log(units[unit].currentChapter)
+            for(let lesson = 0; lesson < outline[''][`chapter${chapter+1}`][`unit${unit+1}`].length; lesson++) {
+                const currentUnit = units[unit].currentChapter
+                lessons.push({currentChapter: {currentUnit: outline[''][`chapter${chapter+1}`][`unit${unit+1}`][`lesson${lesson+1}`].title}})
+                console.log(lessons[lesson].currentChapter.currentUnit)
+            }
+        }
+    }
+
+    return {props: { chapters, units, lessons }}
 }
