@@ -34,6 +34,8 @@ export default function TestCourse({props}) {
             console.log(user);
             router.push('sign-up/?nextPath=courses');
         }
+        console.log(props.units)
+
     })
 
     
@@ -46,13 +48,24 @@ export default function TestCourse({props}) {
 
     return (
         <>
-            {profilePic && <Navbar 
+            {/* {profilePic && <Navbar 
               navItems={navItems} 
               navbarRef={nav}
               button={<button onClick={()=>router.push('/')} className={styles.alternateButton}>Upgrade</button>} 
               profilePic={profilePic} 
-            />}
-            <br/><br/>
+            />} */}
+            <ul>
+                {props.chapters.map((chapter, chapterIndex) => {
+                    return (
+                        <li>
+                            {chapter}
+                            <ul>
+                                
+                            </ul>
+                        </li>)
+                })}
+            </ul>
+            
         </>
     )
 }

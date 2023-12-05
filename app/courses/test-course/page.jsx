@@ -23,7 +23,6 @@ async function fetchOutline() {
 
             resolve(outline);
         } catch (error) {
-            console.error(error);
             reject(error);
         }
     });
@@ -32,16 +31,19 @@ async function fetchOutline() {
 async function getServerSideProps() { 
     const outline = JSON.parse(JSON.stringify(await fetchOutline()));
     const chapters = [];
-    const units = [];
-    const lessons = [];
+    const units = {};
+    const lessons = {};
     for(let chapter = 0; chapter < outline.length; chapter++) {
         chapters.push(outline[''][`chapter${chapter+1}`].title);
+        const currentChapter = chapters[chapter];
+        units[currentChapter] = []
         for(let unit = 0; unit < outline[''][`chapter${chapter+1}`].length; unit++) {
-            const currentChapter = chapters[chapter];
-            units.push({[currentChapter]: outline[''][`chapter${chapter+1}`][`unit${unit+1}`].title})
+            units[currentChapter].push(outline[''][`chapter${chapter+1}`][`unit${unit+1}`].title)
+            const currentUnit = units[currentChapter][unit];
+            lessons[currentChapter] = {};
+            lessons[currentChapter][currentUnit] = [];
             for(let lesson = 0; lesson < outline[''][`chapter${chapter+1}`][`unit${unit+1}`].length; lesson++) {
-                const currentUnit = units[unit][`${currentChapter}`];
-                lessons.push({[currentChapter]: {[currentUnit]: outline[''][`chapter${chapter+1}`][`unit${unit+1}`][`lesson${lesson+1}`].title}})
+                lessons[currentChapter][currentUnit].push(outline[''][`chapter${chapter+1}`][`unit${unit+1}`][`lesson${lesson+1}`].title)
             }
         }
     }
