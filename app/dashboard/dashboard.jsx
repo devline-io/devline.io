@@ -10,7 +10,7 @@ import styles from '../../styles/dashboard.module.css';
 import Link from 'next/link';
 import Navbar from '../../components/navbar';
 import CatalogImages from '../../components/catalog-images';
-import { fadeIn } from '../homepage';
+import { container, fadeIn } from '../homepage';
 
 export default function Dashboard({courses}) {
     initFirebase();
@@ -83,38 +83,15 @@ export default function Dashboard({courses}) {
             />}
             
             <main className={styles.main}>
-                <div className={styles.header}>
-                    <h1>Dashboard</h1>
-                </div>
                 <div className={styles.container}>
-                    <div className={styles.leftContent}>
-                        <div className={styles.topRow}>
-                            <div className={styles.currentStreak}>
-                                <h3>Curent Streak</h3>
-                                <div className={styles.weekCal}>
-                                    <p>Calender placeholder. Want to put a week calander here Sunday - Saturday that will track each time you log in. If complete the week logging in every day you get some kind of reward </p>
-                                </div>
-                            </div>
-                            <div className={styles.lessonEnergy}>
-                                <h3>Lesson Energy</h3>
-                                <div className={styles.energyBar}>
-                                    <p>Simply just showing how much energy you have for the rest of the day</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.recentCourses}>
-                            <h3>Recent Courses</h3>
-                            <div className={styles.courses}>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.myProjects}>
-                        <h3>My Projects</h3>
-                        <div className={styles.projects}>
+                    <div className={styles.topContainer}>
 
-                        </div>
                     </div>
+                    <div className={styles.bottomContainer}>
+                        <h3>Continue</h3>
+                        <h3>Recommended</h3>
+                    </div>
+                    
                 </div>
             </main>
         </>

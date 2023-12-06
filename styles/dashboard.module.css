@@ -3,52 +3,17 @@
     padding: 3rem;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    justify-content: center;
-    justify-items: center;
+.container{
+    display: inline;
+    align-items: vertical;
 }
 
-.leftContent {
-    overflow-x: visible;
+.topContainer {
+    height: 40vh;
+    width: auto;
+
 }
 
-.header {
-    margin-bottom: 1rem;
-}
+.bottomContainer{
 
-.topRow {
-    display: flex;
-    margin-bottom: 3rem;
-}
-
-.weekCal {
-    height: 6rem;
-    width: 28rem;
-    background-color: #393053;
-    margin-right: 5rem;
-}
-
-.energyBar {
-    height: 6rem;
-    width: 28rem;
-    background-color: #393053;
-    margin-right: 5rem;
-}
-
-.courses {
-    height: 18rem;
-    width: 60rem;
-    background-color: #393053;
-}
-
-.myProjects {
-    justify-content: center;    
-}
-
-.projects {
-    width: 20rem;
-    height: 29.5rem;
-    background-color: #393053;
 }
