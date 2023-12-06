@@ -107,7 +107,7 @@ export default function HomePage({courses}) {
                         </motion.div>
                     </motion.div>
                     <div className={styles.buttonContainer}>
-                        <motion.button onClick={() => router.push('/catalog')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
+                        <motion.button onClick={() => router.push('/courses')} className={styles.lightButton} variants={fadeIn} whileHover={{scale: 1.1}} transition={{duration: 0.1}}>See Full Catalog</motion.button>
                     </div>
                 </motion.div>
 
