@@ -37,10 +37,10 @@ async function getServerSideProps() {
         chapters.push(outline[''][`chapter${chapter+1}`].title);
         const currentChapter = chapters[chapter];
         units[currentChapter] = []
+        lessons[currentChapter] = {}
         for(let unit = 0; unit < outline[''][`chapter${chapter+1}`].length; unit++) {
             units[currentChapter].push(outline[''][`chapter${chapter+1}`][`unit${unit+1}`].title)
             const currentUnit = units[currentChapter][unit];
-            lessons[currentChapter] = {};
             lessons[currentChapter][currentUnit] = [];
             for(let lesson = 0; lesson < outline[''][`chapter${chapter+1}`][`unit${unit+1}`].length; lesson++) {
                 lessons[currentChapter][currentUnit].push(outline[''][`chapter${chapter+1}`][`unit${unit+1}`][`lesson${lesson+1}`].title)

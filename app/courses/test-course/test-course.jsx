@@ -34,7 +34,7 @@ export default function TestCourse({props}) {
             console.log(user);
             router.push('sign-up/?nextPath=courses');
         }
-        console.log(props.units)
+        console.log(props.lessons['Chapter Title'])
 
     })
 
@@ -55,12 +55,23 @@ export default function TestCourse({props}) {
               profilePic={profilePic} 
             />} */}
             <ul>
-                {props.chapters.map((chapter, chapterIndex) => {
+                {props.chapters.map((chapter) => {
                     return (
                         <li>
                             {chapter}
                             <ul>
-                                
+                                {props.units[chapter].map((unit) => {
+                                    return (
+                                        <li>
+                                            {unit}
+                                            <ul>
+                                                {props.lessons[chapter][unit].map((lesson) => {
+                                                    return <li>{lesson}</li>
+                                                })}
+                                            </ul>
+                                        </li>
+                                    )
+                                })}
                             </ul>
                         </li>)
                 })}
