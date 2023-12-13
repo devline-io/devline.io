@@ -11,3 +11,8 @@
     width: 70%;
 }
 
+.outline * {
+    background-color: #18122B;
+    color: #F7EFE5;
+}
+

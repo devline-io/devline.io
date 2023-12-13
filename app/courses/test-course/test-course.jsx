@@ -8,6 +8,7 @@ import { getAuth } from "firebase/auth";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 export default function TestCourse({props}) {
     initFirebase();
@@ -48,34 +49,37 @@ export default function TestCourse({props}) {
 
     return (
         <>
-            {/* {profilePic && <Navbar 
+            {profilePic && <Navbar 
               navItems={navItems} 
               navbarRef={nav}
               button={<button onClick={()=>router.push('/')} className={styles.alternateButton}>Upgrade</button>} 
               profilePic={profilePic} 
-            />} */}
-            <ul>
-                {props.chapters.map((chapter) => {
-                    return (
-                        <li>
-                            {chapter}
-                            <ul>
-                                {props.units[chapter].map((unit) => {
-                                    return (
-                                        <li>
-                                            {unit}
-                                            <ul>
-                                                {props.lessons[chapter][unit].map((lesson) => {
-                                                    return <li>{lesson}</li>
-                                                })}
-                                            </ul>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </li>)
-                })}
-            </ul>
+            />}
+            <div>
+                <ul className={styles.outline}>
+                    {props.chapters.map((chapter) => {
+                        return (
+                            <li>
+                                {chapter}
+                                <ul>
+                                    {props.units[chapter].map((unit) => {
+                                        return (
+                                            <li>
+                                                {unit}
+                                                <ul>
+                                                    {props.lessons[chapter][unit].map((lesson) => {
+                                                        return <li>{lesson}</li>
+                                                    })}
+                                                </ul>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </li>)
+                    })}
+                </ul>
+                <MDXRemote {...props.C1U1}/>
+            </div>
             
         </>
     )
