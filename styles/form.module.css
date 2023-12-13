@@ -67,7 +67,8 @@
 }
 
 .container .fullButton {
-    width: 100%;
+    width: 50%;
+    align-self: center;
 }
 
 .heroForm button {
