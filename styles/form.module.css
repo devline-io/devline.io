@@ -38,6 +38,7 @@
 
 .form input {
     padding: .35rem;
+    margin-top: 3vh;
     border-color: initial;
 }
 
@@ -69,6 +70,7 @@
 .container .fullButton {
     width: 50%;
     align-self: center;
+    margin-top: 7vh;
 }
 
 .heroForm button {
