@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 
 export default function TestCourse({props}) {
     initFirebase();
@@ -55,7 +55,7 @@ export default function TestCourse({props}) {
               button={<button onClick={()=>router.push('/')} className={styles.alternateButton}>Upgrade</button>} 
               profilePic={profilePic} 
             />}
-            <div>
+            <div className={styles.course}>
                 <ul className={styles.outline}>
                     {props.chapters.map((chapter) => {
                         return (
@@ -78,7 +78,9 @@ export default function TestCourse({props}) {
                             </li>)
                     })}
                 </ul>
-                <MDXRemote {...props.C1U1}/>
+                <div className={styles.courseText}>
+                    <MDXRemote {...props.C1U1}/>
+                </div>
             </div>
             
         </>

@@ -38,6 +38,7 @@ async function getServerSideProps() {
     console.log(C1U1);
 
     const outline = JSON.parse(JSON.stringify(await fetchOutline()));
+    const title = outline.title;
     const chapters = [];
     const units = {};
     const lessons = {};
@@ -56,5 +57,5 @@ async function getServerSideProps() {
         }
     }
 
-    return { chapters, units, lessons, C1U1 }
+    return { title, chapters, units, lessons, C1U1 }
 }
