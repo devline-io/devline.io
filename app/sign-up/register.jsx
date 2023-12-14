@@ -164,15 +164,18 @@ export default function RegisterForm( {darkForm} ) {
                 <h1>Sign Up</h1>
                 <form className={styles.form} onSubmit={handleRegister} method='post'>
                     <div>
-                        <input ref={email} type='text' placeholder='Email' id='email'/>
+                        <label htmlFor='email'>Email</label>
+                        <input ref={email} placeholder='Email' type='text' id='email'/>
                         <span>{emailErrorMessage}</span>
                     </div>
                     <div>
-                        <input ref={password} type='password' placeholder='Password' id='password' />
+                        <label htmlFor='password'>Password</label>
+                        <input ref={password} type='password' id='password' placeholder='Password'/>
                         <span>{passwordErrorMessage}</span>
                     </div>
                     <div>
-                        <input ref={confirmPassword} type='password' placeholder='Confirm Password' id='confirm-password'/>
+                        <label htmlFor='confirm-password'>Confirm Your Password</label>
+                        <input ref={confirmPassword} type='password' id='confirm-password' placeholder='Confirm Password'/>
                         <span>{confirmPasswordErrorMessage}</span>
                     </div>
                     <button className={styles.fullButton}>Sign Up</button>
