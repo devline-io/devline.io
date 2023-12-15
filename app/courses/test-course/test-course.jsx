@@ -33,7 +33,7 @@ export default function TestCourse({props}) {
         }
         if(!user && !loading) {
             console.log(user);
-            router.push('/sign-up/?nextPath=courses');
+            router.push('/sign-up/?nextPath=courses/test-course');
         }
         console.log(props.lessons['Chapter Title'])
 
