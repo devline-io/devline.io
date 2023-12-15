@@ -69,7 +69,7 @@ export default function Dashboard({courses}) {
 
     const navItems = [
         <Link href='/'>Home</Link>,
-        <Link href='/catalog'>Catalog</Link>, 
+        <Link href='/courses'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
         ];
 
