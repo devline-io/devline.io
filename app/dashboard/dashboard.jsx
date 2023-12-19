@@ -62,7 +62,6 @@ export default function Dashboard({courses}) {
             }
         }
         if(!user && !loading) {
-            console.log(user);
             router.push('/');
         }
     })

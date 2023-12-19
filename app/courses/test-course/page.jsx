@@ -35,7 +35,6 @@ async function getServerSideProps() {
     const C1U1res = await fetch(C1U1url);
     const C1U1text = await C1U1res.text();
     const C1U1 = await serialize(C1U1text)
-    console.log(C1U1);
 
     const outline = JSON.parse(JSON.stringify(await fetchOutline()));
     const title = outline.title;
