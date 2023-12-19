@@ -136,12 +136,12 @@ export default function SignInForm()
                 <form className={styles.form} onSubmit={handleLogin}>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input id='email' type='text' ref={email} placeholder='Email'/>
+                        <input id='email' type='text' ref={email}/>
                         <span>{emailErrorMessage}</span>
                     </div>
                     <div>
                         <label htmlFor='password'>Password</label>
-                        <input id='password' type='password' ref={password} placeholder='Password'/>
+                        <input id='password' type='password' ref={password}/>
                         <span>{passwordErrorMessage}</span>
                     </div>
                     <button className={styles.fullButton}>Login</button>
