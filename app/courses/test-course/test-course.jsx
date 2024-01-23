@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
 import { MDXRemote } from 'next-mdx-remote'
+import SmoothScroll from "../../../components/smooth-scroll";
 
 export default function TestCourse({props}) {
     initFirebase();
@@ -21,6 +22,21 @@ export default function TestCourse({props}) {
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
+
+    const courseRefs = {}
+
+    for(let chapter = 1; chapter <= props.chapters.length; chapter++) {
+        courseRefs[`c${chapter}`] = `c${chapter}`;
+        console.log(courseRefs[`c${chapter}`])
+        for(let unit = 1; unit <= props.units[props.chapters[chapter-1]].length; unit++) {
+            courseRefs[`c${chapter}u${unit}`] = `c${chapter}u${unit}`;
+            console.log(courseRefs[`c${chapter}u${unit}`])
+            for(let lesson = 1; lesson <= props.lessons[props.chapters[chapter-1]][props.units[props.chapters[chapter-1]][unit-1]].length; lesson++) {
+                courseRefs[`c${chapter}u${unit}l${lesson}`] = `c${chapter}u${unit}l${lesson}`;
+                console.log(courseRefs[`c${chapter}u${unit}l${lesson}`])
+            }
+        }
+    }
 
     useEffect(() => {
         if(user) {
@@ -62,13 +78,13 @@ export default function TestCourse({props}) {
                             <li>
                                 {chapter}
                                 <ul>
-                                    {props.units[chapter].map((unit) => {
+                                    {props.units[chapter].map((unit, uIndex) => {
                                         return (
                                             <li>
                                                 {unit}
                                                 <ul>
-                                                    {props.lessons[chapter][unit].map((lesson) => {
-                                                        return <li>{lesson}</li>
+                                                    {props.lessons[chapter][unit].map((lesson,lIndex) => {
+                                                        return <li onClick={SmoothScroll()}>{lesson}</li>
                                                     })}
                                                 </ul>
                                             </li>
