@@ -26,17 +26,19 @@ export default function TestCourse({props}) {
     const courseRefs = {}
 
     for(let chapter = 1; chapter <= props.chapters.length; chapter++) {
-        courseRefs[`c${chapter}`] = `c${chapter}`;
+        courseRefs[`c${chapter}`] = useRef(null);
         console.log(courseRefs[`c${chapter}`])
         for(let unit = 1; unit <= props.units[props.chapters[chapter-1]].length; unit++) {
-            courseRefs[`c${chapter}u${unit}`] = `c${chapter}u${unit}`;
+            courseRefs[`c${chapter}u${unit}`] = useRef(null);
             console.log(courseRefs[`c${chapter}u${unit}`])
             for(let lesson = 1; lesson <= props.lessons[props.chapters[chapter-1]][props.units[props.chapters[chapter-1]][unit-1]].length; lesson++) {
-                courseRefs[`c${chapter}u${unit}l${lesson}`] = `c${chapter}u${unit}l${lesson}`;
+                courseRefs[`c${chapter}u${unit}l${lesson}`] = useRef(null);
                 console.log(courseRefs[`c${chapter}u${unit}l${lesson}`])
             }
         }
     }
+
+    console.log(courseRefs)
 
     useEffect(() => {
         if(user) {
@@ -84,7 +86,7 @@ export default function TestCourse({props}) {
                                                 {unit}
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
-                                                        return <li onClick={SmoothScroll()}>{lesson}</li>
+                                                        return <li>{lesson}</li>
                                                     })}
                                                 </ul>
                                             </li>
@@ -95,7 +97,7 @@ export default function TestCourse({props}) {
                     })}
                 </ul>
                 <div className={styles.courseText}>
-                    <MDXRemote {...props.C1U1}/>
+                    <MDXRemote {...props.C1U1} scope={courseRefs}/>
                 </div>
             </div>
             
