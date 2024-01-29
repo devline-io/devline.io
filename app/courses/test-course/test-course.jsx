@@ -27,13 +27,13 @@ export default function TestCourse({props}) {
 
     for(let chapter = 1; chapter <= props.chapters.length; chapter++) {
         courseRefs[`c${chapter}`] = useRef(null);
-        console.log(courseRefs[`c${chapter}`])
+        //console.log(courseRefs[`c${chapter}`])
         for(let unit = 1; unit <= props.units[props.chapters[chapter-1]].length; unit++) {
             courseRefs[`c${chapter}u${unit}`] = useRef(null);
-            console.log(courseRefs[`c${chapter}u${unit}`])
+            //console.log(courseRefs[`c${chapter}u${unit}`])
             for(let lesson = 1; lesson <= props.lessons[props.chapters[chapter-1]][props.units[props.chapters[chapter-1]][unit-1]].length; lesson++) {
                 courseRefs[`c${chapter}u${unit}l${lesson}`] = useRef(null);
-                console.log(courseRefs[`c${chapter}u${unit}l${lesson}`])
+                //console.log(courseRefs[`c${chapter}u${unit}l${lesson}`])
             }
         }
     }
@@ -53,7 +53,6 @@ export default function TestCourse({props}) {
             console.log(user);
             router.push('/sign-up/?nextPath=courses/test-course');
         }
-        console.log(props.lessons['Chapter Title'])
 
     })
 
@@ -61,9 +60,13 @@ export default function TestCourse({props}) {
 
     const navItems = [
         <Link href='/'>Home</Link>,
-        <Link href='/catalog'>Catalog</Link>, 
+        <Link href='/courses'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
         ];
+
+    const lessonClicked = (item) => {
+        console.log('clicked ', item);
+    }
 
     return (
         <>
@@ -86,7 +89,7 @@ export default function TestCourse({props}) {
                                                 {unit}
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
-                                                        return <li>{lesson}</li>
+                                                        return <li><a href="#" onClick={() => SmoothScroll(courseRefs[`c1u${uIndex+1}l${lIndex+1}`], nav)}>{lesson}</a></li>
                                                     })}
                                                 </ul>
                                             </li>
