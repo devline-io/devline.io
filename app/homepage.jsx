@@ -13,6 +13,7 @@ import Register from './sign-up/register.jsx';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initFirebase } from '../components/firebase';
 import { getAuth } from 'firebase/auth';
+import SmoothScroll from '../components/smooth-scroll.jsx';
 
 export const container = {
     hidden: { opacity: 1},
@@ -51,27 +52,11 @@ export default function HomePage({courses}) {
         window.scrollTo({behavior: 'smooth', top: 0});
     }
 
-    const scrollCatalog = () => {
-        let position = catalog.current.offsetTop;
-        let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
-    }
-    const scrollAbout = () => {
-        let position = about.current.offsetTop;
-        let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
-    }
-    const scrollPricing = () => {
-        let position = pricing.current.offsetTop;
-        let navHeight = nav.current.offsetHeight;
-        window.scrollTo({behavior: 'smooth', top: (position - navHeight) * getComputedStyle(document.querySelector('html')).zoom});
-    }
-
     const navItems = [
         <a ref={navHome} onClick={scrollHome}>Home</a>,
-        <a ref={navCatalog} onClick={scrollCatalog}>Catalog</a>, 
-        <a ref={navAbout} onClick={scrollAbout}>About</a>,
-        <a ref={navPricing} onClick={scrollPricing}>Pricing</a>
+        <a ref={navCatalog} onClick={() => SmoothScroll(catalog, nav)}>Catalog</a>, 
+        <a ref={navAbout} onClick={() => SmoothScroll(about, nav)}>About</a>,
+        <a ref={navPricing} onClick={() => SmoothScroll(pricing, nav)}>Pricing</a>
         ];
 
     const routeLogin = () => {
