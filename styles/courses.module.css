@@ -21,7 +21,11 @@
     background-color: #18122B;
     position: fixed;
     overflow: scroll;
-    height: 92vh;
+    height: 100vh;
+}
+
+.outlineLesson {
+    cursor: pointer;
 }
 
 .outline::-webkit-scrollbar {
