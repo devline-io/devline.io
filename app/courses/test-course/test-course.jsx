@@ -89,7 +89,7 @@ export default function TestCourse({props}) {
                                                 {unit}
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
-                                                        return <li><a href="#" onClick={() => SmoothScroll(courseRefs[`c1u${uIndex+1}l${lIndex+1}`], nav)}>{lesson}</a></li>
+                                                        return <li><a onClick={() => SmoothScroll(courseRefs[`c1u${uIndex+1}l${lIndex+1}`], nav)}>{lesson}</a></li>
                                                     })}
                                                 </ul>
                                             </li>
