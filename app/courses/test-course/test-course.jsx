@@ -90,6 +90,7 @@ export default function TestCourse({props}) {
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
                                                         return <li className={styles.outlineLesson}><a onClick={() => SmoothScroll(courseRefs[`c1u${uIndex+1}l${lIndex+1}`], nav)}>{lesson}</a></li>
+                                                        
                                                     })}
                                                 </ul>
                                             </li>
@@ -103,7 +104,10 @@ export default function TestCourse({props}) {
                     <MDXRemote {...props.C1U1} scope={courseRefs}/>
                 </div>
             </div>
-            
+            <div className={styles.nextBackButton}>
+                <button>Back</button>
+                <button>Next</button> 
+            </div>
         </>
     )
 }
