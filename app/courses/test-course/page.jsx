@@ -1,5 +1,5 @@
 import TestCourse from "./test-course";
-import {getStorage, getDownloadURL, ref} from "firebase/storage";
+import {getStorage, getDownloadURL, ref, listAll} from "firebase/storage";
 import { initFirebase } from "../../../components/firebase";
 import { serialize } from 'next-mdx-remote/serialize'
 
@@ -30,11 +30,17 @@ async function fetchOutline() {
 
 async function getServerSideProps() { 
     initFirebase()
-    const storage = getStorage()
-    const C1U1url = await getDownloadURL(ref(storage, "Courses/Test Course/C1U1.md"));
-    const C1U1res = await fetch(C1U1url);
-    const C1U1text = await C1U1res.text();
-    const C1U1 = await serialize(C1U1text)
+    const storage = getStorage();
+    const markdown = {};
+    await listAll(ref(storage, "Courses/Test Course/Markdown")).then(async (res) => {
+        res.items.forEach(async (item) => {
+            const url = await getDownloadURL(item);
+            const content = await fetch(url);
+            const text = await content.text();
+            markdown[item.name] = await serialize(text);
+            console.log(item.name)
+        })
+    })
 
     const outline = JSON.parse(JSON.stringify(await fetchOutline()));
     const title = outline.title;
@@ -56,5 +62,5 @@ async function getServerSideProps() {
         }
     }
 
-    return { title, chapters, units, lessons, C1U1 }
+    return { title, chapters, units, lessons, markdown }
 }

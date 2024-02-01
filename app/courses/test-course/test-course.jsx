@@ -23,22 +23,20 @@ export default function TestCourse({props}) {
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
 
-    const courseRefs = {}
+    const courseRefs = {};
+    const currentPage = {'chapter': 1, 'unit': 1};
+
+    const [markdown, setMarkdown] = useState(props.markdown[`C${currentPage.chapter}U${currentPage.unit}.md`]);
 
     for(let chapter = 1; chapter <= props.chapters.length; chapter++) {
         courseRefs[`c${chapter}`] = useRef(null);
-        //console.log(courseRefs[`c${chapter}`])
         for(let unit = 1; unit <= props.units[props.chapters[chapter-1]].length; unit++) {
             courseRefs[`c${chapter}u${unit}`] = useRef(null);
-            //console.log(courseRefs[`c${chapter}u${unit}`])
             for(let lesson = 1; lesson <= props.lessons[props.chapters[chapter-1]][props.units[props.chapters[chapter-1]][unit-1]].length; lesson++) {
                 courseRefs[`c${chapter}u${unit}l${lesson}`] = useRef(null);
-                //console.log(courseRefs[`c${chapter}u${unit}l${lesson}`])
             }
         }
     }
-
-    console.log(courseRefs)
 
     useEffect(() => {
         if(user) {
@@ -56,6 +54,21 @@ export default function TestCourse({props}) {
 
     })
 
+    const nextPage = () => {
+        const unitLength = props.units[props.chapters[currentPage.chapter-1]].length;
+        if(currentPage.unit == unitLength) {
+            currentPage.unit = 1;
+            if(currentPage.chapter == props.chapters.length) {
+                currentPage.chapter = 1;
+            } else {
+                currentPage.chapter++;
+            }
+        } else {
+            currentPage.unit++;
+        }
+        console.log(`C${currentPage.chapter}U${currentPage.unit}.md`)
+        setMarkdown(props.markdown[`C${currentPage.chapter}U${currentPage.unit}.md`])
+    }
     
 
     const navItems = [
@@ -63,10 +76,6 @@ export default function TestCourse({props}) {
         <Link href='/courses'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
         ];
-
-    const lessonClicked = (item) => {
-        console.log('clicked ', item);
-    }
 
     return (
         <>
@@ -101,12 +110,12 @@ export default function TestCourse({props}) {
                     })}
                 </ul>
                 <div className={styles.courseText}>
-                    <MDXRemote {...props.C1U1} scope={courseRefs}/>
+                    <MDXRemote {...markdown} scope={courseRefs}/>
                 </div>
             </div>
             <div className={styles.nextBackButton}>
                 <button>Back</button>
-                <button>Next</button> 
+                <button onClick={nextPage}>Next</button> 
             </div>
         </>
     )
