@@ -76,7 +76,11 @@ export default function TestCourse({props}) {
         window.scrollTo({behavior: 'smooth', top: 0});
     }
 
-   
+    const handleLessonClick = async (scrollItem, page) => {
+        setMarkdown(props.markdown[`C1U${page}.md`]);
+        await courseRefs[scrollItem] != null;
+        SmoothScroll(courseRefs[scrollItem], nav);
+    }
     
 
     const navItems = [
@@ -106,7 +110,7 @@ export default function TestCourse({props}) {
                                                 {unit}
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
-                                                        return <li className={styles.outlineLesson}><a onClick={() => SmoothScroll(courseRefs[`c1u${uIndex+1}l${lIndex+1}`], nav)}>{lesson}</a></li>
+                                                        return <li className={styles.outlineLesson}><a onClick={() => handleLessonClick(`c1u${uIndex+1}l${lIndex+1}`, uIndex + 1)}>{lesson}</a></li>
                                                         
                                                     })}
                                                 </ul>
@@ -118,7 +122,7 @@ export default function TestCourse({props}) {
                     })}
                 </ul>
                 <div className={styles.courseText}>
-                    <MDXRemote {...markdown} scope={courseRefs}/>
+                    {markdown && <MDXRemote {...markdown} scope={courseRefs}/>}
                 </div>
             </div>
             <div className={styles.nextBackButton}>

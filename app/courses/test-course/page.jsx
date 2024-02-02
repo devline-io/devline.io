@@ -38,7 +38,6 @@ async function getServerSideProps() {
             const content = await fetch(url);
             const text = await content.text();
             markdown[item.name] = await serialize(text);
-            console.log(item.name)
         })
     })
 
