@@ -102,11 +102,11 @@ export default function TestCourse({props}) {
                                 <ul>
                                     {props.units[chapter].map((unit, uIndex) => {
                                         return (
-                                            <li>
+                                            <li className={styles.outlineItems}>
                                                 <a onClick={() => handleLessonClick(`c1u${uIndex+1}`, uIndex + 1)}>{unit}</a>
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
-                                                        return <li className={styles.outlineLesson}><a onClick={() => handleLessonClick(`c1u${uIndex+1}l${lIndex+1}`, uIndex + 1)}>{lesson}</a></li>
+                                                        return <li className={styles.outlineItems}><a onClick={() => handleLessonClick(`c1u${uIndex+1}l${lIndex+1}`, uIndex + 1)}>{lesson}</a></li>
                                                         
                                                     })}
                                                 </ul>
