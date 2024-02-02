@@ -59,7 +59,6 @@ export default function TestCourse({props}) {
         const unitLength = props.units[props.chapters[currentChapter-1]].length;
         console.log(currentUnit, currentChapter, currentUnit == unitLength)
         if(currentUnit == unitLength) {
-            console.log("setting unit to 1")
             setCurrentUnit(1);
             if(currentChapter == props.chapters.length) {
                 setCurrentChapter(1);
@@ -67,11 +66,8 @@ export default function TestCourse({props}) {
                 setCurrentChapter(currentChapter + 1);
             }
         } else {
-            console.log('increase unit')
-            setCurrentUnit(2);
+            setCurrentUnit(currentUnit + 1);
         }
-
-        console.log("after change", currentUnit, currentChapter)
         setMarkdown(props.markdown[`C${currentChapter}U${currentUnit}.md`])
         window.scrollTo({behavior: 'smooth', top: 0});
     }
