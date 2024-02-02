@@ -24,9 +24,10 @@ export default function TestCourse({props}) {
     const [profilePic, setProfilePic] = useState(null);
 
     const courseRefs = {};
-    const currentPage = {'chapter': 1, 'unit': 1};
+    const [currentChapter, setCurrentChapter] = useState(1);
+    const [currentUnit, setCurrentUnit] = useState(1);
 
-    const [markdown, setMarkdown] = useState(props.markdown[`C${currentPage.chapter}U${currentPage.unit}.md`]);
+    const [markdown, setMarkdown] = useState(props.markdown['C1U1.md']);
 
     for(let chapter = 1; chapter <= props.chapters.length; chapter++) {
         courseRefs[`c${chapter}`] = useRef(null);
@@ -54,21 +55,28 @@ export default function TestCourse({props}) {
 
     })
 
-    const nextPage = () => {
-        const unitLength = props.units[props.chapters[currentPage.chapter-1]].length;
-        if(currentPage.unit == unitLength) {
-            currentPage.unit = 1;
-            if(currentPage.chapter == props.chapters.length) {
-                currentPage.chapter = 1;
+    const nextPage =  () => {
+        const unitLength = props.units[props.chapters[currentChapter-1]].length;
+        console.log(currentUnit, currentChapter, currentUnit == unitLength)
+        if(currentUnit == unitLength) {
+            console.log("setting unit to 1")
+            setCurrentUnit(1);
+            if(currentChapter == props.chapters.length) {
+                setCurrentChapter(1);
             } else {
-                currentPage.chapter++;
+                setCurrentChapter(currentChapter + 1);
             }
         } else {
-            currentPage.unit++;
+            console.log('increase unit')
+            setCurrentUnit(2);
         }
-        console.log(`C${currentPage.chapter}U${currentPage.unit}.md`)
-        setMarkdown(props.markdown[`C${currentPage.chapter}U${currentPage.unit}.md`])
+
+        console.log("after change", currentUnit, currentChapter)
+        setMarkdown(props.markdown[`C${currentChapter}U${currentUnit}.md`])
+        window.scrollTo({behavior: 'smooth', top: 0});
     }
+
+   
     
 
     const navItems = [
