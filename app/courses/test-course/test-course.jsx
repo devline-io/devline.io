@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
 import { MDXRemote } from 'next-mdx-remote'
+import SmoothScroll from "../../../components/smooth-scroll";
 
 export default function TestCourse({props}) {
     initFirebase();
@@ -21,6 +22,22 @@ export default function TestCourse({props}) {
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
+
+    const courseRefs = {};
+    const [currentChapter, setCurrentChapter] = useState(1);
+    const [currentUnit, setCurrentUnit] = useState(1);
+
+    const [markdown, setMarkdown] = useState(props.markdown['C1U1.md']);
+
+    for(let chapter = 1; chapter <= props.chapters.length; chapter++) {
+        courseRefs[`c${chapter}`] = useRef(null);
+        for(let unit = 1; unit <= props.units[props.chapters[chapter-1]].length; unit++) {
+            courseRefs[`c${chapter}u${unit}`] = useRef(null);
+            for(let lesson = 1; lesson <= props.lessons[props.chapters[chapter-1]][props.units[props.chapters[chapter-1]][unit-1]].length; lesson++) {
+                courseRefs[`c${chapter}u${unit}l${lesson}`] = useRef(null);
+            }
+        }
+    }
 
     useEffect(() => {
         if(user) {
@@ -35,15 +52,54 @@ export default function TestCourse({props}) {
             console.log(user);
             router.push('/sign-up/?nextPath=courses/test-course');
         }
-        console.log(props.lessons['Chapter Title'])
 
     })
 
+    const nextPage =  () => {
+        const unitLength = props.units[props.chapters[currentChapter-1]].length;
+        console.log(currentUnit, currentChapter, currentUnit == unitLength)
+        if(currentUnit == unitLength) {
+            setCurrentUnit(1);
+            if(currentChapter == props.chapters.length) {
+                setCurrentChapter(1);
+            } else {
+                setCurrentChapter(currentChapter + 1);
+            }
+        } else {
+            setCurrentUnit(currentUnit + 1);
+        }
+        setMarkdown(props.markdown[`C${currentChapter}U${currentUnit}.md`])
+        window.scrollTo({behavior: 'smooth', top: 0});
+    }
+
+    const backPage =  () => {
+        const unitLength = props.units[props.chapters[currentChapter-1]].length;
+        console.log(currentUnit, currentChapter, currentUnit == unitLength)
+        if(currentUnit == 1) {
+            setCurrentUnit(unitLength);
+            if(currentChapter == 1) {
+                setCurrentChapter(props.chapters.length);
+            } else {
+                setCurrentChapter(currentChapter - 1);
+            }
+        } else {
+            setCurrentUnit(currentUnit - 1);
+        }
+        setMarkdown(props.markdown[`C${currentChapter}U${currentUnit}.md`])
+        window.scrollTo({behavior: 'smooth', top: 0});
+    }
+
+    const handleLessonClick = async (scrollItem, page) => {
+        setMarkdown(props.markdown[`C1U${page}.md`]);
+        setCurrentUnit(page)
+        await courseRefs[scrollItem] != null;
+        SmoothScroll(courseRefs[scrollItem], nav);
+    }
     
 
     const navItems = [
         <Link href='/'>Home</Link>,
-        <Link href='/catalog'>Catalog</Link>, 
+        <Link href='/courses'>Catalog</Link>, 
         <Link href='/'>Progress</Link>,
         ];
 
@@ -62,13 +118,14 @@ export default function TestCourse({props}) {
                             <li>
                                 {chapter}
                                 <ul>
-                                    {props.units[chapter].map((unit) => {
+                                    {props.units[chapter].map((unit, uIndex) => {
                                         return (
-                                            <li>
-                                                {unit}
+                                            <li className={styles.outlineItems}>
+                                                <a onClick={() => handleLessonClick(`c1u${uIndex+1}`, uIndex + 1)}>{unit}</a>
                                                 <ul>
-                                                    {props.lessons[chapter][unit].map((lesson) => {
-                                                        return <li>{lesson}</li>
+                                                    {props.lessons[chapter][unit].map((lesson,lIndex) => {
+                                                        return <li className={styles.outlineItems}><a onClick={() => handleLessonClick(`c1u${uIndex+1}l${lIndex+1}`, uIndex + 1)}>{lesson}</a></li>
+                                                        
                                                     })}
                                                 </ul>
                                             </li>
@@ -79,10 +136,13 @@ export default function TestCourse({props}) {
                     })}
                 </ul>
                 <div className={styles.courseText}>
-                    <MDXRemote {...props.C1U1}/>
+                    {markdown && <MDXRemote {...markdown} scope={courseRefs}/>}
                 </div>
             </div>
-            
+            <div className={styles.nextBackButton}>
+                <button onClick={backPage}>Back</button>
+                <button onClick={nextPage}>Next</button> 
+            </div>
         </>
     )
 }
