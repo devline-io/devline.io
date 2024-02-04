@@ -72,6 +72,23 @@ export default function TestCourse({props}) {
         window.scrollTo({behavior: 'smooth', top: 0});
     }
 
+    const backPage =  () => {
+        const unitLength = props.units[props.chapters[currentChapter-1]].length;
+        console.log(currentUnit, currentChapter, currentUnit == unitLength)
+        if(currentUnit == 1) {
+            setCurrentUnit(unitLength);
+            if(currentChapter == 1) {
+                setCurrentChapter(props.chapters.length);
+            } else {
+                setCurrentChapter(currentChapter - 1);
+            }
+        } else {
+            setCurrentUnit(currentUnit - 1);
+        }
+        setMarkdown(props.markdown[`C${currentChapter}U${currentUnit}.md`])
+        window.scrollTo({behavior: 'smooth', top: 0});
+    }
+
     const handleLessonClick = async (scrollItem, page) => {
         setMarkdown(props.markdown[`C1U${page}.md`]);
         setCurrentUnit(page)
@@ -123,7 +140,7 @@ export default function TestCourse({props}) {
                 </div>
             </div>
             <div className={styles.nextBackButton}>
-                <button>Back</button>
+                <button onClick={backPage}>Back</button>
                 <button onClick={nextPage}>Next</button> 
             </div>
         </>
