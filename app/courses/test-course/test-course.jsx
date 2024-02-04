@@ -74,6 +74,7 @@ export default function TestCourse({props}) {
 
     const handleLessonClick = async (scrollItem, page) => {
         setMarkdown(props.markdown[`C1U${page}.md`]);
+        setCurrentUnit(page)
         await courseRefs[scrollItem] != null;
         SmoothScroll(courseRefs[scrollItem], nav);
     }
