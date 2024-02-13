@@ -29,9 +29,9 @@ export default function PasswordReset() {
                     <a onClick={() => router.push('../sign-in')}>&larr; Back</a>
                 </div>
                 <h1>Reset Password</h1>
-                <form className={styles.form}onSubmit={handleSubmit}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <div>
-                        <label className={styles.email} htmlFor='email'>Email</label>
+                        <label htmlFor='email'>Email</label>
                         <input ref={email} required id='email' type='text'/>
                     </div>
                     <button className={styles.fullButton}>Submit</button>
