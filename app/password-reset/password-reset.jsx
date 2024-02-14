@@ -19,8 +19,8 @@ export default function PasswordReset() {
         e.preventDefault();
         try {
             await sendPasswordResetEmail(auth, email.current.value);
+            setEmailErrorMessage('Password Reset Link Sent to Email')
         } catch(error) {
-            console.log(error.code)
             switch(error.code) {
                 case 'auth/missing-email':
                     setEmailErrorMessage('Enter an Email');
