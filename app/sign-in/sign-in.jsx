@@ -58,6 +58,7 @@ export default function SignInForm()
         const formPassword = password.current.value;
         try {
             await signInWithEmailAndPassword(auth, formEmail, formPassword);
+            router.push('/dashboard');
         } 
         catch(error) {
             switch(error.code) {
