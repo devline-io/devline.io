@@ -89,9 +89,10 @@ export default function TestCourse({props}) {
         window.scrollTo({behavior: 'smooth', top: 0});
     }
 
-    const handleLessonClick = async (scrollItem, page) => {
-        setMarkdown(props.markdown[`C1U${page}.md`]);
-        setCurrentUnit(page)
+    const handleLessonClick = async (scrollItem, chapter, unit) => {
+        setMarkdown(props.markdown[`C${chapter}U${unit}.md`]);
+        setCurrentChapter(chapter)
+        setCurrentUnit(unit)
         await courseRefs[scrollItem] != null;
         SmoothScroll(courseRefs[scrollItem], nav);
     }
@@ -113,18 +114,18 @@ export default function TestCourse({props}) {
             />}
             <div className={styles.course}>
                 <ul className={styles.outline}>
-                    {props.chapters.map((chapter) => {
+                    {props.chapters.map((chapter, cIndex) => {
                         return (
-                            <li>
-                                {chapter}
+                            <li className={styles.outlineItems}>
+                                <a onClick={() => handleLessonClick(`c${cIndex+1}u1`, cIndex + 1, 1)}>{chapter}</a>
                                 <ul>
                                     {props.units[chapter].map((unit, uIndex) => {
                                         return (
-                                            <li className={styles.outlineItems}>
-                                                <a onClick={() => handleLessonClick(`c1u${uIndex+1}`, uIndex + 1)}>{unit}</a>
+                                            <li>
+                                                <a onClick={() => handleLessonClick(`c${cIndex+1}u${uIndex+1}`, cIndex + 1, uIndex + 1)}>{unit}</a>
                                                 <ul>
                                                     {props.lessons[chapter][unit].map((lesson,lIndex) => {
-                                                        return <li className={styles.outlineItems}><a onClick={() => handleLessonClick(`c1u${uIndex+1}l${lIndex+1}`, uIndex + 1)}>{lesson}</a></li>
+                                                        return <li className={styles.outlineItems}><a onClick={() => handleLessonClick(`c${cIndex+1}u${uIndex+1}l${lIndex+1}`, cIndex + 1, uIndex + 1)}>{lesson}</a></li>
                                                         
                                                     })}
                                                 </ul>
