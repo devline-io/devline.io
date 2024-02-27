@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Navbar from '../../components/navbar';
 import CatalogImages from '../../components/catalog-images';
 import { container, fadeIn } from '../homepage';
+import { Chart } from 'chart.js';
 
 export default function Dashboard({courses}) {
     initFirebase();
@@ -22,6 +23,8 @@ export default function Dashboard({courses}) {
     const [user, loading] = useAuthState(auth);
     const [username, setUsername] = useState(null);
     const [profilePic, setProfilePic] = useState(null);
+
+    const barChart = useRef(null);
 
     const imageRefs = [
         useRef(null),
@@ -50,9 +53,21 @@ export default function Dashboard({courses}) {
                 });
             }
         }
-    });
-    
-    useEffect(() => {
+
+        var myChart = new Chart(barChart.current.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    data: [66, 144, 146, 116, 107, 131, 43],
+                    label: "Points",
+                    borderColor: "rgb(109, 253, 181)",
+                    backgroundColor: "rgb(109, 253, 181,0.5)",
+                    borderWidth: 2
+                }]
+            },
+        });
+
         if(user) {
             if(!user.displayName || !user.photoURL) {
                 router.push('/dashboard/setup');
@@ -82,15 +97,11 @@ export default function Dashboard({courses}) {
             />}
             
             <main className={styles.main}>
-                <div className={styles.container}>
-                    <div className={styles.topContainer}>
-
+                <h1>Bar Chart</h1>
+                <div>
+                    <div>
+                        <canvas ref={barChart}></canvas>
                     </div>
-                    <div className={styles.bottomContainer}>
-                        <h3>Continue</h3>
-                        <h3>Recommended</h3>
-                    </div>
-                    
                 </div>
             </main>
         </>
