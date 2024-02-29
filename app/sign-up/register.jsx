@@ -73,7 +73,7 @@ export default function RegisterForm( {darkForm} ) {
                 await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
                     email: formEmail,
                     startDate: formattedDate,
-                    xp: 0
+                    xp: [0,0,0,0,0,0,0]
                 });
                 console.log(searchParams.get('nextPath'), searchParams.get('nextPath') == null)
                 if(searchParams.get('nextPath') == null) {
@@ -137,7 +137,7 @@ export default function RegisterForm( {darkForm} ) {
             await setDoc(doc(firestore, "User Data", auth.currentUser.uid), {
                 email: auth.currentUser.email,
                 startDate: formattedDate,
-                xp: 0
+                xp: [0,0,0,0,0,0,0]
             });
             if(searchParams.get('nextPath') == null) {
                 router.push('/dashboard/setup')
