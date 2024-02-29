@@ -4,9 +4,9 @@ import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export default async function Page() {
-    const courses = await getServerSideProps();
+    const data = await getServerSideProps();
     return(
-        <Dashboard courses={courses}/>
+        <Dashboard props={data}/>
     );
 }
 
@@ -16,7 +16,13 @@ async function getServerSideProps() {
     const storage = getStorage();
     
     const courses = [];
+    const xp = {};
+    const userData  = await getDocs(collection(firestore, 'User Data'));
     const querySnapshot = await getDocs(collection(firestore, 'Courses'));
+
+    userData.forEach((user) => {
+        xp[user.id] = user.data().xp;
+    })
 
     querySnapshot.forEach((course) => {
         courses.push({name: course.id, data: course.data()});
@@ -30,5 +36,5 @@ async function getServerSideProps() {
     }
 
     
-    return courses;
+    return {courses, xp};
 }

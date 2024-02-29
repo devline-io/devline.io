@@ -13,7 +13,7 @@ import CatalogImages from '../../components/catalog-images';
 import { container, fadeIn } from '../homepage';
 import { Chart } from 'chart.js';
 
-export default function Dashboard({courses}) {
+export default function Dashboard({props}) {
     initFirebase();
     const auth = getAuth();
     const router = useRouter();
@@ -54,12 +54,14 @@ export default function Dashboard({courses}) {
             }
         }
 
+        const xp = props.xp['00YfSjwjV8VyqcezaoEvjCCdE1H2'];
+
         var myChart = new Chart(barChart.current.getContext('2d'), {
             type: 'bar',
             data: {
                 labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 datasets: [{
-                    data: [66, 144, 146, 116, 107, 131, 43],
+                    data: xp,
                     label: "Points",
                     borderColor: "rgb(109, 253, 181)",
                     backgroundColor: "rgb(109, 253, 181,0.5)",
