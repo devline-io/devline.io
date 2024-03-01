@@ -54,7 +54,12 @@ export default function Dashboard({props}) {
             }
         }
 
-        const xp = props.xp['00YfSjwjV8VyqcezaoEvjCCdE1H2'];
+
+        if(user) {
+            var uid = user.uid
+        }
+        
+        const xp = props.xp[uid];
 
         var myChart = new Chart(barChart.current.getContext('2d'), {
             type: 'bar',
