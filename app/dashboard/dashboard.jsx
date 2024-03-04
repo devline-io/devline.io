@@ -35,6 +35,18 @@ export default function Dashboard({props}) {
         useRef(null)
     ];
 
+    const plugin = {
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart, args, options) => {
+          const {ctx} = chart;
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = options.color || '#99ffff';
+          ctx.fillRect(0, 0, chart.width, chart.height);
+          ctx.restore();
+        }
+      };
+
     useEffect(() => {
         for (let index = 0; index < imageRefs.length; index++) {
             if(imageRefs[index].current != null) {
@@ -73,6 +85,18 @@ export default function Dashboard({props}) {
                     borderWidth: 2
                 }]
             },
+            options: {
+                scales: {
+                    xAxes: [{gridLines: { color: "rgb(24, 18, 43)" }}],
+                    yAxes: [{gridLines: { color: "rgb(247, 239, 229, 0.25)" }}]
+                },
+                plugins: {
+                    customCanvasBackgroundColor: {
+                        color: 'rgb(24, 18, 43)',
+                    }
+                }
+            },
+            plugins: plugin,
         });
 
         if(user) {
