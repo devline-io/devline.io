@@ -16,19 +16,25 @@
     border-radius: 5px;
 }
 
-.xpChart > * {
+.xpChart {
     background-color: #18122B;
     color: #F7EFE5;
 }
 
 .xpChart h2 {
     text-align: center;
+    padding: 0;
+    padding-top: 1rem;
 }
 
 .shop {
     background-color: #18122B;
     padding: 2rem;
     border-radius: 5px;
+}
+
+.shop hr {
+    opacity: 25%;
 }
 
 .shop > * {
