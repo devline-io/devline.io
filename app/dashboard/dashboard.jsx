@@ -58,7 +58,7 @@ export default function Dashboard({props}) {
         if(user) {
             var uid = user.uid
         }
-        
+
         const xp = props.xp[uid];
 
         var myChart = new Chart(barChart.current.getContext('2d'), {
@@ -68,8 +68,8 @@ export default function Dashboard({props}) {
                 datasets: [{
                     data: xp,
                     label: "Points",
-                    borderColor: "rgb(109, 253, 181)",
-                    backgroundColor: "rgb(109, 253, 181,0.5)",
+                    borderColor: "rgb(247, 239, 229)",
+                    backgroundColor: "rgb(247, 239, 229)",
                     borderWidth: 2
                 }]
             },
@@ -104,10 +104,36 @@ export default function Dashboard({props}) {
             />}
             
             <main className={styles.main}>
-                <h1>Bar Chart</h1>
-                <div>
+                <div className={styles.xpChart}>
+                    <h2>Daily XP Gain</h2>
+                    <canvas ref={barChart}></canvas>
+                </div>
+                <div className={styles.shop}>
+                    <div className={styles.shopTitle}>
+                        <h2>XP Shop</h2>
+                        <h3>3000 XP</h3>
+                    </div>
+                    <hr/>
                     <div>
-                        <canvas ref={barChart}></canvas>
+                        <div className={styles.shopItem}>
+                            <p>Item 1</p>
+                            <button className={styles.lightButton}>Purchase</button>
+                        </div>
+                        <hr/>
+                        <div className={styles.shopItem}>
+                            <p>Item 2</p>
+                            <button className={styles.lightButton}>Purchase</button>
+                        </div>
+                        <hr/>
+                        <div className={styles.shopItem}>
+                            <p>Item 3</p>
+                            <button className={styles.lightButton}>Purchase</button>
+                        </div>
+                        <hr/>
+                        <div className={styles.shopItem}>
+                            <p>Item 4</p>
+                            <button className={styles.lightButton}>Purchase</button>
+                        </div>
                     </div>
                 </div>
             </main>
