@@ -7,7 +7,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
 
     const router = useRouter();
 
-    if(hasDescription == false) {
+    if(hasDescription == false && targetLevel == null) {
         return (
             courses.map((course, index) => (
                 <motion.div className={containerClass} variants={fadeIn} key={course.thumbnail + index}>
@@ -19,8 +19,7 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
 
     if(targetLevel != null) {
         return(
-            <div className={styles.courseWrapper}>
-                {courses.map((course, index) => (
+                courses.map((course, index) => (
                     course.data.level == targetLevel && (
                         <motion.div key={course + index}
                         variants={fadeIn} 
@@ -28,20 +27,14 @@ export default function CatalogImages({ courses, fadeIn, containerClass, imageCo
                         whileInView="show" 
                         onClick={() => router.push(`/courses/${course.name.replace(/ /g,'-').toLowerCase()}`)} 
                         ref={imageRefs[index]} 
-                        className={containerClass} 
-                        whileHover={hoverAnimation}
+                        className={containerClass}
                         transition={{duration: 0.1, ease: "linear"}}>
                             <div className={styles.imageContainer}>
                                 <Image alt={course} src={course.thumbnail} fill sizes='25vw' />
                             </div>
-                            <h3>{course.name}</h3>
-                            <p>Level: {course.data.level}</p>
-                            <hr/>
-                            <p>{course.data.description}</p>
                         </motion.div>
                     )
-                ))}
-            </div>
+                ))
         )
     }
 

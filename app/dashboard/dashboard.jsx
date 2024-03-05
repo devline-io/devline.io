@@ -48,25 +48,6 @@ export default function Dashboard({props}) {
       };
 
     useEffect(() => {
-        for (let index = 0; index < imageRefs.length; index++) {
-            if(imageRefs[index].current != null) {
-                let ref = imageRefs[index].current;
-                ref.addEventListener('mousemove', (event) => {
-                    const width   = ref.offsetWidth;
-                    const height  = ref.offsetHeight;
-                    const centerX = ref.offsetLeft + width/2;
-                    const centerY = ref.offsetTop + height/2;
-                    const mouseX  = event.pageX - centerX;
-                    const mouseY  = event.pageY - centerY;
-                    const rotateX = -10 * mouseY / (height / 2);
-                    const rotateY = 10 * mouseX / (width / 2)
-
-                    ref.style.transform = `perspective(1000px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-            }
-        }
-
-
         if(user) {
             var uid = user.uid
         }
@@ -128,36 +109,51 @@ export default function Dashboard({props}) {
             />}
             
             <main className={styles.main}>
-                <div className={styles.xpChart}>
-                    <h2>Daily XP Gain</h2>
-                    <canvas ref={barChart}></canvas>
-                </div>
-                <div className={styles.shop}>
-                    <div className={styles.shopTitle}>
-                        <h2>XP Shop</h2>
-                        <h3>3000 XP</h3>
+                <div className={styles.xp}>
+                    <div className={styles.xpChart}>
+                        <h2>Daily XP Gain</h2>
+                        <canvas ref={barChart}></canvas>
                     </div>
-                    <hr/>
-                    <div>
-                        <div className={styles.shopItem}>
-                            <p>Item 1</p>
-                            <button className={styles.lightButton}>Purchase</button>
+                    <div className={styles.shop}>
+                        <div className={styles.shopTitle}>
+                            <h2>XP Shop</h2>
+                            <h3>3000 XP</h3>
                         </div>
                         <hr/>
-                        <div className={styles.shopItem}>
-                            <p>Item 2</p>
-                            <button className={styles.lightButton}>Purchase</button>
+                        <div>
+                            <div className={styles.shopItem}>
+                                <p>Item 1</p>
+                                <button className={styles.lightButton}>Purchase</button>
+                            </div>
+                            <hr/>
+                            <div className={styles.shopItem}>
+                                <p>Item 2</p>
+                                <button className={styles.lightButton}>Purchase</button>
+                            </div>
+                            <hr/>
+                            <div className={styles.shopItem}>
+                                <p>Item 3</p>
+                                <button className={styles.lightButton}>Purchase</button>
+                            </div>
+                            <hr/>
+                            <div className={styles.shopItem}>
+                                <p>Item 4</p>
+                                <button className={styles.lightButton}>Purchase</button>
+                            </div>
                         </div>
-                        <hr/>
-                        <div className={styles.shopItem}>
-                            <p>Item 3</p>
-                            <button className={styles.lightButton}>Purchase</button>
-                        </div>
-                        <hr/>
-                        <div className={styles.shopItem}>
-                            <p>Item 4</p>
-                            <button className={styles.lightButton}>Purchase</button>
-                        </div>
+                    </div>
+                </div>
+                <div className={styles.continue}>
+                    <h2>Continue</h2>
+                    <div className={styles.courses}>
+                        <CatalogImages courses={props.courses} fadeIn={fadeIn} hasDescription={false} imageRefs={imageRefs} targetLevel="Introductory" />
+                    </div>
+                </div>
+                
+                <div className={styles.recommended}>
+                    <h2>Recommended</h2>
+                    <div className={styles.courses}>
+                        <CatalogImages courses={props.courses} fadeIn={fadeIn} hasDescription={false} imageRefs={imageRefs} targetLevel="test" />
                     </div>
                 </div>
             </main>
