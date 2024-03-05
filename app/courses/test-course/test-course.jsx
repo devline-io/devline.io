@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import styles from '../../../styles/courses.module.css';
 import { MDXRemote } from 'next-mdx-remote'
 import SmoothScroll from "../../../components/smooth-scroll";
+import CodeEditor from "../../../components/code-editor";
 
 export default function TestCourse({props}) {
     initFirebase();
@@ -138,6 +139,7 @@ export default function TestCourse({props}) {
                 </ul>
                 <div className={styles.courseText}>
                     {markdown && <MDXRemote {...markdown} scope={courseRefs}/>}
+                    <CodeEditor />
                 </div>
             </div>
             <div className={styles.nextBackButton}>
