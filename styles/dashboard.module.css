@@ -71,7 +71,7 @@
 }
 
 .continue {
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
 
 .continue h2 {
@@ -95,8 +95,22 @@
     border-radius: 5px;
 }
 
+.next, .back {
+    position: relative;
+    aspect-ratio: 1/1;
+    height: 3rem;
+    background-color: #18122B;
+}
+
+.arrows {
+    margin-top: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .recommended {
-    margin-top: 20rem;
+    margin-top: 3rem;
 }
 
 .recommended h2 {

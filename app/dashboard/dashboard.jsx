@@ -12,6 +12,7 @@ import Navbar from '../../components/navbar';
 import CatalogImages from '../../components/catalog-images';
 import { container, fadeIn } from '../homepage';
 import { Chart } from 'chart.js';
+import Image from 'next/image';
 
 export default function Dashboard({props}) {
     initFirebase();
@@ -147,6 +148,14 @@ export default function Dashboard({props}) {
                     <h2>Continue</h2>
                     <div className={styles.courses}>
                         <CatalogImages courses={props.courses} fadeIn={fadeIn} hasDescription={false} imageRefs={imageRefs} targetLevel="Introductory" />
+                    </div>
+                    <div className={styles.arrows}>
+                        <div className={styles.back}>
+                            <Image src='/images/back.svg' fill/>
+                        </div>
+                        <div className={styles.next}>
+                            <Image src='/images/next.svg' fill/>
+                        </div>
                     </div>
                 </div>
                 
